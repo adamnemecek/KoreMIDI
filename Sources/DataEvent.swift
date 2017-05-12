@@ -9,17 +9,21 @@
 import AudioToolbox.MusicPlayer
 import Foundation
 
+protocol EventType {
+
+}
 
 /// this struct is basically a better MIDIPacket
-struct DataEvent<Timestamp : Strideable, Data> : Comparable, Strideable {
+/// passed around
+struct DataEvent<Timestamp : Strideable, Data: Equatable> : Comparable, Strideable {
 
     typealias Stride = Timestamp.Stride
 
     let timestamp: Timestamp
-    let data : Foundation.Data
+    let data : Data
 
     /// called from the CoreMIDI.ReadMIDI callback
-    init(timestamp: Timestamp, data: Foundation.Data) {
+    init(timestamp: Timestamp, data: Data) {
         self.timestamp = timestamp
         self.data = data
     }
@@ -41,19 +45,28 @@ struct DataEvent<Timestamp : Strideable, Data> : Comparable, Strideable {
     }
 }
 
-extension MIDIEventConvertible {
-    @inline(__always)
-    init(event: DataEvent<MIDIPacket.Timestamp, Self>) {
-        self = event.data.decode()
+
+enum CoreMIDIEvent : Equatable, Hashable, CustomStringConvertible {
+    case extendedNote(ExtendedNoteOnEvent)
+    case extendedTempo(ExtendedTempoEvent)
+    case user(MusicEventUserData)
+    case meta(MIDIMetaEvent)
+    case note(MIDINoteMessage)
+    case channel(MIDIChannelMessage)
+    case rawData(MIDIRawData)
+    case parameter(ParameterEvent)
+    case auPreset(AUPresetEvent)
+
+    static func ==(lhs: CoreMIDIEvent, rhs: CoreMIDIEvent) -> Bool {
+        fatalError()
+    }
+
+    var description: String {
+        fatalError()
+    }
+
+    var hashValue: Int {
+        fatalError()
     }
 }
 
-extension DataEvent where Data : MIDIEventConvertible {
-    @inline(__always)
-    internal init(timestamp: Timestamp, ptr: UnsafeMutablePointer<MIDIPacket>) {
-        self.timestamp = timestamp
-        self.data = withUnsafeBytes(of: &ptr.pointee.data) {
-            Foundation.Data(bytes: $0.baseAddress!, count: ptr.pointee.count)
-        }
-    }
-}
