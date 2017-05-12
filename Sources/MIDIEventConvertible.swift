@@ -7,13 +7,22 @@
 //
 
 import AudioToolbox.MusicPlayer
-
+import Foundation
 
 
 protocol MIDIEventConvertible {
-
+    
 }
 
+internal protocol VariableLength {
+    var length : UInt32 { get }
+}
+
+extension MemoryLayout where T : VariableLength {
+    static func size(ofValue value: T) -> Int {
+        return MemoryLayout.size + Int(value.length)
+    }
+}
 
 
 
@@ -63,7 +72,7 @@ extension ExtendedTempoEvent : Comparable, Hashable, CustomStringConvertible {
 /// MARK: MusicEventUserData
 ///
 
-extension MusicEventUserData : Comparable, Hashable, CustomStringConvertible {
+extension MusicEventUserData : Comparable, Hashable, CustomStringConvertible, MIDIEventConvertible, VariableLength {
 
     //    init(data: Data) {
     //
@@ -90,7 +99,10 @@ extension MusicEventUserData : Comparable, Hashable, CustomStringConvertible {
 /// MARK: MIDIMetaEvent
 ///
 
-extension MIDIMetaEvent : Comparable, Hashable, CustomStringConvertible, MIDIEventConvertible {
+extension MIDIMetaEvent : Comparable, Hashable, CustomStringConvertible, MIDIEventConvertible, VariableLength {
+    var length : UInt32 {
+        return dataLength
+    }
 
     public var hashValue: Int {
         return metaEventType.hashValue
@@ -167,7 +179,7 @@ extension MIDIChannelMessage : Comparable, Hashable, CustomStringConvertible, MI
 /// MARK: MIDIRawData
 ///
 
-extension MIDIRawData : Comparable, Hashable, CustomStringConvertible, MIDIEventConvertible {
+extension MIDIRawData : Comparable, Hashable, CustomStringConvertible, MIDIEventConvertible, VariableLength {
     public static func ==(lhs: MIDIRawData, rhs: MIDIRawData) -> Bool {
         return lhs.length == rhs.length && lhs.data == rhs.data
     }
