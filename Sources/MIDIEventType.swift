@@ -7,6 +7,25 @@
 //
 
 import AudioToolbox.MusicPlayer
+import Foundation
+
+
+/// this struct is basically a better MIDIPacket
+extension MIDIPacket  {
+
+    typealias Timestamp = MIDITimeStamp
+    var count : Int {
+        return Int(length)
+    }
+
+    var status : MIDIStatus {
+        fatalError()
+    }
+}
+
+
+//typealias Temp = MIDIEvent2<ExtendedNoteOnEvent>
+
 
 public enum MIDIEventType : RawRepresentable, CustomStringConvertible {
 
