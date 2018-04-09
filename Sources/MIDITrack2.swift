@@ -51,7 +51,7 @@ public enum ChannelEvent : Comparable, Strideable, Hashable, CustomStringConvert
         }
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         switch self {
         case .note: return .note
         case .channel: return .channel

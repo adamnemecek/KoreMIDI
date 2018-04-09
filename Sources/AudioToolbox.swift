@@ -98,6 +98,27 @@ extension UnsafeRawBufferPointer : Equatable {
     }
 }
 
+extension UnsafePointer where Pointee == MIDINoteMessage {
+    @inline(__always)
+    init(data: MIDIData) {
+        self = data.data.bindMemory(to: Pointee.self).baseAddress!
+    }
+}
+
+extension UnsafePointer where Pointee == MIDIChannelMessage {
+    @inline(__always)
+    init(data: MIDIData) {
+        self = data.data.bindMemory(to: Pointee.self).baseAddress!
+    }
+}
+
+extension UnsafePointer where Pointee == MIDIRawData {
+    @inline(__always)
+    init(data: MIDIData) {
+        self = data.data.bindMemory(to: Pointee.self).baseAddress!
+    }
+}
+
 internal struct MIDIData : EventType, CustomStringConvertible {
     let timestamp: MIDITimestamp
     let type: MIDIEventType
@@ -136,6 +157,38 @@ internal struct MIDIData : EventType, CustomStringConvertible {
         return lhs.timestamp == rhs.timestamp &&
             lhs.type == rhs.type &&
             lhs.data == rhs.data
+    }
+
+    static func <(lhs: MIDIData, rhs: MIDIData) -> Bool {
+        return lhs.timestamp < rhs.timestamp
+    }
+
+    func insert(to track: MIDITrack, at timestamp: MusicTimeStamp) {
+        switch type {
+        case .note:
+            MusicTrackNewMIDINoteEvent(track.ref, timestamp, .init(data: self))
+        case .channel:
+            MusicTrackNewMIDIChannelEvent(track.ref, timestamp, .init(data: self))
+        case .rawData:
+            MusicTrackNewMIDIRawDataEvent(track.ref, timestamp, .init(data: self))
+        case .extendedNote:
+
+    //        MusicTrackNewExtendedNoteEvent(ref.ref, timestamp, self)
+            fatalError()
+        case .parameter:
+            fatalError()
+        case .user:
+            fatalError()
+        case .extendedTempo:
+            fatalError()
+        case .meta:
+            fatalError()
+        case .auPreset:
+            fatalError()
+
+//            MusicTrackNewExtendedNoteEvent(track.ref, timestamp, .init(data: self))
+
+        }
     }
 
 }

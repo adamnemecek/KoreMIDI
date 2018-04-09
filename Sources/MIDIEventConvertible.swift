@@ -40,7 +40,7 @@ extension ExtendedNoteOnEvent : Hashable, CustomStringConvertible, MIDIEventConv
         return instrumentID.hashValue
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .extendedNote
     }
 }
@@ -66,7 +66,7 @@ extension ExtendedTempoEvent : Hashable, CustomStringConvertible, MIDIEventConve
         MusicTrackNewExtendedTempoEvent(ref.ref, timestamp, bpm)
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .extendedTempo
     }
 }
@@ -92,7 +92,7 @@ extension MusicEventUserData : Hashable, CustomStringConvertible, MIDIEventConve
         MusicTrackNewUserEvent(ref.ref, timestamp, &self)
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .user
     }
 }
@@ -212,7 +212,7 @@ extension MIDIMetaEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
         MusicTrackNewMetaEvent(ref.ref, timestamp, &self)
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .meta
     }
 }
@@ -250,7 +250,7 @@ extension MIDINoteMessage : Hashable, CustomStringConvertible, MIDITrackEvent {
         MusicTrackNewMIDINoteEvent(ref.ref, timestamp, &self)
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .note
     }
 }
@@ -285,7 +285,7 @@ extension MIDIChannelMessage : Hashable, CustomStringConvertible, MIDITrackEvent
         MusicTrackNewMIDIChannelEvent(ref.ref, timestamp, &self)
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .channel
     }
 }
@@ -311,7 +311,7 @@ extension MIDIRawData : Hashable, CustomStringConvertible, MIDITrackEvent {
         MusicTrackNewMIDIRawDataEvent(ref.ref, timestamp, &self)
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .rawData
     }
 }
@@ -340,7 +340,7 @@ extension ParameterEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
         MusicTrackNewParameterEvent(ref.ref, timestamp, &self)
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .parameter
     }
 }
@@ -368,7 +368,7 @@ extension AUPresetEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
         MusicTrackNewAUPresetEvent(ref.ref, timestamp, &self)
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         return .auPreset
     }
 }
@@ -398,7 +398,7 @@ extension ExtendedControlEvent : Hashable, CustomStringConvertible, MIDITrackEve
         //        }
     }
 
-    public var type: MIDIEventType {
+    internal var type: MIDIEventType {
         fatalError()
     }
 
