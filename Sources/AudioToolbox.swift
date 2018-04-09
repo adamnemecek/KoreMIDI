@@ -180,23 +180,23 @@ internal struct MIDIData : EventType, CustomStringConvertible {
 //    }
 //}
 
-@inline(__always) internal
-func MIDIIteratorGetCurrent(ref: MusicEventIterator) -> MIDIEvent? {
-
-    guard MIDIIteratorHasCurrent(ref: ref) else { return nil }
-
-    var timestamp: Float64 = 0
-    var type: MusicEventType = 0
-    var data : UnsafeRawPointer? = nil
-    var size : UInt32 = 0
-
-    OSAssert(MusicEventIteratorGetEventInfo(ref, &timestamp, &type, &data, &size))
-    let d = Data(bytes: data!, count: Int(size))
-
-    return MIDIEvent(timestamp: MIDITimestamp(beats: timestamp),
-                     type: MIDIEventType(rawValue: type),
-                     data: d)
-}
+//@inline(__always) internal
+//func MIDIIteratorGetCurrent(ref: MusicEventIterator) -> MIDIEvent? {
+//
+//    guard MIDIIteratorHasCurrent(ref: ref) else { return nil }
+//
+//    var timestamp: Float64 = 0
+//    var type: MusicEventType = 0
+//    var data : UnsafeRawPointer? = nil
+//    var size : UInt32 = 0
+//
+//    OSAssert(MusicEventIteratorGetEventInfo(ref, &timestamp, &type, &data, &size))
+//    let d = Data(bytes: data!, count: Int(size))
+//
+//    return MIDIEvent(timestamp: MIDITimestamp(beats: timestamp),
+//                     type: MIDIEventType(rawValue: type),
+//                     data: d)
+//}
 
 ///
 /// Tracks

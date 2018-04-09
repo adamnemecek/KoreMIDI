@@ -20,7 +20,7 @@ import AVFoundation
 //
 //}
 
-public class MIDITrack : TimeSeries, Sequence, Equatable, Comparable, Hashable, CustomStringConvertible {
+public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomStringConvertible {
 
     public typealias Timestamp = MIDITimestamp
     public typealias Element = MIDINote

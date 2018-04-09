@@ -30,15 +30,9 @@ extension TimeSeries {
         return start.distance(to: end)
     }
 }
-
-@inline(__always) @discardableResult
-func withCopy<T, Result>(of value: T, body: (UnsafePointer<T>) -> Result) -> Result {
-    var copy = value
-    return withUnsafePointer(to: &copy) {
-        body($0)
-    }
-}
-
-struct Cursor {
-
-}
+//
+//
+//
+//struct Cursor {
+//
+//}
