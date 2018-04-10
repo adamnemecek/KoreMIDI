@@ -98,26 +98,20 @@ extension UnsafeRawBufferPointer : Equatable {
     }
 }
 
-extension UnsafePointer where Pointee == MIDINoteMessage {
+extension UnsafePointer  {
     @inline(__always)
-    init(data: MIDIData) {
+    fileprivate init(data: MIDIData) {
         self = data.data.bindMemory(to: Pointee.self).baseAddress!
     }
 }
 
-extension UnsafePointer where Pointee == MIDIChannelMessage {
+extension Float64  {
     @inline(__always)
-    init(data: MIDIData) {
-        self = data.data.bindMemory(to: Pointee.self).baseAddress!
+    fileprivate init(data: MIDIData) {
+        self = data.data.bindMemory(to: Float64.self).baseAddress!.pointee
     }
 }
 
-extension UnsafePointer where Pointee == MIDIRawData {
-    @inline(__always)
-    init(data: MIDIData) {
-        self = data.data.bindMemory(to: Pointee.self).baseAddress!
-    }
-}
 
 internal struct MIDIData : EventType, CustomStringConvertible {
     let timestamp: MIDITimestamp
@@ -163,75 +157,31 @@ internal struct MIDIData : EventType, CustomStringConvertible {
         return lhs.timestamp < rhs.timestamp
     }
 
-    func insert(to track: MIDITrack, at timestamp: MusicTimeStamp) {
+    func insert(to track: MIDITrack, at timestamp: AVMusicTimeStamp) {
         switch type {
         case .note:
-            MusicTrackNewMIDINoteEvent(track.ref, timestamp, .init(data: self))
+            OSAssert(MusicTrackNewMIDINoteEvent(track.ref, timestamp, .init(data: self)))
         case .channel:
-            MusicTrackNewMIDIChannelEvent(track.ref, timestamp, .init(data: self))
+            OSAssert(MusicTrackNewMIDIChannelEvent(track.ref, timestamp, .init(data: self)))
         case .rawData:
-            MusicTrackNewMIDIRawDataEvent(track.ref, timestamp, .init(data: self))
+            OSAssert(MusicTrackNewMIDIRawDataEvent(track.ref, timestamp, .init(data: self)))
         case .extendedNote:
-
-    //        MusicTrackNewExtendedNoteEvent(ref.ref, timestamp, self)
-            fatalError()
+            OSAssert(MusicTrackNewExtendedNoteEvent(track.ref, timestamp, .init(data: self)))
         case .parameter:
-            fatalError()
+            OSAssert(MusicTrackNewParameterEvent(track.ref, timestamp, .init(data: self)))
         case .user:
-            fatalError()
+            OSAssert(MusicTrackNewUserEvent(track.ref, timestamp, .init(data: self)))
         case .extendedTempo:
-            fatalError()
+            OSAssert(MusicTrackNewExtendedTempoEvent(track.ref, timestamp, .init(data: self)))
         case .meta:
-            fatalError()
+            OSAssert(MusicTrackNewMetaEvent(track.ref, timestamp, .init(data: self)))
         case .auPreset:
-            fatalError()
-
-//            MusicTrackNewExtendedNoteEvent(track.ref, timestamp, .init(data: self))
-
+            OSAssert(MusicTrackNewAUPresetEvent(track.ref, timestamp, .init(data: self)))
         }
     }
-
 }
 
-//internal struct MIDIRawEvent2<T> : Equatable {
-//    let timestamp: MIDITimestamp
-//    let type: MIDIEventType
-//    let pointer: UnsafeRawBufferPointer
-//
-//    init?(ref: MusicEventIterator) {
-//        guard MIDIIteratorHasCurrent(ref: ref) else { return nil }
-//
-//        var timestamp: Float64 = 0
-//        var type: MusicEventType = 0
-//        var data : UnsafeRawPointer? = nil
-//        var size : UInt32 = 0
-//
-//        OSAssert(MusicEventIteratorGetEventInfo(ref, &timestamp, &type, &data, &size))
-//
-//        self.timestamp = MIDITimestamp(beats: timestamp)
-//        self.type = MIDIEventType(rawValue: type)
-//        self.pointer = UnsafeRawBufferPointer(start: data!, count: Int(size))
-//    }
-//
-//    static func ==(lhs: MIDIRawEvent2, rhs: MIDIRawEvent2) -> Bool {
-//        return lhs.timestamp == rhs.timestamp &&
-//            lhs.type == rhs.type &&
-//            lhs.pointer == rhs.pointer
-//    }
-//
-//    static func <(lhs: MIDIRawEvent2, rhs: MIDIRawEvent2) -> Bool {
-//        return lhs.timestamp < rhs.timestamp
-//    }
-//}
 
-//struct EventPointer<Event> {
-//
-//    private let pointer: UnsafeRawPointer
-//
-//    init() {
-//        fatalError()
-//    }
-//}
 
 //@inline(__always) internal
 //func MIDIIteratorGetCurrent(ref: MusicEventIterator) -> MIDIEvent? {
@@ -249,7 +199,7 @@ internal struct MIDIData : EventType, CustomStringConvertible {
 //    return MIDIEvent(timestamp: MIDITimestamp(beats: timestamp),
 //                     type: MIDIEventType(rawValue: type),
 //                     data: d)
-//}
+//}-
 
 ///
 /// Tracks

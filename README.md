@@ -112,7 +112,7 @@ MIDITimestamp is the timestamp in the context of a .
 
 ```
 struct MIDITimestamp : Comparable, Hashable, Strideable, CustomStringConvertible {
-var beats: MusicTimeStamp { get }
+var beats: AVMusicTimeStamp { get }
 var seconds: Float64 { get }
 func beatTime(for subdivisor: UInt32 = 4) -> CABarBeatTime
 static func +(lhs: MIDITimestamp, rhs: MIDITimestamp) -> MIDITimestamp

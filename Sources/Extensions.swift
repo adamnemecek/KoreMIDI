@@ -109,10 +109,8 @@ extension Data {
                   deallocator: .none)
     }
 
-
     init<T>(encode: T) {
         var cpy = encode
-
         self.init(bytes: &cpy, count: MemoryLayout<T>.size)
     }
 

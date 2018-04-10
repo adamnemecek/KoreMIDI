@@ -12,11 +12,11 @@ import AVFoundation
 
 public struct MIDITimestamp : Comparable, Hashable, Strideable, CustomStringConvertible, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
 
-    public typealias Stride = MusicTimeStamp
-    public typealias LiteralType = MusicTimeStamp
+    public typealias Stride = AVMusicTimeStamp
+    public typealias LiteralType = AVMusicTimeStamp
 
     /// note that beats are independent of tempo changes
-    public let beats : MusicTimeStamp
+    public let beats : AVMusicTimeStamp
 
     public init() {
         self = 0
@@ -27,7 +27,7 @@ public struct MIDITimestamp : Comparable, Hashable, Strideable, CustomStringConv
     }
 
     public init(float: Float32) {
-        self.beats = MusicTimeStamp(float)
+        self.beats = AVMusicTimeStamp(float)
     }
 
     public init(beats: LiteralType) {
@@ -35,7 +35,7 @@ public struct MIDITimestamp : Comparable, Hashable, Strideable, CustomStringConv
     }
 
     public init(integerLiteral value: Int) {
-        self.beats = MusicTimeStamp(value)
+        self.beats = AVMusicTimeStamp(value)
     }
 
     public var description: String {

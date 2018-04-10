@@ -125,13 +125,13 @@ public class Player {
         OSAssert(MusicPlayerPreroll(content))
     }
 
-    func beats(for hosttime: UInt64) -> MusicTimeStamp {
+    func beats(for hosttime: UInt64) -> AVMusicTimeStamp {
         var ret: MusicTimeStamp = 0
         OSAssert(MusicPlayerGetBeatsForHostTime(content, hosttime, &ret))
         return ret
     }
 
-    func hosttime(for beats: MusicTimeStamp) -> UInt64 {
+    func hosttime(for beats: AVMusicTimeStamp) -> UInt64 {
         var ret: UInt64 = 0
         OSAssert(MusicPlayerGetHostTimeForBeats(content, beats, &ret))
         return ret
