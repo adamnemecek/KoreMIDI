@@ -15,17 +15,17 @@ public final class MIDIMetaTrack<Element : MIDIMetaEventType>: Sequence, Equatab
     }
 
     public func makeIterator() -> AnyIterator<Element> {
-        var i = sequence.makeIterator()
+        var i = sequence.first?.makeIterator()
         return AnyIterator {
-
-            
-/*
-            while let n = i.next() {
-             if Element.byte ==  {
-
-            }
- */
             fatalError()
+//            while let n = i.next() {
+//                if Element.byte == n {
+//                    return
+//                }
+////                if Element.byte ==  {
+////
+////                }
+//            }
         }
     }
 
@@ -37,5 +37,3 @@ public final class MIDIMetaTrack<Element : MIDIMetaEventType>: Sequence, Equatab
         fatalError()
     }
 }
-
-

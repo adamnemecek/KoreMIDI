@@ -19,7 +19,9 @@ public protocol MIDITextEventType : EventType {
 
 /// todo: make internal
 public protocol MIDIMetaEventType : Equatable {
+
     static var byte: MIDIMetaEvent.Subtype { get }
+//    init(event: MIDIData)
 }
 
 extension String {
@@ -46,82 +48,6 @@ public struct MIDIMetaTextEvent : Equatable, Hashable, MIDITextEventType, MIDIMe
         self.text = String(event: event)
     }
 }
-/*
-public struct Copyright : StringProtocol {
-    public typealias StringLiteralType = String.StringLiteralType
-    public typealias UTF8View = String.UTF8View
-    public typealias UTF16View = String.UTF16View
-    public typealias UnicodeScalarView = String.UnicodeScalarView
-
-    public var utf8: String.UTF8View {
-        fatalError()
-    }
-
-    public var utf16: String.UTF16View {
-        fatalError()
-    }
-
-    public var unicodeScalars: String.UnicodeScalarView {
-        fatalError()
-    }
-
-    public func hasPrefix(_ prefix: String) -> Bool {
-        fatalError()
-    }
-
-    public func hasSuffix(_ prefix: String) -> Bool {
-        fatalError()
-    }
-
-    public func lowercased() -> String {
-        fatalError()
-    }
-
-    public func uppercased() -> String {
-        fatalError()
-    }
-
-    public init<C, Encoding>(decoding codeUnits: C, as sourceEncoding: Encoding.Type) where C : Collection, Encoding : _UnicodeEncoding, C.Element == Encoding.CodeUnit {
-        fatalError()
-    }
-
-    public init(cString nullTerminatedUTF8: UnsafePointer<CChar>) {
-        fatalError()
-    }
-
-    public init<Encoding>(decodingCString nullTerminatedCodeUnits: UnsafePointer<Encoding.CodeUnit>, as sourceEncoding: Encoding.Type) where Encoding : _UnicodeEncoding {
-        fatalError()
-    }
-
-    public func withCString<Result>(_ body: (UnsafePointer<CChar>) throws -> Result) rethrows -> Result {
-        fatalError()
-    }
-
-    public func withCString<Result, Encoding>(encodedAs targetEncoding: Encoding.Type, _ body: (UnsafePointer<Encoding.CodeUnit>) throws -> Result) rethrows -> Result where Encoding : _UnicodeEncoding {
-        fatalError()
-    }
-
-
-    public init(stringLiteral description: String) {
-        fatalError()
-    }
-
-    public init?(_ description: String) {
-        fatalError()
-    }
-
-    public var description: String {
-        fatalError()
-    }
-
-    public mutating func write(_ string: String) {
-        fatalError()
-    }
-
-    public func write<Target>(to target: inout Target) where Target : TextOutputStream {
-        fatalError()
-    }
-}*/
 
 internal struct MIDICopyrightEvent : Equatable, Hashable, MIDITextEventType, MIDIMetaEventType {
     static var byte: MIDIMetaEvent.Subtype {
