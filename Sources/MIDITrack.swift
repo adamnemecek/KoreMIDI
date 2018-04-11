@@ -27,7 +27,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
 
     /// this needs to be a strong reference because sequence need to be around as long as track is around
     private final let sequence: MIDISequence
-    internal final let ref : MusicTrack
+    internal final let ref: MusicTrack
 //    let instrument: InstrumentName
 
     public static func ===(lhs: MIDITrack, rhs: MIDITrack) -> Bool {
@@ -68,7 +68,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
             opts.append("muted")
         }
 
-        return "MIDITrack(in:\(timerange), \(map { $0 }))"
+        return "MIDITrack(in:\(timerange), \(opts))"
     }
 
     public final subscript(timerange timerange: Range<Timestamp>) -> MIDIRangeIterator {
@@ -178,7 +178,6 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
 
     public final var duration : Timestamp.Stride {
         get {
-
             return self[.length]
         }
         set {
@@ -225,6 +224,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
     }
 
     func remove<S : SetAlgebra & TimeSeries>(elements: S) where S.Element == Element {
+
 //        var i = MIDIIterator(self, timestamp: elements.startTime)
 
         fatalError()
@@ -301,17 +301,13 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
-    fileprivate init(tempo sequence: MIDISequence) {
+    internal init(tempo sequence: MIDISequence) {
         self.sequence = sequence
         self.ref = MusicSequenceGetTempoTrack(ref: sequence.ref)
     }
 }
 
-public class MIDITempoTrack : MIDITrack {
-    override init(sequence: MIDISequence) {
-        super.init(tempo : sequence)
-    }
-}
+
 
 @inline(__always) fileprivate
 func MusicSequenceGetTrack(ref: MusicSequence, at index: Int) -> MusicTrack {
@@ -319,6 +315,7 @@ func MusicSequenceGetTrack(ref: MusicSequence, at index: Int) -> MusicTrack {
     OSAssert(MusicSequenceGetIndTrack(ref, UInt32(index), &r))
     return r!
 }
+
 
 
 

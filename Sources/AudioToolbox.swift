@@ -134,6 +134,8 @@ internal struct MIDIData : EventType, CustomStringConvertible {
         self.data = UnsafeRawBufferPointer(start: data!, count: Int(size))
     }
 
+//    init(meta: )
+
     ///
     /// this is for serializing user created meta events
     ///
@@ -237,10 +239,5 @@ func MIDITrackSetProperty<T>(ref: MusicTrack, prop: MIDITrackProp, to value: T) 
     OSAssert(MusicTrackSetProperty(ref, prop.rawValue, &cpy, UInt32(MemoryLayout<T>.size)))
 }
 
-@inline(__always) internal
-func MusicSequenceGetTempoTrack(ref: MusicSequence) -> MusicTrack {
-    var out : MusicTrack? = nil
-    OSAssert(MusicSequenceGetTempoTrack(ref, &out))
-    return out!
-}
+
 

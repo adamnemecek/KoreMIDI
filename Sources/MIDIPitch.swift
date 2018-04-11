@@ -6,8 +6,6 @@
 //
 //
 
-import Foundation
-
 public struct MIDIPitch : Comparable, Hashable, RawRepresentable, Strideable {
     public typealias Interval = Int
     private static let range = 0..<Int8.max
