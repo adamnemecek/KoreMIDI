@@ -13,10 +13,6 @@ func OSAssert(_ err: OSStatus, function: String = #function) {
     assert(err == noErr, "Error (osstatus: \(err)) in \(function)")
 }
 
-func with<T>(_ apply: (T) -> ()) {
-
-}
-
 //
 //@inline(__always) internal
 //func MusicSequenceInsert(ref: MusicSequence, event: MIDIEvent) {
@@ -105,13 +101,12 @@ extension UnsafePointer  {
     }
 }
 
-extension Float64  {
+extension Float64 {
     @inline(__always)
     fileprivate init(data: MIDIData) {
         self = data.data.bindMemory(to: Float64.self).baseAddress!.pointee
     }
 }
-
 
 internal struct MIDIData : EventType, CustomStringConvertible {
     let timestamp: MIDITimestamp
@@ -238,6 +233,4 @@ func MIDITrackSetProperty<T>(ref: MusicTrack, prop: MIDITrackProp, to value: T) 
     var cpy = value
     OSAssert(MusicTrackSetProperty(ref, prop.rawValue, &cpy, UInt32(MemoryLayout<T>.size)))
 }
-
-
 

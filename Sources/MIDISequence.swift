@@ -98,7 +98,7 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
         return MIDISequenceExport(ref: ref)
     }
 
-    public func save(to url: URL) {
+    public func export(to url: URL) {
         MIDISequenceSave(ref: ref, to: url)
     }
 
@@ -120,6 +120,10 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
     }
 
     public var cues: MIDIMetaTrack<MIDICueEvent> {
+        fatalError()
+    }
+
+    func tempo(at timestamp: MIDITimestamp) -> Float {
         fatalError()
     }
 
