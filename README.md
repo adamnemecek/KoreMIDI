@@ -20,7 +20,7 @@ sequence.drums // returns all drum tracks
 ```
 
 ```
-enum MIDIEvent <Timestamp> : Comparable, Strideable, Hashable,   CustomStringConvertible {
+enum MIDIEvent <Timestamp> : Comparable, Strideable, Hashable,      CustomStringConvertible {
     
 }
 
@@ -72,7 +72,7 @@ class MIDISequence : MutableCollection, RangeReplaceableCollection, Hashable, Co
 ```
 
 ```
-struct MIDITrack : Sequence, Hashable, Equatable {
+class MIDITrack : Sequence, Hashable, Equatable {
     public typealias Element = MIDIEvent
     public typealias Timestamp = MIDITimestamp
 
