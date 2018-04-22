@@ -9,8 +9,8 @@
 import AVFoundation
 
 @inline(__always) internal
-func OSAssert(_ err: OSStatus, function: String = #function) {
-    assert(err == noErr, "Error (osstatus: \(err)) in \(function)")
+func OSAssert(_ err: OSStatus, function: String = #function, line: Int = #line) {
+    assert(err == noErr, "Error (osstatus: \(err)) in \(function)@\(line)")
 }
 
 //
