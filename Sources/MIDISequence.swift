@@ -75,7 +75,7 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
 
     deinit {
         content = []
-        DisposeMusicSequence(ref)
+        OSAssert(DisposeMusicSequence(ref))
     }
 
     public static func ==(lhs: MIDISequence, rhs: MIDISequence) -> Bool {

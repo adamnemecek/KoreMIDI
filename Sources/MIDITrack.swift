@@ -28,6 +28,8 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
     /// this needs to be a strong reference because sequence need to be around as long as track is around
     private final let sequence: MIDISequence
     internal final let ref: MusicTrack
+
+    public let uuid: UUID
 //    let instrument: InstrumentName
 
     public static func ===(lhs: MIDITrack, rhs: MIDITrack) -> Bool {
@@ -45,12 +47,14 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
     public init(sequence: MIDISequence) {
         self.sequence = sequence
         self.ref = MIDITrackCreate(ref: sequence.ref)
+        self.uuid = UUID()
 //        self.instrument = InstrumentName(ref: self.ref)
     }
 
     internal init(sequence: MIDISequence, no: Int) {
         self.sequence = sequence
         self.ref = MusicSequenceGetTrack(ref: sequence.ref, at: no)
+        self.uuid = UUID()
 //        self.instrument = InstrumentName(ref: self.ref)
     }
 
@@ -230,6 +234,10 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         fatalError()
     }
 
+    func reverse() {
+        OSAssert(MusicSequenceReverse(ref))
+    }
+
     func load(from other: MIDITrack) {
         clearAll()
         copyInsert(from: other, in: other.timerange, at: other.start)
@@ -304,6 +312,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
     internal init(tempo sequence: MIDISequence) {
         self.sequence = sequence
         self.ref = MusicSequenceGetTempoTrack(ref: sequence.ref)
+        self.uuid = UUID()
     }
 }
 

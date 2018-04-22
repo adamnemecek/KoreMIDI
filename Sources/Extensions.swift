@@ -65,9 +65,9 @@ extension Sequence {
     }
 }
 
-//protocol DefaultConstructible {
-//    init()
-//}
+protocol DefaultConstructible {
+    init()
+}
 
 //
 //extension Sequence {
@@ -81,7 +81,6 @@ extension Sequence {
 //        return accu
 //    }
 //}
-
 
 extension CABarBeatTime : Equatable, Hashable, CustomStringConvertible {
     public static func ==(lhs: CABarBeatTime, rhs: CABarBeatTime) -> Bool {

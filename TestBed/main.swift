@@ -111,7 +111,7 @@ func custom() {
     var track = MIDITrack(sequence : seq)
     let m = MIDINoteMessage(note: 60, duration: 20)
 //    track.insert(.note(10.0, m))
-    
+
 //    MIDISequenceImport(d)
     let url = URL(fileURLWithPath: "/Users/adamnemecek/midi/darude-sandstorm.mid")
 //    let seq = MIDISequenceImport(url)

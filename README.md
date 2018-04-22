@@ -3,6 +3,7 @@
 This project as a wrapper around the AudioToolbox framework and tries to make it look like a 21st century framework.  
 
 ## Documentation
+### MIDI File Docs
 * http://www.onicos.com/staff/iz/formats/midi-event.html
 * http://www.somascape.org/midi/tech/mfile.html
 
@@ -11,15 +12,16 @@ Note In the above description, note data refers to all MIDI events (Channel MIDI
 note that you never need event -> packet since you aren't sending the events directly
 
 ```
-let sequence = 
+let sequence = MIDISequence(url: "darude-sandstorm.mid")
+
+sequence.drums // returns all drum tracks
+
+
 ```
 
 ```
-
-
-
-enum MIDIEvent <Timestamp> : Comparable, Strideable, Hashable, CustomStringConvertible {
-    case 
+enum MIDIEvent <Timestamp> : Comparable, Strideable, Hashable,   CustomStringConvertible {
+    
 }
 
 public protocol Temporal {
@@ -40,10 +42,9 @@ public protocol TimeSeries : Sequence, Temporal {
 ```
 
 ```
-struct MIDISequence : MutableCollection, RangeReplaceableCollection, Hashable, Comparable {
+class MIDISequence : MutableCollection, RangeReplaceableCollection, Hashable, Comparable {
     typealias Index = Int
-    typealias Element = MIDITrackain
-
+    typealias Element = MIDITrack
 
     /// Create a new sequence
     init()
@@ -54,9 +55,6 @@ struct MIDISequence : MutableCollection, RangeReplaceableCollection, Hashable, C
     /// 
     init(import url: URL)
 
-    /// 
-    var type : MusicSequenceType { get }
-
     /// export sequence as data
     func export() -> Data
 
@@ -66,7 +64,6 @@ struct MIDISequence : MutableCollection, RangeReplaceableCollection, Hashable, C
     ///
     public var tempoTrack: MIDITrack<> { get }
 }
-
 ```
 
 
