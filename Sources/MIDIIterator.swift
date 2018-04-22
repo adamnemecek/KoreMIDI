@@ -20,7 +20,7 @@ public class MIDIIterator: IteratorProtocol {
     }
 
     deinit {
-        DisposeMusicEventIterator(ref)
+        OSAssert(DisposeMusicEventIterator(ref))
     }
 
     public final var current: Element? {
@@ -42,7 +42,7 @@ public class MIDIIterator: IteratorProtocol {
 
     internal func remove() -> Element? {
         defer {
-            MusicEventIteratorDeleteEvent(ref)
+            OSAssert(MusicEventIteratorDeleteEvent(ref))
         }
         return current
     }
@@ -55,17 +55,17 @@ public class MIDIIterator: IteratorProtocol {
     }
 
     public final func seek(to timestamp: Timestamp) {
-        MusicEventIteratorSeek(ref, timestamp.beats)
+        OSAssert(MusicEventIteratorSeek(ref, timestamp.beats))
     }
 
     @inline(__always)
     fileprivate func fwd() {
-        MusicEventIteratorNextEvent(ref)
+        OSAssert(MusicEventIteratorNextEvent(ref))
     }
 
     @inline(__always)
     fileprivate func bwd() {
-        MusicEventIteratorPreviousEvent(ref)
+        OSAssert(MusicEventIteratorPreviousEvent(ref))
     }
 
     private let ref: MusicEventIterator
@@ -84,7 +84,7 @@ internal final class MIDIDataIterator: IteratorProtocol {
     }
 
     deinit {
-        DisposeMusicEventIterator(ref)
+        OSAssert(DisposeMusicEventIterator(ref))
     }
 
     final var current: Element? {
@@ -96,14 +96,12 @@ internal final class MIDIDataIterator: IteratorProtocol {
             /// if we are updating,
             ///
             if let event = newValue {
-                if event.timestamp == current?.timestamp {
-                    _ = event.data.baseAddress.map {
-                        MusicEventIteratorSetEventInfo(ref, event.type.rawValue, $0)
-                    }
+                _ = event.data.baseAddress.map {
+                    OSAssert(MusicEventIteratorSetEventInfo(ref, event.type.rawValue, $0))
                 }
-                else {
+                if event.timestamp != current?.timestamp {
                     /// note that this moved the pointer to the next event
-                    MusicEventIteratorSetEventTime(ref, MusicTimeStamp(event.timestamp.beats))
+                    OSAssert(MusicEventIteratorSetEventTime(ref, MusicTimeStamp(event.timestamp.beats)))
                 }
             }
             else {
@@ -114,7 +112,7 @@ internal final class MIDIDataIterator: IteratorProtocol {
 
     final func remove() -> Element? {
         defer {
-            MusicEventIteratorDeleteEvent(ref)
+            OSAssert(MusicEventIteratorDeleteEvent(ref))
         }
         return current
     }
@@ -134,7 +132,7 @@ internal final class MIDIDataIterator: IteratorProtocol {
     }
 
     final func seek(to timestamp: Timestamp) {
-        MusicEventIteratorSeek(ref, timestamp.beats)
+        OSAssert(MusicEventIteratorSeek(ref, timestamp.beats))
     }
 
     private var hasNext: Bool {

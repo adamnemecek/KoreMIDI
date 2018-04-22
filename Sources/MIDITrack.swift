@@ -144,6 +144,10 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
+    final subscript(range: Range<Timestamp>) -> MIDIDataIterator {
+        fatalError()
+    }
+
     public final var automatedParameters : UInt32 {
         get {
             return self[.automatedParams]
