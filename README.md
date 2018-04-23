@@ -14,8 +14,12 @@ note that you never need event -> packet since you aren't sending the events dir
 ```
 let sequence = MIDISequence(url: "darude-sandstorm.mid")
 
-sequence.drums // returns all drum tracks
+let tempo = sequence.tempo
 
+
+class Document : NSDocument {
+    
+}
 
 ```
 
@@ -64,12 +68,12 @@ class MIDISequence : MutableCollection, RangeReplaceableCollection, Hashable, Co
     ///
     public var tempoTrack: MIDITrack<> { get }
 }
+
+class MIDITempo : Sequence {
+    typealias Element = MIDITempo
+}
 ```
 
-
-```
-
-```
 
 ```
 class MIDITrack : Sequence, Hashable, Equatable {
@@ -93,11 +97,6 @@ class MIDITrack : Sequence, Hashable, Equatable {
 
     mutating func move(_ timerange: Range<MIDITimestamp>, to timestamp: MIDITimestamp)
 
-}
-```
-
-```
-struct {
 }
 ```
 

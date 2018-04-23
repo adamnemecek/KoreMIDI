@@ -62,6 +62,10 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         return start..<end
     }
 
+    public var isDrum: Bool {
+        fatalError()
+    }
+
     public final var description: String {
         var opts: [String] = []
         if soloed {
@@ -77,6 +81,10 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
 
     public final subscript(timerange timerange: Range<Timestamp>) -> MIDIRangeIterator {
         fatalError()
+    }
+
+    public func remove() {
+        OSAssert(MusicSequenceDisposeTrack(sequence.ref, ref))
     }
 
     public final var start: Timestamp {
@@ -238,7 +246,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         fatalError()
     }
 
-    func reverse() {
+    public func reverse() {
         OSAssert(MusicSequenceReverse(ref))
     }
 
@@ -307,9 +315,9 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         let i = MIDIRangeIterator(self, timerange: timerange)
 
         while let n = i.next() {
-//            if predicate(n) {
-//                _ = i.remove()
-//            }
+            if predicate(n) {
+                _ = i.remove()
+            }
         }
     }
 

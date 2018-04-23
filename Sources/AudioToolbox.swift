@@ -196,7 +196,7 @@ internal struct MIDIData : EventType, CustomStringConvertible {
 //    return MIDIEvent(timestamp: MIDITimestamp(beats: timestamp),
 //                     type: MIDIEventType(rawValue: type),
 //                     data: d)
-//}-
+//}
 
 ///
 /// Tracks
