@@ -40,10 +40,6 @@ public class MIDIIterator: IteratorProtocol {
 //        return nil
     }
 
-//    var hasCurrent: Bool {
-//        return MIDIIteratorHasCurrent(ref: ref)
-//    }
-
     internal func remove() -> Element? {
         defer {
             OSAssert(MusicEventIteratorDeleteEvent(ref))
