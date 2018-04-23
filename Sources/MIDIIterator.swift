@@ -40,6 +40,10 @@ public class MIDIIterator: IteratorProtocol {
 //        return nil
     }
 
+//    var hasCurrent: Bool {
+//        return MIDIIteratorHasCurrent(ref: ref)
+//    }
+
     internal func remove() -> Element? {
         defer {
             OSAssert(MusicEventIteratorDeleteEvent(ref))
@@ -133,6 +137,12 @@ internal final class MIDIDataIterator: IteratorProtocol {
 
     final func seek(to timestamp: Timestamp) {
         OSAssert(MusicEventIteratorSeek(ref, timestamp.beats))
+    }
+
+    private var hasCurrent: Bool {
+        var ret: DarwinBoolean = false
+        OSAssert(MusicEventIteratorHasCurrentEvent(ref, &ret))
+        return ret.boolValue
     }
 
     private var hasNext: Bool {
