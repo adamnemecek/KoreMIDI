@@ -20,6 +20,23 @@ import AVFoundation
 //
 //}
 
+//enum Error : UInt32 {
+//    case invalidSequence
+//    kAudioToolboxErr_InvalidSequenceType: OSStatus { get }
+//    kAudioToolboxErr_TrackIndexError: OSStatus { get }
+//    public var kAudioToolboxErr_TrackNotFound: OSStatus { get }
+//    public var kAudioToolboxErr_EndOfTrack: OSStatus { get }
+//    public var kAudioToolboxErr_StartOfTrack: OSStatus { get }
+//    public var kAudioToolboxErr_IllegalTrackDestination: OSStatus { get }
+//    public var kAudioToolboxErr_NoSequence: OSStatus { get }
+//    public var kAudioToolboxErr_InvalidEventType: OSStatus { get }
+//    public var kAudioToolboxErr_InvalidPlayerState: OSStatus { get }
+//    public var kAudioToolboxErr_CannotDoInCurrentContext: OSStatus { get }
+//    public var kAudioToolboxError_NoTrackDestination: OSStatus { get }
+//
+//}
+
+
 public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomStringConvertible {
 
     public typealias Timestamp = MIDITimestamp
@@ -30,6 +47,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
     internal final let ref: MusicTrack
 
     public let uuid: UUID
+    public private(set) var isDrum: Bool = false
 //    let instrument: InstrumentName
 
     public static func ===(lhs: MIDITrack, rhs: MIDITrack) -> Bool {
@@ -48,13 +66,16 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         self.sequence = sequence
         self.ref = MIDITrackCreate(ref: sequence.ref)
         self.uuid = UUID()
-//        self.instrument = InstrumentName(ref: self.ref)
+        self.isDrum = _isDrum()
+        sequence.append(self)
+        //        self.instrument = InstrumentName(ref: self.ref)
     }
 
     internal init(sequence: MIDISequence, no: Int) {
         self.sequence = sequence
         self.ref = MusicSequenceGetTrack(ref: sequence.ref, at: no)
         self.uuid = UUID()
+        self.isDrum = _isDrum()
 //        self.instrument = InstrumentName(ref: self.ref)
     }
 
@@ -62,7 +83,8 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         return start..<end
     }
 
-    public var isDrum: Bool {
+
+    private func _isDrum() -> Bool {
         fatalError()
     }
 
@@ -207,24 +229,24 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
 
         var add: [Element] = []
 
-        while let current = i.next() {
-            if let mapped = transform(current) {
-                if current.timestamp != mapped.timestamp {
-                    // change
-                    _ = i.remove()
-                }
-                else {
+//        while let current = i.next() {
+//            if let mapped = transform(current) {
+//                if current.timestamp != mapped.timestamp {
+//                    // change
+//                    _ = i.remove()
+//                }
+//                else {
+//
+//                }
+//
+////                add.append(transform(n))
+//            }
+//            else {
+//                // remove current from iterator
+//
+//            }
+//        }
 
-                }
-
-//                add.append(transform(n))
-            }
-            else {
-                // remove current from iterator
-                
-            }
-        }
-        
     }
 
     final func insert(_ element: Element) {
@@ -302,6 +324,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
 
     func remove<S : Sequence>(_ elements: S) where S.Iterator.Element == Element {
         guard let range = (elements.lazy.map { $0.timestamp }.range()) else { return }
+
         let s = Set(elements)
         fatalError()
         //            remove(range) {
@@ -315,9 +338,9 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         let i = MIDIRangeIterator(self, timerange: timerange)
 
         while let n = i.next() {
-            if predicate(n) {
-                _ = i.remove()
-            }
+//            if predicate(n) {
+//                _ = i.remove()
+//            }
         }
     }
 

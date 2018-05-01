@@ -8,74 +8,74 @@
 
 import AVFoundation
 
-public class MIDIIterator: IteratorProtocol {
-    public typealias Timestamp = MIDITimestamp
-    public typealias Element = MIDINote
-
-    internal init(_ content: MIDITrack, timestamp: Timestamp? = nil) {
-        self.ref = MIDIIteratorCreate(ref : content.ref)
-        timestamp.map {
-            self.seek(to: $0)
-        }
-    }
-
-    deinit {
-        OSAssert(DisposeMusicEventIterator(ref))
-    }
-
-    public final var current: Element? {
-        get {
-            fatalError()
-        }
-        set {
-            fatalError()
-        }
-//        return MIDIIteratorGetCurrent(ref: ref)
-//        if let e : Element = MIDIIteratorGetCurrent(ref: _ref) {
-//            if let r = _timerange, !r.contains(e.timestamp) {
-//                return nil
-//            }
-//            return e
+//public class MIDIIterator: IteratorProtocol {
+//    public typealias Timestamp = MIDITimestamp
+//    public typealias Element = MIDINote
+//
+//    internal init(_ content: MIDITrack, timestamp: Timestamp? = nil) {
+//        self.ref = MIDIIteratorCreate(ref : content.ref)
+//        timestamp.map {
+//            self.seek(to: $0)
 //        }
-//        return nil
-    }
-
-    internal func remove() -> Element? {
-        defer {
-            OSAssert(MusicEventIteratorDeleteEvent(ref))
-        }
-        return current
-    }
-
-    public func next() -> Element? {
-        defer {
-            fwd()
-        }
-        return current
-    }
-
-    public final func seek(to timestamp: Timestamp) {
-        OSAssert(MusicEventIteratorSeek(ref, timestamp.beats))
-    }
-
-    @inline(__always)
-    fileprivate func fwd() {
-        OSAssert(MusicEventIteratorNextEvent(ref))
-    }
-
-    @inline(__always)
-    fileprivate func bwd() {
-        OSAssert(MusicEventIteratorPreviousEvent(ref))
-    }
-
-    private let ref: MusicEventIterator
-
-
-//    private let _timerange: Range<Timestamp>?
-}
+//    }
+//
+//    deinit {
+//        OSAssert(DisposeMusicEventIterator(ref))
+//    }
+//
+//    public final var current: Element? {
+//        get {
+//            fatalError()
+//        }
+//        set {
+//            fatalError()
+//        }
+////        return MIDIIteratorGetCurrent(ref: ref)
+////        if let e : Element = MIDIIteratorGetCurrent(ref: _ref) {
+////            if let r = _timerange, !r.contains(e.timestamp) {
+////                return nil
+////            }
+////            return e
+////        }
+////        return nil
+//    }
+//
+//    internal func remove() -> Element? {
+//        defer {
+//            OSAssert(MusicEventIteratorDeleteEvent(ref))
+//        }
+//        return current
+//    }
+//
+//    public func next() -> Element? {
+//        defer {
+//            fwd()
+//        }
+//        return current
+//    }
+//
+//    public final func seek(to timestamp: Timestamp) {
+//        OSAssert(MusicEventIteratorSeek(ref, timestamp.beats))
+//    }
+//
+//    @inline(__always)
+//    fileprivate func fwd() {
+//        OSAssert(MusicEventIteratorNextEvent(ref))
+//    }
+//
+//    @inline(__always)
+//    fileprivate func bwd() {
+//        OSAssert(MusicEventIteratorPreviousEvent(ref))
+//    }
+//
+//    private let ref: MusicEventIterator
+//
+//
+////    private let _timerange: Range<Timestamp>?
+//}
 
 /// todo rename to cursor?
-internal final class MIDIDataIterator: IteratorProtocol {
+public class MIDIDataIterator: IteratorProtocol {
     public typealias Timestamp = MIDITimestamp
     public typealias Element = MIDIData
 
@@ -117,7 +117,7 @@ internal final class MIDIDataIterator: IteratorProtocol {
         return current
     }
 
-    final func next() -> Element? {
+    public func next() -> Element? {
         defer {
             fwd()
         }
@@ -168,7 +168,7 @@ internal final class MIDIDataIterator: IteratorProtocol {
     private let ref: MusicEventIterator
 }
 
-public class MIDIRangeIterator : MIDIIterator {
+public class MIDIRangeIterator : MIDIDataIterator {
     public let timerange : Range<Timestamp>
 
     internal init(_ content: MIDITrack, timerange: Range<Timestamp>) {

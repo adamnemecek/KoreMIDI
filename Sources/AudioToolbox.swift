@@ -108,13 +108,13 @@ extension Float64 {
     }
 }
 
-internal struct MIDIData : EventType, CustomStringConvertible {
-    let timestamp: MIDITimestamp
-    let type: MIDIEventType
-    let data: UnsafeRawBufferPointer
+public struct MIDIData : EventType, CustomStringConvertible {
+    public let timestamp: MIDITimestamp
+    public let type: MIDIEventType
+    public let data: UnsafeRawBufferPointer
 
     @inline(__always)
-    init?(ref: MusicEventIterator) {
+    internal init?(ref: MusicEventIterator) {
         guard MIDIIteratorHasCurrent(ref: ref) else { return nil }
 
         var timestamp: Float64 = 0
@@ -140,21 +140,21 @@ internal struct MIDIData : EventType, CustomStringConvertible {
         self.data = data
     }
 
-    var description: String {
+    public var description: String {
         return "\(timestamp)\(type)"
     }
 
-    static func ==(lhs: MIDIData, rhs: MIDIData) -> Bool {
+    public static func ==(lhs: MIDIData, rhs: MIDIData) -> Bool {
         return lhs.timestamp == rhs.timestamp &&
             lhs.type == rhs.type &&
             lhs.data == rhs.data
     }
 
-    static func <(lhs: MIDIData, rhs: MIDIData) -> Bool {
+    public static func <(lhs: MIDIData, rhs: MIDIData) -> Bool {
         return lhs.timestamp < rhs.timestamp
     }
 
-    func insert(to track: MIDITrack, at timestamp: AVMusicTimeStamp) {
+    public func insert(to track: MIDITrack, at timestamp: AVMusicTimeStamp) {
         switch type {
         case .note:
             OSAssert(MusicTrackNewMIDINoteEvent(track.ref, timestamp, .init(data: self)))

@@ -63,6 +63,13 @@ extension Sequence {
         }
         return accu
     }
+
+    func all(predicate:(Iterator.Element) -> Bool) -> Bool {
+        for e in self where predicate(e) {
+            return false
+        }
+        return true
+    }
 }
 
 protocol DefaultConstructible {

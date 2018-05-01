@@ -21,8 +21,6 @@ extension Sequence {
 }
 
 
-
-
 ///
 /// MIDISequence
 ///
@@ -171,6 +169,10 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
 
     public func index(before i: Index) -> Index {
         return i - 1
+    }
+
+    public func append(_ newElement: Element) {
+        content.append(newElement)
     }
 
     public subscript(index: Index) -> Element {
