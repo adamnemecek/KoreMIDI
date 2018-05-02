@@ -54,10 +54,10 @@ import Foundation
 //
 //}
 //
-//extension RangeReplaceableCollection where Iterator.Element : Equatable & Hashable {
+//extension RangeReplaceableCollection where Element : Equatable & Hashable {
 //
 //    mutating
-//    func edit<S : Sequence>(_ seq: S) where S.Iterator.Element == Edit<Iterator.Element> {
+//    func edit<S : Sequence>(_ seq: S) where S.Element == Edit<Element> {
 ////        let q = seq.filter { $0.self == .create.self }
 // 
 //    }

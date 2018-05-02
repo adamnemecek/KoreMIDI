@@ -34,7 +34,7 @@ class MIDIProject : NSDocument {
 
 extension MIDIPacketList {
 
-//    init<S: Sequence>(_ data: S) where S.Iterator.Element == UInt8 {
+//    init<S: Sequence>(_ data: S) where S.Element == UInt8 {
 //        self.init(packet: MIDIPacket(Array(data)))
 //    }
 

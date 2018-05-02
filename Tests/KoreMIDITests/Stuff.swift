@@ -10,7 +10,7 @@ import Foundation
 
 
 extension Sequence {
-    func split<A,B>(transform: @escaping (Iterator.Element) -> (A,B)) -> AnyIterator<(A,B)> {
+    func split<A,B>(transform: @escaping (Element) -> (A,B)) -> AnyIterator<(A,B)> {
         var i = makeIterator()
         return AnyIterator {
             i.next().map { transform($0) }

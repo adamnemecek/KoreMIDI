@@ -83,6 +83,10 @@ public class MIDIDataIterator: IteratorProtocol {
         self.ref = MIDIIteratorCreate(ref : content.ref)
     }
 
+    internal init(ref: MusicTrack) {
+        self.ref = MIDIIteratorCreate(ref : ref)
+    }
+
     deinit {
         OSAssert(DisposeMusicEventIterator(ref))
     }

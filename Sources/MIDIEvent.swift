@@ -22,8 +22,6 @@ import AVFoundation
 //    }
 //}
 
-
-
 //public enum MIDIEvent : Comparable, Strideable, Hashable, CustomStringConvertible {
 //    public typealias Timestamp = MIDITimestamp
 //    public typealias Stride = Timestamp.Stride

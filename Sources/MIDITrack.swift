@@ -62,6 +62,15 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         return lhs.ref.hashValue < rhs.ref.hashValue
     }
 
+
+    private struct Info {
+        let isDrum: Bool
+
+        init(ref: MusicTrack) {
+            fatalError()
+        }
+    }
+
     public init(sequence: MIDISequence) {
         self.sequence = sequence
         self.ref = MIDITrackCreate(ref: sequence.ref)
@@ -76,6 +85,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         self.ref = MusicSequenceGetTrack(ref: sequence.ref, at: no)
         self.uuid = UUID()
         self.isDrum = _isDrum()
+        sequence.append(self)
 //        self.instrument = InstrumentName(ref: self.ref)
     }
 
@@ -106,6 +116,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
     }
 
     public func remove() {
+        sequence.remove(self)
         OSAssert(MusicSequenceDisposeTrack(sequence.ref, ref))
     }
 
@@ -114,7 +125,6 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
             return Timestamp(beats: _offsetTime)
         }
         set {
-
             _offsetTime = newValue.beats
         }
     }
@@ -322,7 +332,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
                                  (timestamp ?? 0).beats))
     }
 
-    func remove<S : Sequence>(_ elements: S) where S.Iterator.Element == Element {
+    func remove<S : Sequence>(_ elements: S) where S.Element == Element {
         guard let range = (elements.lazy.map { $0.timestamp }.range()) else { return }
 
         let s = Set(elements)

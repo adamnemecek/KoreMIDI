@@ -19,7 +19,7 @@ extension Range {
     }
 }
 
-//extension Sequence where Iterator.Element : Hashable {
+//extension Sequence where Element : Hashable {
 //    func hashValue() -> Int {
 //        fatalError()
 //    }
@@ -54,7 +54,7 @@ extension Bool {
 }
 
 extension Sequence {
-    func reduce(combine: (Iterator.Element, Iterator.Element) throws -> Iterator.Element) rethrows -> Iterator.Element? {
+    func reduce(combine: (Element, Element) throws -> Element) rethrows -> Element? {
         var g = makeIterator()
         guard var accu = g.next() else { return nil }
 
@@ -64,7 +64,7 @@ extension Sequence {
         return accu
     }
 
-    func all(predicate:(Iterator.Element) -> Bool) -> Bool {
+    func all(predicate:(Element) -> Bool) -> Bool {
         for e in self where predicate(e) {
             return false
         }
@@ -78,7 +78,7 @@ protocol DefaultConstructible {
 
 //
 //extension Sequence {
-//    func reduce<E: DefaultConstructible>(combine: (E, Iterator.Element) throws -> Iterator.Element) rethrows -> Iterator.Element? {
+//    func reduce<E: DefaultConstructible>(combine: (E, Element) throws -> Element) rethrows -> Element? {
 //        var g = makeIterator()
 //        guard var accu = g.next() else { return nil }
 //
@@ -133,10 +133,10 @@ extension Data {
 }
 
 
-extension Sequence where Iterator.Element : Comparable {
-    func range() -> ClosedRange<Iterator.Element>? {
-        var min : Iterator.Element? = nil
-        var max : Iterator.Element? = nil
+extension Sequence where Element : Comparable {
+    func range() -> ClosedRange<Element>? {
+        var min : Element? = nil
+        var max : Element? = nil
         for e in self {
             min = Swift.min(e, min ?? e)
             max = Swift.max(e, max ?? e)

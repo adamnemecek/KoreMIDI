@@ -11,12 +11,20 @@ import AVFoundation
 
 
 extension Sequence {
-    public func min<T: Comparable>(by: (Iterator.Element) -> T) -> Iterator.Element? {
+    public func min<T: Comparable>(by: (Element) -> T) -> Element? {
         return self.min { by($0) < by($1) }
     }
 
-    public func max<T: Comparable>(by: (Iterator.Element) -> T) -> Iterator.Element? {
+    public func max<T: Comparable>(by: (Element) -> T) -> Element? {
         return self.max { by($0) < by($1) }
+    }
+}
+
+extension RangeReplaceableCollection where Element : Equatable {
+    mutating func remove(_ element: Element) -> Element? {
+        guard let idx = index(of: element) else { return nil }
+        remove(at: idx)
+        return element
     }
 }
 
@@ -51,7 +59,7 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
         self.content = Array(parent: self)
     }
 
-    public init<S: Sequence>(seq: S) where S.Iterator.Element == Element {
+    public init<S: Sequence>(seq: S) where S.Element == Element {
         self.ref = MIDISequenceCreate()
         fatalError()
         //self.content = seq.map { Element(sequence: self) }
@@ -173,6 +181,10 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
 
     public func append(_ newElement: Element) {
         content.append(newElement)
+    }
+
+    public func remove(_ element: Element) {
+        content.remove(element)
     }
 
     public subscript(index: Index) -> Element {

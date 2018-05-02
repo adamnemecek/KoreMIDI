@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 
-public protocol MIDITrackType : Sequence, Hashable where Iterator.Element : MIDITrackEventType {
+public protocol MIDITrackType : Sequence, Hashable where Element : MIDITrackEventType {
 
 }
 
@@ -319,7 +319,7 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
                                  (timestamp ?? 0).beats))
     }
 
-    func remove<S : Sequence>(_ elements: S) where S.Iterator.Element == Element {
+    func remove<S : Sequence>(_ elements: S) where S.Element == Element {
 //        guard let range = (elements.lazy.map { $0.timestamp }.range()) else { return }
 //        let s = Set(elements)
         fatalError()
