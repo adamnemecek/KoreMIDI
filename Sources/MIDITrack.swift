@@ -71,6 +71,14 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
+    public init() {
+        self.sequence = MIDISequence()
+        self.ref = MIDITrackCreate(ref: sequence.ref)
+        self.uuid = UUID()
+        self.isDrum = _isDrum()
+        sequence.append(self)
+    }
+
     public init(sequence: MIDISequence) {
         self.sequence = sequence
         self.ref = MIDITrackCreate(ref: sequence.ref)
@@ -95,7 +103,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
 
 
     private func _isDrum() -> Bool {
-        fatalError()
+        return all { $0.isDrum }
     }
 
     public final var description: String {
@@ -271,8 +279,11 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
                                       timestamp.beats))
     }
 
-    func remove<S : SetAlgebra & TimeSeries>(elements: S) where S.Element == Element {
+    func remove<S : SetAlgebra & TimeSeries>(elements: S)  {
+//        var i = MIDIRangeIterator(self, timerange: elements.timerange)
+//        while let n = i.next() {
 
+//        }
 //        var i = MIDIIterator(self, timestamp: elements.startTime)
 
         fatalError()

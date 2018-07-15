@@ -204,7 +204,7 @@ public struct MIDIData : EventType, CustomStringConvertible {
 
 @inline(__always) internal
 func MIDITrackCreate(ref: MusicSequence) -> MusicTrack {
-    var out : MusicTrack? = nil
+    var out: MusicTrack? = nil
     OSAssert(MusicSequenceNewTrack(ref, &out))
     return out!
 }

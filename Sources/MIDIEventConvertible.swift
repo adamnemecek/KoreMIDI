@@ -29,7 +29,7 @@ extension ExtendedNoteOnEvent : Hashable, CustomStringConvertible, MIDIEventConv
     }
 
     internal mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewExtendedNoteEvent(ref.ref, timestamp, &self)
+        OSAssert(MusicTrackNewExtendedNoteEvent(ref.ref, timestamp, &self))
     }
 
     public var description: String {
@@ -63,7 +63,7 @@ extension ExtendedTempoEvent : Hashable, CustomStringConvertible, MIDIEventConve
     }
 
     public mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewExtendedTempoEvent(ref.ref, timestamp, bpm)
+        OSAssert(MusicTrackNewExtendedTempoEvent(ref.ref, timestamp, bpm))
     }
 
     internal var type: MIDIEventType {
@@ -89,7 +89,7 @@ extension MusicEventUserData : Hashable, CustomStringConvertible, MIDIEventConve
     }
 
     internal mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewUserEvent(ref.ref, timestamp, &self)
+        OSAssert(MusicTrackNewUserEvent(ref.ref, timestamp, &self))
     }
 
     internal var type: MIDIEventType {
@@ -105,6 +105,13 @@ extension MusicEventUserData : Hashable, CustomStringConvertible, MIDIEventConve
 //
 //}
 
+//
+//extension UnsafeBufferPointer {
+//    func copy() -> UnsafeBufferPointer<Pointee> {
+//
+//        return self
+//    }
+//}
 
 extension UnsafeMutablePointer where Pointee : MIDITrackEvent {
     mutating func insert(to ref: MIDITrack, at timestamp: Double) {

@@ -78,7 +78,7 @@ public final class Clock: Equatable {
     //
     //        var smpteSeconds : Float64 {
     //            fatalError()
-    ////            return parent.translate(self, fmt: .smpteSeconds)
+    ////             return parent.translate(self, fmt: .smpteSeconds)
     //        }
     //
     //        var smpteTime : SMPTETime {
@@ -125,11 +125,11 @@ public final class Clock: Equatable {
     public var playRate : Float64 {
         get {
             var f: Float64 = 0
-            CAClockGetPlayRate(ref, &f)
+            OSAssert(CAClockGetPlayRate(ref, &f))
             return f
         }
         set {
-            CAClockSetPlayRate(ref, newValue)
+            OSAssert(CAClockSetPlayRate(ref, newValue))
         }
     }
 
@@ -237,9 +237,9 @@ public final class Clock: Equatable {
             guard oldValue != status else { return }
             switch status {
             case .running:
-                CAClockStart(ref)
+                OSAssert(CAClockStart(ref))
             case .stopped:
-                CAClockStop(ref)
+                OSAssert(CAClockStop(ref))
             }
         }
     }
@@ -247,23 +247,23 @@ public final class Clock: Equatable {
     public var currentTempo : CAClockTempo {
         get {
             var t = CAClockTempo()
-            CAClockGetCurrentTempo(ref, &t, nil)
+            OSAssert(CAClockGetCurrentTempo(ref, &t, nil))
             return t
         }
         set {
-            CAClockSetCurrentTempo(ref, newValue, nil)
+            OSAssert(CAClockSetCurrentTempo(ref, newValue, nil))
         }
     }
 
     public var currentTime : CAClockTime {
         get {
             var time = CAClockTime()
-            CAClockGetCurrentTime(ref, .seconds, &time)
+            OSAssert(CAClockGetCurrentTime(ref, .seconds, &time))
             return time
         }
         set {
             var time = newValue
-            CAClockSetCurrentTime(ref, &time)
+            OSAssert(CAClockSetCurrentTime(ref, &time))
         }
     }
 
@@ -292,7 +292,7 @@ public final class Clock: Equatable {
     public var start : CAClockTime {
         get {
             var time = CAClockTime()
-            CAClockGetStartTime(ref, .seconds, &time)
+            OSAssert(CAClockGetStartTime(ref, .seconds, &time))
             return time
         }
     }
@@ -309,10 +309,10 @@ public final class Clock: Equatable {
         didSet {
             guard oldValue != armed else { return }
             if armed {
-                CAClockArm(ref)
+                OSAssert(CAClockArm(ref))
             }
             else {
-                CAClockDisarm(ref)
+                OSAssert(CAClockDisarm(ref))
             }
         }
     }
@@ -326,7 +326,7 @@ extension CAClockBeats {
     init(clock: Clock, beatTime: CABarBeatTime) {
         var t = CABarBeatTime()
         var out = CAClockBeats()
-        CAClockBarBeatTimeToBeats(clock.ref, &t, &out)
+        OSAssert(CAClockBarBeatTimeToBeats(clock.ref, &t, &out))
         self = out
     }
 }

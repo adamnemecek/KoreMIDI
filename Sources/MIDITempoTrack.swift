@@ -43,7 +43,7 @@ public struct TempoEvent: CustomStringConvertible, Equatable, Comparable, Hashab
     }
 
     public func insert(to track: MIDITempoTrack) {
-        MusicTrackNewExtendedTempoEvent(track.ref, timestamp.beats, msg.bpm)
+        OSAssert(MusicTrackNewExtendedTempoEvent(track.ref, timestamp.beats, msg.bpm))
     }
 }
 
@@ -53,7 +53,6 @@ func MusicSequenceGetTempoTrack(ref: MusicSequence) -> MusicTrack {
     OSAssert(MusicSequenceGetTempoTrack(ref, &out))
     return out!
 }
-
 
 public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
 
@@ -66,6 +65,7 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
     //    let instrument: InstrumentName
 
     public static func ===(lhs: MIDITempoTrack, rhs: MIDITempoTrack) -> Bool {
+
         return lhs.ref == rhs.ref
     }
 

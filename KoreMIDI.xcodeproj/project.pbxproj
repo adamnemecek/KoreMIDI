@@ -51,6 +51,9 @@
 		3752930E207E8E01008D7DD0 /* MIDITempoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752930D207E8E01008D7DD0 /* MIDITempoTrack.swift */; };
 		3757417C1F9D0ADC006768FE /* MIDIEvent1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3757417B1F9D0ADC006768FE /* MIDIEvent1.swift */; };
 		3757417D1F9D0B85006768FE /* MIDIEvent1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3757417B1F9D0ADC006768FE /* MIDIEvent1.swift */; };
+		376906F020C6EEE500EF8A19 /* KorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376906EF20C6EEE500EF8A19 /* KorePlayer.swift */; };
+		376906F120C6EF3800EF8A19 /* KorePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376906EF20C6EEE500EF8A19 /* KorePlayer.swift */; };
+		3769070620CB369700EF8A19 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3769070520CB369700EF8A19 /* main.swift */; };
 		376C0B8E1E9B398F00249775 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C0B8D1E9B398F00249775 /* Stuff.swift */; };
 		37739163202B72E500C25E87 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37739162202B72E500C25E87 /* EventType.swift */; };
 		37739164202B72E500C25E87 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37739162202B72E500C25E87 /* EventType.swift */; };
@@ -96,6 +99,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		3769070120CB369600EF8A19 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +134,9 @@
 		375292F92077CD25008D7DD0 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		3752930D207E8E01008D7DD0 /* MIDITempoTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDITempoTrack.swift; sourceTree = "<group>"; };
 		3757417B1F9D0ADC006768FE /* MIDIEvent1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIEvent1.swift; sourceTree = "<group>"; };
+		376906EF20C6EEE500EF8A19 /* KorePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KorePlayer.swift; sourceTree = "<group>"; };
+		3769070320CB369600EF8A19 /* Sequencer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sequencer; sourceTree = BUILT_PRODUCTS_DIR; };
+		3769070520CB369700EF8A19 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		376C0B8D1E9B398F00249775 /* Stuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stuff.swift; sourceTree = "<group>"; };
 		37739162202B72E500C25E87 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		37B14FFD1E97F5A200CBDB07 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -151,6 +166,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3769070020CB369600EF8A19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_45 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -172,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				37739162202B72E500C25E87 /* EventType.swift */,
+				376906EF20C6EEE500EF8A19 /* KorePlayer.swift */,
 				372588F32022BB6200F8AF32 /* MetaEvents.swift */,
 				372588E7202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift */,
 				372588DA2022228100F8AF32 /* MIDITempoTrack.swift */,
@@ -195,6 +218,14 @@
 				373BE41F1E9816D300DC1E15 /* main.swift */,
 			);
 			path = TestBed;
+			sourceTree = "<group>";
+		};
+		3769070420CB369700EF8A19 /* Sequencer */ = {
+			isa = PBXGroup;
+			children = (
+				3769070520CB369700EF8A19 /* main.swift */,
+			);
+			path = Sequencer;
 			sourceTree = "<group>";
 		};
 		37ED23FC1EC61B4E0024E438 /* MIDITrack */ = {
@@ -256,6 +287,7 @@
 				OBJ_25 /* KoreMIDI */,
 				OBJ_26 /* KoreMIDITests.xctest */,
 				373BE41D1E9816D300DC1E15 /* TestBed */,
+				3769070320CB369600EF8A19 /* Sequencer */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -269,6 +301,7 @@
 				OBJ_7 /* Sources */,
 				OBJ_21 /* Tests */,
 				373BE41E1E9816D300DC1E15 /* TestBed */,
+				3769070420CB369700EF8A19 /* Sequencer */,
 				OBJ_24 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -317,6 +350,23 @@
 			productReference = 373BE41D1E9816D300DC1E15 /* TestBed */;
 			productType = "com.apple.product-type.tool";
 		};
+		3769070220CB369600EF8A19 /* Sequencer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3769070720CB369700EF8A19 /* Build configuration list for PBXNativeTarget "Sequencer" */;
+			buildPhases = (
+				376906FF20CB369600EF8A19 /* Sources */,
+				3769070020CB369600EF8A19 /* Frameworks */,
+				3769070120CB369600EF8A19 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sequencer;
+			productName = Sequencer;
+			productReference = 3769070320CB369600EF8A19 /* Sequencer */;
+			productType = "com.apple.product-type.tool";
+		};
 		OBJ_27 /* KoreMIDI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_28 /* Build configuration list for PBXNativeTarget "KoreMIDI" */;
@@ -356,12 +406,16 @@
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					373BE41C1E9816D300DC1E15 = {
 						CreatedOnToolsVersion = 8.3;
 						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					3769070220CB369600EF8A19 = {
+						CreatedOnToolsVersion = 9.4;
 						ProvisioningStyle = Automatic;
 					};
 					OBJ_27 = {
@@ -384,6 +438,7 @@
 				OBJ_27 /* KoreMIDI */,
 				OBJ_46 /* KoreMIDITests */,
 				373BE41C1E9816D300DC1E15 /* TestBed */,
+				3769070220CB369600EF8A19 /* Sequencer */,
 			);
 		};
 /* End PBXProject section */
@@ -393,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376906F120C6EF3800EF8A19 /* KorePlayer.swift in Sources */,
 				3757417D1F9D0B85006768FE /* MIDIEvent1.swift in Sources */,
 				37D0B4511EC15B13005A8A61 /* Enums.swift in Sources */,
 				37E24EAC1E9FEB57006C957B /* MIDIEventConvertible.swift in Sources */,
@@ -428,6 +484,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		376906FF20CB369600EF8A19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3769070620CB369700EF8A19 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -444,6 +508,7 @@
 				372588F42022BB6200F8AF32 /* MetaEvents.swift in Sources */,
 				372588BF2021108C00F8AF32 /* MIDITrack2.swift in Sources */,
 				OBJ_33 /* MIDIPlayer.swift in Sources */,
+				376906F020C6EEE500EF8A19 /* KorePlayer.swift in Sources */,
 				OBJ_35 /* Extensions.swift in Sources */,
 				372588DE20222A5A00F8AF32 /* SoundFont.swift in Sources */,
 				OBJ_36 /* MIDIIterator.swift in Sources */,
@@ -575,6 +640,70 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		3769070820CB369700EF8A19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		3769070920CB369700EF8A19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -755,6 +884,15 @@
 			buildConfigurations = (
 				373BE4221E9816D300DC1E15 /* Debug */,
 				373BE4231E9816D300DC1E15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3769070720CB369700EF8A19 /* Build configuration list for PBXNativeTarget "Sequencer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3769070820CB369700EF8A19 /* Debug */,
+				3769070920CB369700EF8A19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

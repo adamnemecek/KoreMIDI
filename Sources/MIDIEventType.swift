@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-public enum MIDIEventType : RawRepresentable, Hashable, CustomStringConvertible {
+public enum MIDIEventType : MusicEventType, RawRepresentable, Hashable, CustomStringConvertible {
 
     // ExtendedControlEvent
     case extendedNote, extendedTempo, user, meta, note, channel, rawData, parameter, auPreset

@@ -109,7 +109,7 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
     }
 
     public var copyright: String? {
-        get{
+        get {
             fatalError()
         }
         set {
