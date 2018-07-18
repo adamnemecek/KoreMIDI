@@ -20,6 +20,7 @@ public protocol MIDITrackEventType {
     var timestamp: Timestamp { get }
     func insert(to track: Track)
 }
+
 /// timing event
 public struct TempoEvent: CustomStringConvertible, Equatable, Comparable, Hashable, MIDITrackEventType {
     public let timestamp: MIDITimestamp
@@ -48,11 +49,13 @@ public struct TempoEvent: CustomStringConvertible, Equatable, Comparable, Hashab
 
 
 public class MIDIGlobalTrack: Hashable, Sequence, MIDITrackType {
-
     public typealias Timestamp = MIDITimestamp
     public typealias Element = TempoEvent
 
-    /// this needs to be a strong reference because sequence need to be around as long as track is around
+    ///
+    /// this needs to be a strong reference because sequence need to
+    /// be around as long as track is around
+    ///
     private final let sequence: MIDISequence
     internal final let ref: MusicTrack
     //    let instrument: InstrumentName

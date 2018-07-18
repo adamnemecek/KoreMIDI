@@ -1,9 +1,8 @@
 //
-//  Utils.m
+//  MIDIMetaEvent.swift
 //  KoreMIDI
 //
 //  Created by Adam Nemecek on 7/15/18.
 //
 
-#import "Utils.h"
-
+import Foundation

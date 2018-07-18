@@ -20,11 +20,15 @@ public protocol MIDIMetaEventType: Equatable {
 //    init(event: MIDIEventRawBuffer)
 }
 
+public protocol EventType {
+    associatedtype Timestamp: Strideable
+    var timestamp: Timestamp { get }
+}
+
 public protocol MIDITextEventType: EventType {
     var text: String { get }
 
 }
-
 
 extension String {
     public init(_ buffer: UnsafeRawBufferPointer) {

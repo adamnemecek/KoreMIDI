@@ -6,12 +6,18 @@
 //
 //
 
-import Foundation
+import AVFoundation
+
+enum KoreError : String, Error {
+    case invalidClient = "invalid client"
+}
 /*
 /**
  Not as detailed as Adamson's CheckError, but adequate.
  For other projects you can uncomment the Core MIDI constants.
  */
+
+
 func CheckError(_ error:OSStatus) {
     if error == 0 {return}
 

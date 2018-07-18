@@ -6,7 +6,7 @@
 //
 import AVFoundation
 
-public struct MIDIEventRawBuffer: EventType, CustomStringConvertible {
+public struct MIDIEventRawBuffer: CustomStringConvertible {
     public let timestamp: MIDITimestamp
     public let type: MIDIEventType
     public let data: UnsafeRawBufferPointer

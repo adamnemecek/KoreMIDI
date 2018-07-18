@@ -126,12 +126,6 @@ static func +(lhs: MIDITimestamp, rhs: MIDITimestamp) -> MIDITimestamp
 ```
 
 
-```
-enum MIDIEventType: RawRepresentable {
-    case extendedNote, extendedTempo, user, meta, note, channel, rawData, parameter, auPreset
-}
-
-```
 
 
 
