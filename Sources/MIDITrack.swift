@@ -20,23 +20,6 @@ import AVFoundation
 //
 //}
 
-//enum Error: UInt32 {
-//    case invalidSequence
-//    kAudioToolboxErr_InvalidSequenceType: OSStatus { get }
-//    kAudioToolboxErr_TrackIndexError: OSStatus { get }
-//    public var kAudioToolboxErr_TrackNotFound: OSStatus { get }
-//    public var kAudioToolboxErr_EndOfTrack: OSStatus { get }
-//    public var kAudioToolboxErr_StartOfTrack: OSStatus { get }
-//    public var kAudioToolboxErr_IllegalTrackDestination: OSStatus { get }
-//    public var kAudioToolboxErr_NoSequence: OSStatus { get }
-//    public var kAudioToolboxErr_InvalidEventType: OSStatus { get }
-//    public var kAudioToolboxErr_InvalidPlayerState: OSStatus { get }
-//    public var kAudioToolboxErr_CannotDoInCurrentContext: OSStatus { get }
-//    public var kAudioToolboxError_NoTrackDestination: OSStatus { get }
-//
-//}
-
-
 public class MIDITrack: Sequence, Equatable, Comparable, Hashable, CustomStringConvertible {
 
     public typealias Timestamp = MIDITimestamp

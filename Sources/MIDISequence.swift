@@ -24,6 +24,14 @@ public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, C
 
     private var _tempo: MIDIGlobalTrack? = nil
 
+
+/*  internal var player: KorePlayer?
+
+     
+
+
+ */
+
     public var tempo: MIDIGlobalTrack {
         if let t = _tempo {
             return t

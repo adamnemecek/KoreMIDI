@@ -12,7 +12,7 @@ private class MIDIPlayer: AVMIDIPlayer {
 }
 
 @available(OSX 10.11, *)
-class KorePlayer {
+internal class KorePlayer {
     private enum Player {
         case bank(AVMIDIPlayer)
         case engine(AVAudioSequencer)

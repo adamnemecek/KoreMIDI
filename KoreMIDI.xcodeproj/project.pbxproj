@@ -198,7 +198,6 @@
 		372588E02022365300F8AF32 /* v2 */ = {
 			isa = PBXGroup;
 			children = (
-				376906EF20C6EEE500EF8A19 /* KorePlayer.swift */,
 				372588F32022BB6200F8AF32 /* MetaEvents.swift */,
 				372588E7202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift */,
 			);
@@ -240,7 +239,6 @@
 		37ED23FC1EC61B4E0024E438 /* MIDITrack */ = {
 			isa = PBXGroup;
 			children = (
-				373BE44C1E9835D600DC1E15 /* MIDITrack.swift */,
 				372588BE2021108C00F8AF32 /* MIDIChannelEvent.swift */,
 				372588BB20210EAC00F8AF32 /* MIDIMetaTrack.swift */,
 				OBJ_12 /* MIDIIterator.swift */,
@@ -323,6 +321,8 @@
 				371120011E985E420037DFFA /* MIDIProject.swift */,
 				OBJ_20 /* MIDITimestamp.swift */,
 				37CF796220FBB26400498B53 /* MIDIGlobalTrack.swift */,
+				373BE44C1E9835D600DC1E15 /* MIDITrack.swift */,
+				376906EF20C6EEE500EF8A19 /* KorePlayer.swift */,
 				37F70AAA1EBCBFD10008536E /* Drafts */,
 				OBJ_15 /* MIDIEventType.swift */,
 				37CF798220FFB27400498B53 /* Extensions */,
@@ -826,7 +826,7 @@
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = KoreMIDI;
 			};
 			name = Debug;
@@ -873,7 +873,7 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -894,7 +894,7 @@
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = KoreMIDI;
 			};
 			name = Release;
@@ -938,7 +938,7 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
