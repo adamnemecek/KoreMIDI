@@ -8,25 +8,6 @@
 import Foundation
 import AVFoundation
 
-extension Sequence {
-    public func min<T: Comparable>(by: (Element) -> T) -> Element? {
-        return self.min { by($0) < by($1) }
-    }
-
-    public func max<T: Comparable>(by: (Element) -> T) -> Element? {
-        return self.max { by($0) < by($1) }
-    }
-}
-
-extension RangeReplaceableCollection where Element : Equatable {
-    mutating func remove(_ element: Element) -> Element? {
-        guard let idx = index(of: element) else { return nil }
-        remove(at: idx)
-        return element
-    }
-}
-
-
 ///
 /// MIDISequence
 ///
@@ -115,8 +96,6 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
         }
     }
 
-
-
     func tempo(at timestamp: MIDITimestamp) -> Float {
         fatalError()
     }
@@ -139,11 +118,11 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
 
     //    func remove
 
-    public var start : Timestamp {
+    public var start: Timestamp {
         return self.min { $0.start }?.start ?? 0
     }
 
-    public var end : Timestamp {
+    public var end: Timestamp {
         return self.max { $0.end }?.end ?? 0
     }
 

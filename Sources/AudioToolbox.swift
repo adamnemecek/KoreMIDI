@@ -234,3 +234,4 @@ func MIDITrackSetProperty<T>(ref: MusicTrack, prop: MIDITrackProp, to value: T) 
     OSAssert(MusicTrackSetProperty(ref, prop.rawValue, &cpy, UInt32(MemoryLayout<T>.size)))
 }
 
+

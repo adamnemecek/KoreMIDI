@@ -14,8 +14,26 @@ func tee<T>(_ obj: T) -> T {
 }
 
 extension Range {
-    func union(_ other: Range) -> Range<Bound>{
+    func union(_ other: Range) -> Range<Bound> {
         return Swift.min(lowerBound, other.lowerBound)..<Swift.max(upperBound, other.upperBound)
+    }
+}
+
+extension Sequence {
+    public func min<T: Comparable>(by: (Element) -> T) -> Element? {
+        return self.min { by($0) < by($1) }
+    }
+
+    public func max<T: Comparable>(by: (Element) -> T) -> Element? {
+        return self.max { by($0) < by($1) }
+    }
+}
+
+extension RangeReplaceableCollection where Element : Equatable {
+    mutating func remove(_ element: Element) -> Element? {
+        guard let idx = index(of: element) else { return nil }
+        remove(at: idx)
+        return element
     }
 }
 
@@ -62,8 +80,8 @@ extension Sequence {
         return accu
     }
 
-    func all(predicate:(Element) -> Bool) -> Bool {
-        for e in self where predicate(e) {
+    public func all(predicate:(Element) -> Bool) -> Bool {
+        for e in self where !predicate(e) {
             return false
         }
         return true
