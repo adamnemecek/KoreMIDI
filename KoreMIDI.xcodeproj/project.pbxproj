@@ -55,7 +55,6 @@
 		37CDEFC71E9972390005B509 /* MIDIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDEFC51E9972390005B509 /* MIDIEvent.swift */; };
 		37CDEFC91E99732B0005B509 /* MIDITrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE44C1E9835D600DC1E15 /* MIDITrack.swift */; };
 		37CDEFCB1E99732B0005B509 /* MIDIProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371120011E985E420037DFFA /* MIDIProject.swift */; };
-		37CF796120FBB1C500498B53 /* MIDINote1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF796020FBB1C500498B53 /* MIDINote1.swift */; };
 		37CF796320FBB26400498B53 /* MIDIGlobalTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF796220FBB26400498B53 /* MIDIGlobalTrack.swift */; };
 		37CF797820FBB63100498B53 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF797720FBB63100498B53 /* main.swift */; };
 		37CF797D20FBBE2B00498B53 /* MIDIMetaEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF797C20FBBE2A00498B53 /* MIDIMetaEvent.swift */; };
@@ -143,7 +142,6 @@
 		37739162202B72E500C25E87 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		37B14FFD1E97F5A200CBDB07 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		37CDEFC51E9972390005B509 /* MIDIEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIEvent.swift; sourceTree = "<group>"; };
-		37CF796020FBB1C500498B53 /* MIDINote1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDINote1.swift; sourceTree = "<group>"; };
 		37CF796220FBB26400498B53 /* MIDIGlobalTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIGlobalTrack.swift; sourceTree = "<group>"; };
 		37CF797520FBB63100498B53 /* KoreMIDI2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KoreMIDI2; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CF797720FBB63100498B53 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 				OBJ_8 /* AudioToolbox.swift */,
 				37CF798220FFB27400498B53 /* Extensions */,
 				37E24EAA1E9FEB25006C957B /* MIDIEventConvertible.swift */,
-				37CF796020FBB1C500498B53 /* MIDINote1.swift */,
 				37F70AA71EBBE9E20008536E /* Clock.swift */,
 				372588DD20222A5A00F8AF32 /* SoundFont.swift */,
 				372588F620236ECD00F8AF32 /* Channel Events */,
@@ -565,7 +562,6 @@
 				373BE4181E98154600DC1E15 /* MIDINote.swift in Sources */,
 				371120021E985E420037DFFA /* MIDIProject.swift in Sources */,
 				372588F820236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift in Sources */,
-				37CF796120FBB1C500498B53 /* MIDINote1.swift in Sources */,
 				37258904202373E100F8AF32 /* MIDIPitchBendChangeEvent.swift in Sources */,
 				37739163202B72E500C25E87 /* EventType.swift in Sources */,
 				OBJ_32 /* AudioToolbox.swift in Sources */,

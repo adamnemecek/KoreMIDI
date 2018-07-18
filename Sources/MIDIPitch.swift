@@ -6,7 +6,11 @@
 //
 //
 
-public enum MIDIPitchClass : Int {
+//
+// PitchClass
+//
+
+public enum PitchClass : Int {
     case c, cs, d, ds, e, f, fs, g, gs, a, `as`, b
 }
 
@@ -51,8 +55,8 @@ public struct MIDIPitch: Comparable, Hashable, RawRepresentable, Strideable, Cus
         return Int(rawValue) / 12
     }
 
-    public var pc: MIDIPitchClass {
-        return MIDIPitchClass(rawValue: Int(rawValue) % 12)!
+    public var pc: PitchClass {
+        return PitchClass(rawValue: Int(rawValue) % 12)!
     }
 
     public var hashValue: Int {
