@@ -31,7 +31,7 @@
 		373BE4181E98154600DC1E15 /* MIDINote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE4171E98154600DC1E15 /* MIDINote.swift */; };
 		373BE4201E9816D300DC1E15 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE41F1E9816D300DC1E15 /* main.swift */; };
 		373BE4241E9816F800DC1E15 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Extensions.swift */; };
-		373BE4251E9816F800DC1E15 /* AudioToolbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AudioToolbox.swift */; };
+		373BE4251E9816F800DC1E15 /* AVFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AVFoundation.swift */; };
 		373BE4261E9816F800DC1E15 /* MIDIPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* MIDIPlayer.swift */; };
 		373BE4271E9816F800DC1E15 /* MIDIEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* MIDIEventType.swift */; };
 		373BE42C1E9816F800DC1E15 /* MIDIIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* MIDIIterator.swift */; };
@@ -66,7 +66,7 @@
 		37E24EB31EA14BF8006C957B /* OSStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E24EB21EA14BF8006C957B /* OSStatus.swift */; };
 		37F70AA81EBBE9E20008536E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AA71EBBE9E20008536E /* Clock.swift */; };
 		37F70AA91EBBE9E20008536E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AA71EBBE9E20008536E /* Clock.swift */; };
-		OBJ_32 /* AudioToolbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AudioToolbox.swift */; };
+		OBJ_32 /* AVFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AVFoundation.swift */; };
 		OBJ_33 /* MIDIPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* MIDIPlayer.swift */; };
 		OBJ_35 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Extensions.swift */; };
 		OBJ_36 /* MIDIIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* MIDIIterator.swift */; };
@@ -161,7 +161,7 @@
 		OBJ_25 /* KoreMIDI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = KoreMIDI; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_26 /* KoreMIDITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = KoreMIDITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_8 /* AudioToolbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToolbox.swift; sourceTree = "<group>"; };
+		OBJ_8 /* AVFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVFoundation.swift; sourceTree = "<group>"; };
 		OBJ_9 /* MIDIPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -345,7 +345,7 @@
 				37CF798520FFC1F600498B53 /* MIDIEventRawBuffer.swift */,
 				37F70AAA1EBCBFD10008536E /* Drafts */,
 				OBJ_15 /* MIDIEventType.swift */,
-				OBJ_8 /* AudioToolbox.swift */,
+				OBJ_8 /* AVFoundation.swift */,
 				37CF798220FFB27400498B53 /* Extensions */,
 				37E24EAA1E9FEB25006C957B /* MIDIEventConvertible.swift */,
 				37F70AA71EBBE9E20008536E /* Clock.swift */,
@@ -521,7 +521,7 @@
 				373BE4351E9823A900DC1E15 /* Timer.swift in Sources */,
 				373BE4241E9816F800DC1E15 /* Extensions.swift in Sources */,
 				37CDEFC71E9972390005B509 /* MIDIEvent.swift in Sources */,
-				373BE4251E9816F800DC1E15 /* AudioToolbox.swift in Sources */,
+				373BE4251E9816F800DC1E15 /* AVFoundation.swift in Sources */,
 				3725890820237F7300F8AF32 /* ChannelEvent.swift in Sources */,
 				371120051E9863870037DFFA /* Edit.swift in Sources */,
 				373BE4261E9816F800DC1E15 /* MIDIPlayer.swift in Sources */,
@@ -564,7 +564,7 @@
 				371120021E985E420037DFFA /* MIDIProject.swift in Sources */,
 				372588F820236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift in Sources */,
 				37739163202B72E500C25E87 /* EventType.swift in Sources */,
-				OBJ_32 /* AudioToolbox.swift in Sources */,
+				OBJ_32 /* AVFoundation.swift in Sources */,
 				37CF796320FBB26400498B53 /* MIDIGlobalTrack.swift in Sources */,
 				372588BC20210EAC00F8AF32 /* MIDIMetaTrack.swift in Sources */,
 				37CDEFC61E9972390005B509 /* MIDIEvent.swift in Sources */,
