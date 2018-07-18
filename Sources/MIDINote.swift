@@ -79,6 +79,8 @@ public struct MIDINote: Equatable, Hashable, CustomStringConvertible, Strideable
     }
 }
 
+
+
 extension String {
     @inline(__always)
     func getString(ptr: UnsafeRawBufferPointer) {

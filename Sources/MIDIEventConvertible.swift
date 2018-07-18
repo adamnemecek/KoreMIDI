@@ -216,7 +216,7 @@ extension MIDIMetaEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
     }
 
     internal mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewMetaEvent(ref.ref, timestamp, &self)
+        OSAssert(MusicTrackNewMetaEvent(ref.ref, timestamp, &self))
     }
 
     internal var type: MIDIEventType {
@@ -254,7 +254,7 @@ extension MIDINoteMessage : Hashable, CustomStringConvertible, MIDITrackEvent {
     }
 
     internal mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewMIDINoteEvent(ref.ref, timestamp, &self)
+        OSAssert(MusicTrackNewMIDINoteEvent(ref.ref, timestamp, &self))
     }
 
     internal var type: MIDIEventType {
@@ -289,7 +289,7 @@ extension MIDIChannelMessage : Hashable, CustomStringConvertible, MIDITrackEvent
     }
 
     internal mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewMIDIChannelEvent(ref.ref, timestamp, &self)
+        OSAssert(MusicTrackNewMIDIChannelEvent(ref.ref, timestamp, &self))
     }
 
     internal var type: MIDIEventType {
@@ -315,7 +315,7 @@ extension MIDIRawData : Hashable, CustomStringConvertible, MIDITrackEvent {
     }
 
     internal mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewMIDIRawDataEvent(ref.ref, timestamp, &self)
+        OSAssert(MusicTrackNewMIDIRawDataEvent(ref.ref, timestamp, &self))
     }
 
     internal var type: MIDIEventType {
@@ -344,7 +344,7 @@ extension ParameterEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
     }
 
     internal mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewParameterEvent(ref.ref, timestamp, &self)
+        OSAssert(MusicTrackNewParameterEvent(ref.ref, timestamp, &self))
     }
 
     internal var type: MIDIEventType {
@@ -372,7 +372,7 @@ extension AUPresetEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
     }
 
     internal mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        MusicTrackNewAUPresetEvent(ref.ref, timestamp, &self)
+        OSAssert(MusicTrackNewAUPresetEvent(ref.ref, timestamp, &self))
     }
 
     internal var type: MIDIEventType {

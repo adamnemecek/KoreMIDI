@@ -75,7 +75,6 @@ extension MIDIPacket {
         self.timeStamp = timestamp
         self.length = UInt16(data.count)
 
-//        fatalError()
         _ = withUnsafeMutableBytes(of: &self.data) {
             memcpy($0.baseAddress, data.bytes, data.count)
         }

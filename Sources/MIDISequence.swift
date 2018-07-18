@@ -8,8 +8,6 @@
 import Foundation
 import AVFoundation
 
-
-
 extension Sequence {
     public func min<T: Comparable>(by: (Element) -> T) -> Element? {
         return self.min { by($0) < by($1) }
@@ -43,14 +41,14 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
     internal let ref: MusicSequence
     private var content: [MIDITrack] = []
 
-    private var _tempo: MIDITempoTrack? = nil
+    private var _tempo: MIDIGlobalTrack? = nil
 
-    public var tempo: MIDITempoTrack {
+    public var tempo: MIDIGlobalTrack {
         if let t = _tempo {
             return t
         }
 
-        _tempo = MIDITempoTrack(sequence: self)
+        _tempo = MIDIGlobalTrack(sequence: self)
         return _tempo!
     }
 
@@ -117,17 +115,7 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
         }
     }
 
-    public var lyrics: MIDIMetaTrack<MIDILyricEvent> {
-        fatalError()
-    }
 
-    public var markers: MIDIMetaTrack<MIDIMarkerEvent> {
-        fatalError()
-    }
-
-    public var cues: MIDIMetaTrack<MIDICueEvent> {
-        fatalError()
-    }
 
     func tempo(at timestamp: MIDITimestamp) -> Float {
         fatalError()
@@ -183,8 +171,8 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
         content.append(newElement)
     }
 
-    public func remove(_ element: Element) {
-        content.remove(element)
+    public func remove(_ element: Element) -> Element? {
+        return content.remove(element)
     }
 
     public subscript(index: Index) -> Element {

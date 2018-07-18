@@ -62,7 +62,6 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         return lhs.ref.hashValue < rhs.ref.hashValue
     }
 
-
     private struct Info {
         let isDrum: Bool
 

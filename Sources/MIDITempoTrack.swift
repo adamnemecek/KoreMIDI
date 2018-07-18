@@ -1,5 +1,5 @@
 //
-//  MIDITempoTrack.swift
+//  MIDIGlobalTrack.swift
 //  KoreMIDI
 //
 //  Created by Adam Nemecek on 4/7/17.
@@ -8,7 +8,6 @@
 
 import Foundation
 import AVFoundation
-
 
 public protocol MIDITrackType : Sequence, Hashable where Element : MIDITrackEventType {
 
@@ -42,19 +41,13 @@ public struct TempoEvent: CustomStringConvertible, Equatable, Comparable, Hashab
         return lhs.timestamp < rhs.timestamp
     }
 
-    public func insert(to track: MIDITempoTrack) {
+    public func insert(to track: MIDIGlobalTrack) {
         OSAssert(MusicTrackNewExtendedTempoEvent(track.ref, timestamp.beats, msg.bpm))
     }
 }
 
-@inline(__always) internal
-func MusicSequenceGetTempoTrack(ref: MusicSequence) -> MusicTrack {
-    var out : MusicTrack? = nil
-    OSAssert(MusicSequenceGetTempoTrack(ref, &out))
-    return out!
-}
 
-public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
+public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
 
     public typealias Timestamp = MIDITimestamp
     public typealias Element = TempoEvent
@@ -64,16 +57,16 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
     internal final let ref: MusicTrack
     //    let instrument: InstrumentName
 
-    public static func ===(lhs: MIDITempoTrack, rhs: MIDITempoTrack) -> Bool {
+    public static func ===(lhs: MIDIGlobalTrack, rhs: MIDIGlobalTrack) -> Bool {
 
         return lhs.ref == rhs.ref
     }
 
-    public static func ==(lhs: MIDITempoTrack, rhs: MIDITempoTrack) -> Bool {
+    public static func ==(lhs: MIDIGlobalTrack, rhs: MIDIGlobalTrack) -> Bool {
         return lhs === rhs || lhs.elementsEqual(rhs)
     }
 
-    public static func <(lhs: MIDITempoTrack, rhs: MIDITempoTrack) -> Bool {
+    public static func <(lhs: MIDIGlobalTrack, rhs: MIDIGlobalTrack) -> Bool {
         return lhs.ref.hashValue < rhs.ref.hashValue
     }
 
@@ -86,8 +79,6 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
     internal init(sequence: MIDISequence, no: Int) {
         self.sequence = sequence
         fatalError()
-//        self.ref = MusicSequenceGetTrack(ref: sequence.ref, at: no)
-        //        self.instrument = InstrumentName(ref: self.ref)
     }
 
     public final var timerange: Range<Timestamp> {
@@ -95,16 +86,7 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
     }
 
     public final var description: String {
-        var opts: [String] = []
-        if soloed {
-            opts.append("soloed")
-        }
-
-        if muted {
-            opts.append("muted")
-        }
-
-        return "MIDITempoTrack(in:\(timerange), \(opts))"
+        return "MIDIGlobalTrack(in:\(timerange))"
     }
 
     public final subscript(timerange timerange: Range<Timestamp>) -> MIDIRangeIterator {
@@ -144,37 +126,20 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
 //        }
     }
 
+    public var lyrics: MIDIMetaTrack<MIDILyricEvent> {
+        fatalError()
+    }
+
+    public var markers: MIDIMetaTrack<MIDIMarkerEvent> {
+        fatalError()
+    }
+
+    public var cues: MIDIMetaTrack<MIDICueEvent> {
+        fatalError()
+    }
+
     public final var hashValue: Int {
         return ref.hashValue
-    }
-
-    public final var loopInfo : MusicTrackLoopInfo {
-        get {
-            return self[.loopInfo]
-        }
-        set {
-            self[.loopInfo] = newValue
-        }
-    }
-
-    public final var muted : Bool {
-        get {
-            let ret : DarwinBoolean = self[.muted]
-            return ret.boolValue
-        }
-        set {
-            self[.muted] = DarwinBoolean(newValue)
-        }
-    }
-
-    public final var soloed : Bool {
-        get {
-            let ret : DarwinBoolean = self[.soloed]
-            return ret.boolValue
-        }
-        set {
-            self[.soloed] = DarwinBoolean(newValue)
-        }
     }
 
     public final var automatedParameters : UInt32 {
@@ -268,12 +233,12 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
         fatalError()
     }
 
-    func load(from other: MIDITempoTrack) {
+    func load(from other: MIDIGlobalTrack) {
         clearAll()
         copyInsert(from: other, in: other.timerange, at: other.start)
     }
 
-    convenience init(copy: MIDITempoTrack) {
+    convenience init(copy: MIDIGlobalTrack) {
         fatalError()
 //        self.init(sequence: copy.sequence)
 //        load(from: copy)
@@ -297,7 +262,7 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
                                timerange.upperBound.beats))
     }
 
-    func copyInsert(from other: MIDITempoTrack,
+    func copyInsert(from other: MIDIGlobalTrack,
                     in timerange: Range<Timestamp>? = nil,
                     at timestamp: Timestamp? = nil) {
         let tr = timerange ?? other.timerange
@@ -308,7 +273,7 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
                                       timestamp?.beats ?? 0))
     }
 
-    func merge(with other: MIDITempoTrack,
+    func merge(with other: MIDIGlobalTrack,
                in timerange: Range<Timestamp>? = nil,
                at timestamp: Timestamp? = nil) {
         let tr = timerange ?? other.timerange
@@ -346,4 +311,12 @@ public class MIDITempoTrack : Hashable, Sequence, MIDITrackType {
     }
 
 }
+
+@inline(__always) internal
+func MusicSequenceGetTempoTrack(ref: MusicSequence) -> MusicTrack {
+    var out : MusicTrack? = nil
+    OSAssert(MusicSequenceGetTempoTrack(ref, &out))
+    return out!
+}
+
 

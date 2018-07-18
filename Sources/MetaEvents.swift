@@ -12,10 +12,6 @@ import AVFoundation
 //
 //}
 
-public protocol MIDITextEventType : EventType {
-    var text: String { get }
-
-}
 
 /// todo: make internal
 public protocol MIDIMetaEventType : Equatable {
@@ -23,6 +19,12 @@ public protocol MIDIMetaEventType : Equatable {
     static var byte: MIDIMetaEvent.Subtype { get }
 //    init(event: MIDIData)
 }
+
+public protocol MIDITextEventType : EventType {
+    var text: String { get }
+
+}
+
 
 extension String {
     public init(_ buffer: UnsafeRawBufferPointer) {
@@ -124,6 +126,14 @@ public struct MIDICueEvent : Equatable, Hashable, MIDITextEventType, MIDIMetaEve
         self.timestamp = event.timestamp
         self.text = String(event: event)
     }
+}
+
+public struct MIDIKeySignature {
+
+}
+
+public struct MIDITimeSignature {
+    let numerator, denominator: UInt8
 }
 
 //protocol MIDIMetaEvent2 {

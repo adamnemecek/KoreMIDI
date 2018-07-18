@@ -14,6 +14,7 @@ private class MIDIPlayer : AVMIDIPlayer {
 class KorePlayer {
     private enum Player {
         case bank(AVMIDIPlayer)
+        @available(OSX 10.11, *)
         case engine(AVAudioSequencer)
     }
 
@@ -32,7 +33,7 @@ class KorePlayer {
         switch player {
         case let .bank(b):
             b.prepareToPlay()
-        case let .engine(e)
+        case let .engine(e):
             e.prepareToPlay()
         }
     }
@@ -40,8 +41,8 @@ class KorePlayer {
     func stop() {
         switch player {
         case let .bank(b):
-            b.stop()()
-        case let .engine(e)
+            b.stop()
+        case let .engine(e):
             e.stop()
         }
     }
@@ -50,8 +51,8 @@ class KorePlayer {
         switch player {
         case let .bank(b):
             b.play()
-        case let .engine(e)
-            e.start()
+        case let .engine(e):
+            try! e.start()
         }
     }
 
