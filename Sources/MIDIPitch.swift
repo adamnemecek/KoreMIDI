@@ -10,7 +10,7 @@ public enum MIDIPitchClass : Int {
     case c, cs, d, ds, e, f, fs, g, gs, a, `as`, b
 }
 
-public struct MIDIPitch : Comparable, Hashable, RawRepresentable, Strideable, CustomStringConvertible {
+public struct MIDIPitch: Comparable, Hashable, RawRepresentable, Strideable, CustomStringConvertible {
 
     public typealias Interval = Int
 

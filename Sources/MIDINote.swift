@@ -8,19 +8,6 @@
 
 import AVFoundation
 
-extension MIDINoteMessage {
-    @inline(__always)
-    init(data: MIDIData) {
-        self = data.data.baseAddress!.assumingMemoryBound(to: MIDINoteMessage.self).pointee
-    }
-}
-
-extension MIDINoteMessage {
-    public var isDrum: Bool {
-        return channel == 9
-    }
-}
-
 public struct MIDINote: Equatable, Hashable, CustomStringConvertible, Strideable {
     public typealias Timestamp = MIDITimestamp
     public typealias Stride = Timestamp.Stride
@@ -79,11 +66,22 @@ public struct MIDINote: Equatable, Hashable, CustomStringConvertible, Strideable
     }
 }
 
+extension MIDINoteMessage {
+    @inline(__always)
+    init(data: MIDIData) {
+        self = data.data.baseAddress!.assumingMemoryBound(to: MIDINoteMessage.self).pointee
+    }
+}
 
+extension MIDINoteMessage {
+    fileprivate var isDrum: Bool {
+        return channel == 9
+    }
+}
 
 extension String {
     @inline(__always)
-    func getString(ptr: UnsafeRawBufferPointer) {
+    fileprivate func getString(ptr: UnsafeRawBufferPointer) {
         fatalError()
         //getCString(&ptr.bindMemory(to: [CChar].self), maxLength: ptr.count, encoding: <#T##String.Encoding#>)
     }
@@ -109,49 +107,6 @@ extension String {
 //        var copy = string
 //        fatalError()
 //        //self = withUnsafeMutableBytes(of: &copy) { $0 }
-//    }
-//}
-
-//public struct MIDIDrumNote: Equatable, Hashable, CustomStringConvertible, Strideable {
-//    public typealias Timestamp = MIDITimestamp
-//    public typealias Stride = Timestamp.Stride
-//
-//    public let timestamp: Timestamp
-//
-//    internal let msg: MIDINoteMessage
-//
-//    internal init(data: MIDIData) {
-//        self.timestamp = data.timestamp
-//        self.msg = MIDINoteMessage(data: data)
-//    }
-//
-//    internal init(timestamp: Timestamp, msg: MIDINoteMessage) {
-//        self.timestamp = timestamp
-//        self.msg = msg
-//    }
-//
-//    public var drum: MIDIDrum {
-//        return MIDIDrum(Int8(msg.note))
-//    }
-//
-//    public func advanced(by n: Stride) -> MIDIDrumNote {
-//        return MIDIDrumNote(timestamp: timestamp.advanced(by: n), msg: msg)
-//    }
-//
-//    public func distance(to other: MIDIDrumNote) -> Stride {
-//        return timestamp.distance(to: other.timestamp)
-//    }
-//
-//    public static func ==(lhs: MIDIDrumNote, rhs: MIDIDrumNote) -> Bool {
-//        return lhs.timestamp == rhs.timestamp && lhs.msg == rhs.msg
-//    }
-//
-//    public var hashValue: Int {
-//        return timestamp.hashValue ^ msg.hashValue
-//    }
-//
-//    public var description: String {
-//        return "MIDIDrumNote(timestamp: \(timestamp), duration: \(msg))"
 //    }
 //}
 
