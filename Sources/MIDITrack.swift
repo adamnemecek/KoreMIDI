@@ -146,7 +146,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
     }
 
     public final func makeIterator() -> AnyIterator<Element> { // MIDIIterator {
-        let i = MIDIDataIterator(self)
+        let i = MIDIEventRawBufferIterator(self)
 
         return AnyIterator {
             while let n = i.next() {
@@ -191,7 +191,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
-    final subscript(range: Range<Timestamp>) -> MIDIDataIterator {
+    final subscript(range: Range<Timestamp>) -> MIDIEventRawBufferIterator {
         fatalError()
     }
 

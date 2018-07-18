@@ -32,7 +32,7 @@ public struct MIDINote: Equatable, Hashable, CustomStringConvertible, Strideable
         return msg.isDrum
     }
 
-    internal init(data: MIDIData) {
+    internal init(data: MIDIEventRawBuffer) {
         self.timestamp = data.timestamp
         self.msg = MIDINoteMessage(data: data)
     }
@@ -68,7 +68,7 @@ public struct MIDINote: Equatable, Hashable, CustomStringConvertible, Strideable
 
 extension MIDINoteMessage {
     @inline(__always)
-    init(data: MIDIData) {
+    init(data: MIDIEventRawBuffer) {
         self = data.data.baseAddress!.assumingMemoryBound(to: MIDINoteMessage.self).pointee
     }
 }

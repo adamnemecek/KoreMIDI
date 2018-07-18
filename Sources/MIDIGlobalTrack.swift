@@ -114,7 +114,7 @@ public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
 
     public final func makeIterator() -> AnyIterator<Element> { // MIDIIterator {
         fatalError()
-//        let i = MIDIDataIterator(self)
+//        let i = MIDIEventRawBufferIterator(self)
 //
 //        return AnyIterator {
 //            while let n = i.next() {

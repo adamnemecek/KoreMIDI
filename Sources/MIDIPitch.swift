@@ -31,8 +31,8 @@ public struct MIDIPitch: Comparable, Hashable, RawRepresentable, Strideable, Cus
         self.rawValue = value
     }
 
-    public static func +(lhs: MIDIPitch, rhs: Interval) -> MIDIPitch {
-        fatalError()
+    public static func +(lhs: MIDIPitch, rhs: Interval) -> MIDIPitch? {
+        return MIDIPitch(rawValue: lhs.rawValue + Int8(rhs))
     }
 
     public func advanced(by n: Interval) -> MIDIPitch {
@@ -64,6 +64,6 @@ public struct MIDIPitch: Comparable, Hashable, RawRepresentable, Strideable, Cus
     }
 
     public var description: String {
-        return "\(octave)\(pc)(\(rawValue)"
+        return "\(octave)\(pc)(\(rawValue))"
     }
 }

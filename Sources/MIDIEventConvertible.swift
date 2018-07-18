@@ -132,6 +132,7 @@ extension UnsafePointer where Pointee == MIDIMetaEvent {
         let staticSize = MemoryLayout<MIDIMetaEvent>.size - MemoryLayout<UInt8>.size
         let dynamicSize = string.count
         let capacity = staticSize + dynamicSize
+
         let ptr = UnsafeMutablePointer<MIDIMetaEvent>(bytes: capacity)
 
         ptr.pointee.metaEventType = metaEventType

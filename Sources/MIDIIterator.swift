@@ -75,9 +75,9 @@ import AVFoundation
 //}
 
 /// todo rename to cursor?
-public class MIDIDataIterator: IteratorProtocol {
+public class MIDIEventRawBufferIterator: IteratorProtocol {
     public typealias Timestamp = MIDITimestamp
-    public typealias Element = MIDIData
+    public typealias Element = MIDIEventRawBuffer
 
     internal init(_ content: MIDITrack) {
         self.ref = MIDIIteratorCreate(ref : content.ref)
@@ -172,7 +172,7 @@ public class MIDIDataIterator: IteratorProtocol {
     private let ref: MusicEventIterator
 }
 
-public class MIDIRangeIterator : MIDIDataIterator {
+public class MIDIRangeIterator : MIDIEventRawBufferIterator {
     public let timerange : Range<Timestamp>
 
     internal init(_ content: MIDITrack, timerange: Range<Timestamp>) {
