@@ -21,7 +21,7 @@ internal protocol MIDITrackEvent { //}: MIDIEventConvertible {
     var type: MIDIEventType { get }
 }
 
-extension ExtendedNoteOnEvent : Hashable, CustomStringConvertible, MIDIEventConvertible, MIDITrackEvent {
+extension ExtendedNoteOnEvent: Hashable, CustomStringConvertible, MIDIEventConvertible, MIDITrackEvent {
     public static func ==(lhs: ExtendedNoteOnEvent, rhs: ExtendedNoteOnEvent) -> Bool {
         return lhs.instrumentID == rhs.instrumentID &&
             lhs.groupID == rhs.groupID &&
@@ -49,7 +49,7 @@ extension ExtendedNoteOnEvent : Hashable, CustomStringConvertible, MIDIEventConv
 /// MARK: ExtendedTempoEvent
 ///
 
-extension ExtendedTempoEvent : Hashable, CustomStringConvertible, MIDIEventConvertible, MIDITrackEvent {
+extension ExtendedTempoEvent: Hashable, CustomStringConvertible, MIDIEventConvertible, MIDITrackEvent {
     public var hashValue: Int {
         return bpm.hashValue
     }
@@ -75,7 +75,7 @@ extension ExtendedTempoEvent : Hashable, CustomStringConvertible, MIDIEventConve
 /// MARK: MusicEventUserData
 ///
 
-extension MusicEventUserData : Hashable, CustomStringConvertible, MIDIEventConvertible, MIDITrackEvent {
+extension MusicEventUserData: Hashable, CustomStringConvertible, MIDIEventConvertible, MIDITrackEvent {
     public var hashValue: Int {
         return length.hashValue
     }
@@ -113,7 +113,7 @@ extension MusicEventUserData : Hashable, CustomStringConvertible, MIDIEventConve
 //    }
 //}
 
-extension UnsafeMutablePointer where Pointee : MIDITrackEvent {
+extension UnsafeMutablePointer where Pointee: MIDITrackEvent {
     mutating func insert(to ref: MIDITrack, at timestamp: Double) {
         pointee.insert(to: ref, at: timestamp)
     }
@@ -181,7 +181,7 @@ extension UnsafePointer where Pointee == MIDIRawData {
 }
 
 
-extension MIDIMetaEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
+extension MIDIMetaEvent: Hashable, CustomStringConvertible, MIDITrackEvent {
 
     public enum Subtype: UInt8 {
         case sequenceNumber = 0x00,
@@ -228,7 +228,7 @@ extension MIDIMetaEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
 ///
 /// MARK: MIDINoteMessage
 ///
-extension MIDINoteMessage : Hashable, CustomStringConvertible, MIDITrackEvent {
+extension MIDINoteMessage: Hashable, CustomStringConvertible, MIDITrackEvent {
 
     init(note: UInt8, duration: Float32, velocity: UInt8 = 100) {
         self.init(channel: 0,
@@ -238,7 +238,7 @@ extension MIDINoteMessage : Hashable, CustomStringConvertible, MIDITrackEvent {
                   duration: duration)
     }
 
-    public var description : String {
+    public var description: String {
         return "note: \(note), duration: \(duration)"
     }
 
@@ -267,9 +267,9 @@ extension MIDINoteMessage : Hashable, CustomStringConvertible, MIDITrackEvent {
 /// MARK: MIDIChannelMessage
 ///
 
-extension MIDIChannelMessage : Hashable, CustomStringConvertible, MIDITrackEvent {
+extension MIDIChannelMessage: Hashable, CustomStringConvertible, MIDITrackEvent {
 
-    enum Subtype : UInt {
+    enum Subtype: UInt {
         case polyphonicKeyPressure        = 0xA0,
         controlChange                = 0xB0,
         programChange                = 0xC0,
@@ -302,7 +302,7 @@ extension MIDIChannelMessage : Hashable, CustomStringConvertible, MIDITrackEvent
 /// MARK: MIDIRawData
 ///
 
-extension MIDIRawData : Hashable, CustomStringConvertible, MIDITrackEvent {
+extension MIDIRawData: Hashable, CustomStringConvertible, MIDITrackEvent {
     public static func ==(lhs: MIDIRawData, rhs: MIDIRawData) -> Bool {
         return lhs.length == rhs.length && lhs.data == rhs.data
     }
@@ -328,7 +328,7 @@ extension MIDIRawData : Hashable, CustomStringConvertible, MIDITrackEvent {
 /// MARK: ParameterEvent
 ///
 
-extension ParameterEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
+extension ParameterEvent: Hashable, CustomStringConvertible, MIDITrackEvent {
     public static func ==(lhs: ParameterEvent, rhs: ParameterEvent) -> Bool {
         return lhs.parameterID == rhs.parameterID &&
             lhs.scope == rhs.scope &&
@@ -357,7 +357,7 @@ extension ParameterEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
 /// MARK: AUPresetEvent
 ///
 
-extension AUPresetEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
+extension AUPresetEvent: Hashable, CustomStringConvertible, MIDITrackEvent {
     static public func ==(lhs: AUPresetEvent, rhs: AUPresetEvent) -> Bool {
         return lhs.scope == rhs.scope &&
             lhs.element == rhs.element &&
@@ -381,7 +381,7 @@ extension AUPresetEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
     }
 }
 
-extension ExtendedControlEvent : Hashable, CustomStringConvertible, MIDITrackEvent {
+extension ExtendedControlEvent: Hashable, CustomStringConvertible, MIDITrackEvent {
     static public func ==(lhs: ExtendedControlEvent, rhs: ExtendedControlEvent) -> Bool {
         //        return lhs.scope == rhs.scope && lhs.element == rhs.element
         //        return lhs.scope == rhs.scope &&

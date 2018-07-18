@@ -7,7 +7,7 @@
 
 import AVFoundation
 
-private class MIDIPlayer : AVMIDIPlayer {
+private class MIDIPlayer: AVMIDIPlayer {
 
 }
 
@@ -76,7 +76,7 @@ class KorePlayer {
 /*
 
  @available(OSX 10.10, *)
- open class AVMIDIPlayer : NSObject {
+ open class AVMIDIPlayer: NSObject {
 
 
  /*!    @method initWithContentsOfURL:soundBankURL:error:

@@ -29,7 +29,7 @@ extension Sequence {
     }
 }
 
-extension RangeReplaceableCollection where Element : Equatable {
+extension RangeReplaceableCollection where Element: Equatable {
     mutating func remove(_ element: Element) -> Element? {
         guard let idx = index(of: element) else { return nil }
         remove(at: idx)
@@ -37,7 +37,7 @@ extension RangeReplaceableCollection where Element : Equatable {
     }
 }
 
-//extension Sequence where Element : Hashable {
+//extension Sequence where Element: Hashable {
 //    func hashValue() -> Int {
 //        fatalError()
 //    }
@@ -55,7 +55,7 @@ extension Strideable {
 
 extension Int {
     init(_ bool: Bool) {
-        self = bool ? 1 : 0
+        self = bool ? 1: 0
     }
 }
 
@@ -105,7 +105,7 @@ protocol DefaultConstructible {
 //    }
 //}
 
-extension CABarBeatTime : Equatable, Hashable, CustomStringConvertible {
+extension CABarBeatTime: Equatable, Hashable, CustomStringConvertible {
     public static func ==(lhs: CABarBeatTime, rhs: CABarBeatTime) -> Bool {
         return lhs.bar == rhs.bar &&
             lhs.beat == rhs.beat &&
@@ -117,7 +117,7 @@ extension CABarBeatTime : Equatable, Hashable, CustomStringConvertible {
         return bar.hashValue
     }
 
-    public var description : String {
+    public var description: String {
         return "bar: \(bar), beat: \(beat), subbeat: \(subbeat), subbeatDivisor: \(subbeatDivisor)"
     }
 }
@@ -149,10 +149,10 @@ extension Data {
 }
 
 
-extension Sequence where Element : Comparable {
+extension Sequence where Element: Comparable {
     func range() -> ClosedRange<Element>? {
-        var min : Element? = nil
-        var max : Element? = nil
+        var min: Element? = nil
+        var max: Element? = nil
         for e in self {
             min = Swift.min(e, min ?? e)
             max = Swift.max(e, max ?? e)

@@ -15,7 +15,7 @@ enum ChannelEvent2 {
     case PitchBend(channel: UInt8, pitch: UInt16)
 }
 
-//protocol CCEvent : Comparable {
+//protocol CCEvent: Comparable {
 //    associatedtype Timestamp: Strideable
 //    var timestamp: Timestamp { get }
 //
@@ -27,13 +27,13 @@ enum ChannelEvent2 {
 //    }
 //}
 
-//struct AfterTouch : CCEvent {
+//struct AfterTouch: CCEvent {
 //    let timestamp: MIDITimestamp
 //    let note: MIDIPitch
-//    let pressure : Int8
+//    let pressure: Int8
 //}
 
-//struct ProgramChange : CCEvent {
+//struct ProgramChange: CCEvent {
 //    let timestamp: MIDITimestamp
 //}
 

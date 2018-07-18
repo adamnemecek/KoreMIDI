@@ -15,14 +15,14 @@ import Foundation
 //internal protocol StaticSizeMessage {
 //    static var staticSize: Int { get }
 //}
-//internal protocol DynamicSizeMessage : StaticSizeMessage {
+//internal protocol DynamicSizeMessage: StaticSizeMessage {
 //    var dynamicSize: Int { get }
 //
 ////    var data: (UInt8) { get set }
 //}
 //
 //extension DynamicSizeMessage {
-//    var totalSize : Int {
+//    var totalSize: Int {
 //        return Self.staticSize + dynamicSize
 //    }
 //}

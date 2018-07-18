@@ -4,8 +4,9 @@
 //
 //  Created by Adam Nemecek on 7/18/18.
 //
+import AVFoundation
 
-public struct MIDIEventRawBuffer : EventType, CustomStringConvertible {
+public struct MIDIEventRawBuffer: EventType, CustomStringConvertible {
     public let timestamp: MIDITimestamp
     public let type: MIDIEventType
     public let data: UnsafeRawBufferPointer
@@ -52,25 +53,25 @@ public struct MIDIEventRawBuffer : EventType, CustomStringConvertible {
     }
 
     public func insert(to track: MIDITrack, at timestamp: AVMusicTimeStamp) {
-        switch type {
-        case .note:
-            OSAssert(MusicTrackNewMIDINoteEvent(track.ref, timestamp, .init(data: self)))
-        case .channel:
-            OSAssert(MusicTrackNewMIDIChannelEvent(track.ref, timestamp, .init(data: self)))
-        case .rawData:
-            OSAssert(MusicTrackNewMIDIRawDataEvent(track.ref, timestamp, .init(data: self)))
-        case .extendedNote:
-            OSAssert(MusicTrackNewExtendedNoteEvent(track.ref, timestamp, .init(data: self)))
-        case .parameter:
-            OSAssert(MusicTrackNewParameterEvent(track.ref, timestamp, .init(data: self)))
-        case .user:
-            OSAssert(MusicTrackNewUserEvent(track.ref, timestamp, .init(data: self)))
-        case .extendedTempo:
-            OSAssert(MusicTrackNewExtendedTempoEvent(track.ref, timestamp, .init(data: self)))
-        case .meta:
-            OSAssert(MusicTrackNewMetaEvent(track.ref, timestamp, .init(data: self)))
-        case .auPreset:
-            OSAssert(MusicTrackNewAUPresetEvent(track.ref, timestamp, .init(data: self)))
-        }
+//        switch type {
+//        case .note:
+//            OSAssert(MusicTrackNewMIDINoteEvent(track.ref, timestamp, .init(data: self)))
+//        case .channel:
+//            OSAssert(MusicTrackNewMIDIChannelEvent(track.ref, timestamp, .init(data: self)))
+//        case .rawData:
+//            OSAssert(MusicTrackNewMIDIRawDataEvent(track.ref, timestamp, .init(data: self)))
+//        case .extendedNote:
+//            OSAssert(MusicTrackNewExtendedNoteEvent(track.ref, timestamp, .init(data: self)))
+//        case .parameter:
+//            OSAssert(MusicTrackNewParameterEvent(track.ref, timestamp, .init(data: self)))
+//        case .user:
+//            OSAssert(MusicTrackNewUserEvent(track.ref, timestamp, .init(data: self)))
+//        case .extendedTempo:
+//            OSAssert(MusicTrackNewExtendedTempoEvent(track.ref, timestamp, .init(data: self)))
+//        case .meta:
+//            OSAssert(MusicTrackNewMetaEvent(track.ref, timestamp, .init(data: self)))
+//        case .auPreset:
+//            OSAssert(MusicTrackNewAUPresetEvent(track.ref, timestamp, .init(data: self)))
+//        }
     }
 }

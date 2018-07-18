@@ -10,7 +10,7 @@
 // PitchClass
 //
 
-public enum PitchClass : Int {
+public enum PitchClass: Int {
     case c, cs, d, ds, e, f, fs, g, gs, a, `as`, b
 }
 

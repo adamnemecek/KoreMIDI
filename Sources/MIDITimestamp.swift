@@ -10,13 +10,13 @@ import Foundation
 import AVFoundation
 
 
-public struct MIDITimestamp : Comparable, Hashable, Strideable, CustomStringConvertible, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+public struct MIDITimestamp: Comparable, Hashable, Strideable, CustomStringConvertible, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
 
     public typealias Stride = AVMusicTimeStamp
     public typealias LiteralType = AVMusicTimeStamp
 
     /// note that beats are independent of tempo changes
-    public let beats : AVMusicTimeStamp
+    public let beats: AVMusicTimeStamp
 
     public init() {
         self = 0

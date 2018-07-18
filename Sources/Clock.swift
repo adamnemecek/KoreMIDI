@@ -12,11 +12,11 @@ public final class Clock: Equatable {
 
     public enum Status { case stopped, running }
 
-    //    public struct Timestamp : Comparable, Strideable, CustomStringConvertible, Hashable {
+    //    public struct Timestamp: Comparable, Strideable, CustomStringConvertible, Hashable {
     //        public typealias Stride = CAClockSeconds.Stride
     //
     //        fileprivate let parent: Clock
-    //        private let time : CAClockTime
+    //        private let time: CAClockTime
     //
     //        public var seconds: CAClockSeconds {
     //            fatalError()
@@ -27,7 +27,7 @@ public final class Clock: Equatable {
     //            self.time = time
     //        }
     //
-    //        public var hashValue : Int {
+    //        public var hashValue: Int {
     //            return seconds.hashValue
     //        }
     //
@@ -55,7 +55,7 @@ public final class Clock: Equatable {
     //            fatalError()
     //        }
     //
-    //        var hostTime : Float64 {
+    //        var hostTime: Float64 {
     //            var `in` = time
     ////            CAClockTranslateTime(ref, &time, <#T##inOutputTimeFormat: CAClockTimeFormat##CAClockTimeFormat#>, <#T##outTime: UnsafeMutablePointer<CAClockTime>##UnsafeMutablePointer<CAClockTime>#>)
     ////            time.time
@@ -64,36 +64,36 @@ public final class Clock: Equatable {
     //
     //        }
     //
-    //        var samples : Float64 {
+    //        var samples: Float64 {
     //            fatalError()
     //            //            return parent.translate(self, fmt: .samples)
     //        }
     //
-    //        var beats : Float64 {
+    //        var beats: Float64 {
     //            fatalError()
     //            //            return parent.translate(self, fmt: .beats)
     //        }
     //
     ////        var seconds // relative position on media timeline
     //
-    //        var smpteSeconds : Float64 {
+    //        var smpteSeconds: Float64 {
     //            fatalError()
     ////             return parent.translate(self, fmt: .smpteSeconds)
     //        }
     //
-    //        var smpteTime : SMPTETime {
+    //        var smpteTime: SMPTETime {
     ////            return parent.translate(self, fmt: .smpteTime)
     //            fatalError()
     //        }
     //
-    //        var absoluteSeconds : Float64 {
+    //        var absoluteSeconds: Float64 {
     //            fatalError()
     //        }
     //    }
 
     fileprivate let ref: CAClockRef
 
-    internal init(sequence : MusicSequence) {
+    internal init(sequence: MusicSequence) {
         var r: CAClockRef? = nil
         CAClockNew(0, &r)
         ref = r!
@@ -107,7 +107,7 @@ public final class Clock: Equatable {
 
     private func get<T>(prop: CAClockPropertyID) -> T {
         var ptr = UnsafeMutablePointer<T>.allocate(capacity: 1)
-        var size : UInt32 = 0
+        var size: UInt32 = 0
         CAClockGetProperty(ref, prop, &size, ptr)
 
         defer {
@@ -122,7 +122,7 @@ public final class Clock: Equatable {
         CAClockSetProperty(ref, prop, UInt32(MemoryLayout<T>.size), &v)
     }
 
-    public var playRate : Float64 {
+    public var playRate: Float64 {
         get {
             var f: Float64 = 0
             OSAssert(CAClockGetPlayRate(ref, &f))
@@ -133,7 +133,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var internalTimebase : CAClockTimebase {
+    public var internalTimebase: CAClockTimebase {
         get {
             return get(prop: .internalTimebase)
         }
@@ -142,7 +142,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var timebaseSource : AudioDeviceID /* or AudioUit */ {
+    public var timebaseSource: AudioDeviceID /* or AudioUit */ {
         get {
             return get(prop: .timebaseSource)
         }
@@ -151,7 +151,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var syncMode : CAClockSyncMode {
+    public var syncMode: CAClockSyncMode {
         get {
             return get(prop: .syncMode)
         }
@@ -160,7 +160,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var syncSource : MIDIEndpointRef {
+    public var syncSource: MIDIEndpointRef {
         get {
             return get(prop: .syncSource)
         }
@@ -169,7 +169,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var smpteFormat :  CAClockSMPTEFormat {
+    public var smpteFormat:  CAClockSMPTEFormat {
         get {
             return get(prop: .smpteFormat)
         }
@@ -178,7 +178,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var smpteOffset : CAClockSeconds {
+    public var smpteOffset: CAClockSeconds {
         get {
             return get(prop: .smpteOffset)
         }
@@ -196,7 +196,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var mtcDestinations : [MIDIEndpointRef] {
+    public var mtcDestinations: [MIDIEndpointRef] {
         get {
             return get(prop: .mtcDestinations)
         }
@@ -205,7 +205,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var mtcFreewheelTime : CAClockSeconds {
+    public var mtcFreewheelTime: CAClockSeconds {
         get {
             return get(prop: .mtcFreewheelTime)
         }
@@ -214,7 +214,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var tempoMap : [CATempoMapEntry] {
+    public var tempoMap: [CATempoMapEntry] {
         get {
             return get(prop: .tempoMap)
         }
@@ -223,7 +223,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var meterTrack : [CAMeterTrackEntry] {
+    public var meterTrack: [CAMeterTrackEntry] {
         get {
             return get(prop: .meterTrack)
         }
@@ -232,7 +232,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var status : Status {
+    public var status: Status {
         didSet {
             guard oldValue != status else { return }
             switch status {
@@ -244,7 +244,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var currentTempo : CAClockTempo {
+    public var currentTempo: CAClockTempo {
         get {
             var t = CAClockTempo()
             OSAssert(CAClockGetCurrentTempo(ref, &t, nil))
@@ -255,7 +255,7 @@ public final class Clock: Equatable {
         }
     }
 
-    public var currentTime : CAClockTime {
+    public var currentTime: CAClockTime {
         get {
             var time = CAClockTime()
             OSAssert(CAClockGetCurrentTime(ref, .seconds, &time))
@@ -289,7 +289,7 @@ public final class Clock: Equatable {
     //        return Timestamp(parent: time.parent, seconds: 0)
     //    }
     //
-    public var start : CAClockTime {
+    public var start: CAClockTime {
         get {
             var time = CAClockTime()
             OSAssert(CAClockGetStartTime(ref, .seconds, &time))
@@ -297,7 +297,7 @@ public final class Clock: Equatable {
         }
     }
     //
-    //    private var listeners : [NSObjectProtocol : (() -> ())] = [:]
+    //    private var listeners: [NSObjectProtocol: (() -> ())] = [:]
     //
     //    func observe(_ listener: () -> ()) -> NSObjectProtocol {
     //        let o = NSObject()
@@ -305,7 +305,7 @@ public final class Clock: Equatable {
     //        return o
     //    }
 
-    public var armed : Bool {
+    public var armed: Bool {
         didSet {
             guard oldValue != armed else { return }
             if armed {

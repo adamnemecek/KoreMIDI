@@ -22,7 +22,7 @@ import AudioToolbox
 //}
 
 
-public enum ChannelEvent : Comparable, Strideable, Hashable, CustomStringConvertible {
+public enum ChannelEvent: Comparable, Strideable, Hashable, CustomStringConvertible {
     public typealias Timestamp = MIDITimestamp
     public typealias Stride = Timestamp.Stride
 
@@ -44,7 +44,7 @@ public enum ChannelEvent : Comparable, Strideable, Hashable, CustomStringConvert
         }
     }
 
-    public var timestamp : Timestamp {
+    public var timestamp: Timestamp {
         switch self {
         case let .note(ts, _): return ts
         case let .channel(ts, _): return ts

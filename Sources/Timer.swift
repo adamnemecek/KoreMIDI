@@ -10,14 +10,14 @@ import Foundation
 
 import QuartzCore
 
-struct TimerIterator : IteratorProtocol {
+struct TimerIterator: IteratorProtocol {
     typealias Element = CFTimeInterval
     func next() ->  Element? {
         return CACurrentMediaTime()
     }
 }
 
-struct Timer : Sequence {
+struct Timer: Sequence {
     func makeIterator() -> TimerIterator {
         return TimerIterator()
     }

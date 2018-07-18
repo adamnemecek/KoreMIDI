@@ -75,20 +75,20 @@ func MIDIIteratorCreate(ref: MusicTrack) -> MusicEventIterator {
     return r!
 }
 
-//extension Double : TimestampType {
-//    public var beats : MusicTimeStamp {
+//extension Double: TimestampType {
+//    public var beats: MusicTimeStamp {
 //        return MusicTimeStamp(self)
 //    }
 //}
 
 @inline(__always) internal
 func MIDIIteratorHasCurrent(ref: MusicEventIterator) -> Bool {
-    var ret : DarwinBoolean = false
+    var ret: DarwinBoolean = false
     OSAssert(MusicEventIteratorHasCurrentEvent(ref, &ret))
     return ret.boolValue
 }
 
-extension UnsafeRawBufferPointer : Equatable {
+extension UnsafeRawBufferPointer: Equatable {
     public static func ==(lhs: UnsafeRawBufferPointer, rhs: UnsafeRawBufferPointer) -> Bool {
         return lhs.count == rhs.count && lhs.elementsEqual(rhs)
     }
@@ -116,8 +116,8 @@ extension Float64 {
 //
 //    var timestamp: Float64 = 0
 //    var type: MusicEventType = 0
-//    var data : UnsafeRawPointer? = nil
-//    var size : UInt32 = 0
+//    var data: UnsafeRawPointer? = nil
+//    var size: UInt32 = 0
 //
 //    OSAssert(MusicEventIteratorGetEventInfo(ref, &timestamp, &type, &data, &size))
 //    let d = Data(bytes: data!, count: Int(size))
@@ -151,7 +151,7 @@ func MIDITrackGetProperty<T>(ref: MusicTrack, prop: MIDITrackProp) -> T {
 
 @inline(__always) internal
 func MIDITrackGetProperty(ref: MusicTrack, prop: UInt32) -> Bool {
-    var out : DarwinBoolean = false
+    var out: DarwinBoolean = false
     var size: UInt32 = 0
     OSAssert(MusicTrackGetProperty(ref, prop, &out, &size))
     return out.boolValue

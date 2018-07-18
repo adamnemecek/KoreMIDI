@@ -9,14 +9,14 @@
 import Foundation
 
 public protocol Temporal {
-    associatedtype Timestamp : Comparable, Strideable
+    associatedtype Timestamp: Comparable, Strideable
 }
 
-public protocol TimeSeries : Sequence, Temporal {
-    var start : Timestamp { get }
-    var end : Timestamp { get }
+public protocol TimeSeries: Sequence, Temporal {
+    var start: Timestamp { get }
+    var end: Timestamp { get }
 
-    var duration : Timestamp.Stride { get }
+    var duration: Timestamp.Stride { get }
 //    func timestamp(after t: Timestamp) -> Timestamp
     //    subscript(timerange: Range<Timestamp>) -> SubSequence { get }
 }
@@ -27,7 +27,7 @@ extension TimeSeries {
     }
 }
 
-protocol MutableTimeSeries : TimeSeries {
+protocol MutableTimeSeries: TimeSeries {
     subscript(timerange: Range<Timestamp>) -> SubSequence { get set }
 }
 

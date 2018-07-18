@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-public enum MIDIEventType : MusicEventType, RawRepresentable, Hashable, CustomStringConvertible {
+public enum MIDIEventType: MusicEventType, RawRepresentable, Hashable, CustomStringConvertible {
 
     // ExtendedControlEvent
     case extendedNote, extendedTempo, user, meta, note, channel, rawData, parameter, auPreset
@@ -28,7 +28,7 @@ public enum MIDIEventType : MusicEventType, RawRepresentable, Hashable, CustomSt
         }
     }
 
-    public var rawValue : MusicEventType {
+    public var rawValue: MusicEventType {
         switch self {
         case .extendedNote: return kMusicEventType_ExtendedNote
         case .extendedTempo: return kMusicEventType_ExtendedTempo
@@ -46,7 +46,7 @@ public enum MIDIEventType : MusicEventType, RawRepresentable, Hashable, CustomSt
         return rawValue.hashValue
     }
 
-    public var description : String {
+    public var description: String {
         switch self {
         case .extendedNote: return ".extendedNote"
         case .extendedTempo: return ".extendedTempo"

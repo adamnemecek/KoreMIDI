@@ -9,14 +9,14 @@
 import Foundation
 import AVFoundation
 
-struct NoteEvent : CustomStringConvertible {
-    let timestamp : Float
-    let pitch : UInt8
-    let duration : Float32
-    let track : Int
-    let velocity : UInt8
+struct NoteEvent: CustomStringConvertible {
+    let timestamp: Float
+    let pitch: UInt8
+    let duration: Float32
+    let track: Int
+    let velocity: UInt8
 
-    init(event : MIDITrack.Element, track : Int) {
+    init(event: MIDITrack.Element, track: Int) {
         fatalError()
 //        switch event {
 ////        case let .note(ts, data):
@@ -31,7 +31,7 @@ struct NoteEvent : CustomStringConvertible {
 //        }
     }
 
-    init(timestamp : Float, pitch : UInt8, duration : Float32, track : Int, velocity : UInt8) {
+    init(timestamp: Float, pitch: UInt8, duration: Float32, track: Int, velocity: UInt8) {
         self.timestamp = timestamp
         self.pitch = pitch
         self.duration = duration
@@ -40,19 +40,19 @@ struct NoteEvent : CustomStringConvertible {
     }
 
     var description: String {
-        return "NoteEvent(timestamp : \(timestamp), pitch : \(pitch), duration : \(duration), track : \(track), velocity : \(velocity))"
+        return "NoteEvent(timestamp: \(timestamp), pitch: \(pitch), duration: \(duration), track: \(track), velocity: \(velocity))"
     }
 }
 func test() {
-    Swift.print("func notes() -> [NoteEvent] {\n var ret : [NoteEvent] = []\n")
+    Swift.print("func notes() -> [NoteEvent] {\n var ret: [NoteEvent] = []\n")
     let path = "/Users/adamnemecek/Code/hypersphere/ngrid.io/_final/sandstorm.5track.mid"
     //"/Users/adamnemecek/midi/darude-sandstorm.mid"
     let url = URL(fileURLWithPath: path)
 
     let s = MIDISequence(import: url)
-//    var notes : [NoteEvent]
+//    var notes: [NoteEvent]
 
-    //let notes : [MIDINote] = []
+    //let notes: [MIDINote] = []
 
     //
     for (i,track) in s.enumerated() {
@@ -108,7 +108,7 @@ func custom() {
 
     var seq = MIDISequence()
 
-    var track = MIDITrack(sequence : seq)
+    var track = MIDITrack(sequence: seq)
     let m = MIDINoteMessage(note: 60, duration: 20)
 //    track.insert(.note(10.0, m))
 

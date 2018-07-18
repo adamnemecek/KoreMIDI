@@ -9,12 +9,12 @@
 import Foundation
 import AVFoundation
 
-public protocol MIDITrackType : Sequence, Hashable where Element : MIDITrackEventType {
+public protocol MIDITrackType: Sequence, Hashable where Element: MIDITrackEventType {
 
 }
 
 public protocol MIDITrackEventType {
-    associatedtype Track : MIDITrackType
+    associatedtype Track: MIDITrackType
     associatedtype Timestamp: Strideable
 
     var timestamp: Timestamp { get }
@@ -47,7 +47,7 @@ public struct TempoEvent: CustomStringConvertible, Equatable, Comparable, Hashab
 }
 
 
-public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
+public class MIDIGlobalTrack: Hashable, Sequence, MIDITrackType {
 
     public typealias Timestamp = MIDITimestamp
     public typealias Element = TempoEvent
@@ -142,7 +142,7 @@ public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
         return ref.hashValue
     }
 
-    public final var automatedParameters : UInt32 {
+    public final var automatedParameters: UInt32 {
         get {
             return self[.automatedParams]
         }
@@ -151,7 +151,7 @@ public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
         }
     }
 
-    public final var timeResolution : Int16 {
+    public final var timeResolution: Int16 {
         get {
             return self[.resolution]
         }
@@ -169,7 +169,7 @@ public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
         }
     }
 
-    private var _offsetTime : MusicTimeStamp {
+    private var _offsetTime: MusicTimeStamp {
         get {
             return self[.offsetTime]
         }
@@ -178,7 +178,7 @@ public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
         }
     }
 
-    public final var duration : Timestamp.Stride {
+    public final var duration: Timestamp.Stride {
         get {
             return self[.length]
         }
@@ -226,7 +226,7 @@ public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
                                       timestamp.beats))
     }
 
-    func remove<S : SetAlgebra & TimeSeries>(elements: S) where S.Element == Element {
+    func remove<S: SetAlgebra & TimeSeries>(elements: S) where S.Element == Element {
 
         //        var i = MIDIIterator(self, timestamp: elements.startTime)
 
@@ -284,7 +284,7 @@ public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
                                  (timestamp ?? 0).beats))
     }
 
-    func remove<S : Sequence>(_ elements: S) where S.Element == Element {
+    func remove<S: Sequence>(_ elements: S) where S.Element == Element {
 //        guard let range = (elements.lazy.map { $0.timestamp }.range()) else { return }
 //        let s = Set(elements)
         fatalError()
@@ -314,7 +314,7 @@ public class MIDIGlobalTrack : Hashable, Sequence, MIDITrackType {
 
 @inline(__always) internal
 func MusicSequenceGetTempoTrack(ref: MusicSequence) -> MusicTrack {
-    var out : MusicTrack? = nil
+    var out: MusicTrack? = nil
     OSAssert(MusicSequenceGetTempoTrack(ref, &out))
     return out!
 }

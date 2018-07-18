@@ -13,7 +13,7 @@ import AVFoundation
 //    public typealias Element = MIDINote
 //
 //    internal init(_ content: MIDITrack, timestamp: Timestamp? = nil) {
-//        self.ref = MIDIIteratorCreate(ref : content.ref)
+//        self.ref = MIDIIteratorCreate(ref: content.ref)
 //        timestamp.map {
 //            self.seek(to: $0)
 //        }
@@ -31,7 +31,7 @@ import AVFoundation
 //            fatalError()
 //        }
 ////        return MIDIIteratorGetCurrent(ref: ref)
-////        if let e : Element = MIDIIteratorGetCurrent(ref: _ref) {
+////        if let e: Element = MIDIIteratorGetCurrent(ref: _ref) {
 ////            if let r = _timerange, !r.contains(e.timestamp) {
 ////                return nil
 ////            }
@@ -80,11 +80,11 @@ public class MIDIEventRawBufferIterator: IteratorProtocol {
     public typealias Element = MIDIEventRawBuffer
 
     internal init(_ content: MIDITrack) {
-        self.ref = MIDIIteratorCreate(ref : content.ref)
+        self.ref = MIDIIteratorCreate(ref: content.ref)
     }
 
     internal init(ref: MusicTrack) {
-        self.ref = MIDIIteratorCreate(ref : ref)
+        self.ref = MIDIIteratorCreate(ref: ref)
     }
 
     deinit {
@@ -172,8 +172,8 @@ public class MIDIEventRawBufferIterator: IteratorProtocol {
     private let ref: MusicEventIterator
 }
 
-public class MIDIRangeIterator : MIDIEventRawBufferIterator {
-    public let timerange : Range<Timestamp>
+public class MIDIRangeIterator: MIDIEventRawBufferIterator {
+    public let timerange: Range<Timestamp>
 
     internal init(_ content: MIDITrack, timerange: Range<Timestamp>) {
         self.timerange = timerange

@@ -12,10 +12,10 @@ import AVFoundation
 
 
 
-class MIDIProject : NSDocument {
+class MIDIProject: NSDocument {
 
     let sequence: MIDISequence
-    let url : URL
+    let url: URL
 
     init(url: URL) {
         self.url = url
@@ -25,10 +25,10 @@ class MIDIProject : NSDocument {
 }
 
 //class MIDIProject {
-//    let sequence : MIDISequence
+//    let sequence: MIDISequence
 //}
 //
-//class MIDIProjectController : MIDIProject {
+//class MIDIProjectController: MIDIProject {
 //
 //}
 

@@ -9,7 +9,7 @@
 import Foundation
 
 //
-//enum Edit<Element : Equatable & Hashable & Comparable> : Equatable, Hashable, Comparable {
+//enum Edit<Element: Equatable & Hashable & Comparable>: Equatable, Hashable, Comparable {
 //    case create(Element), update(Element, Element), delete(Element)
 //
 //    static func ==(lhs: Edit, rhs: Edit) -> Bool {
@@ -25,7 +25,7 @@ import Foundation
 //        }
 //    }
 //
-//    private var comparable : Element {
+//    private var comparable: Element {
 //        switch self {
 //        case let .create(v):
 //            return v
@@ -40,7 +40,7 @@ import Foundation
 //        return lhs.comparable < rhs.comparable
 //    }
 //
-//    var hashValue : Int {
+//    var hashValue: Int {
 //        switch self {
 //        case let .create(v):
 //            return v.hashValue
@@ -54,10 +54,10 @@ import Foundation
 //
 //}
 //
-//extension RangeReplaceableCollection where Element : Equatable & Hashable {
+//extension RangeReplaceableCollection where Element: Equatable & Hashable {
 //
 //    mutating
-//    func edit<S : Sequence>(_ seq: S) where S.Element == Edit<Element> {
+//    func edit<S: Sequence>(_ seq: S) where S.Element == Edit<Element> {
 ////        let q = seq.filter { $0.self == .create.self }
 // 
 //    }

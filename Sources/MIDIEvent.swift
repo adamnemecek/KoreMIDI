@@ -10,7 +10,7 @@
 import Foundation
 import AVFoundation
 
-//public protocol TimestampType : Comparable, Strideable, Hashable {
+//public protocol TimestampType: Comparable, Strideable, Hashable {
 //    var beats: MusicTimeStamp { get }
 //}
 
@@ -22,7 +22,7 @@ import AVFoundation
 //    }
 //}
 
-//public enum MIDIEvent : Comparable, Strideable, Hashable, CustomStringConvertible {
+//public enum MIDIEvent: Comparable, Strideable, Hashable, CustomStringConvertible {
 //    public typealias Timestamp = MIDITimestamp
 //    public typealias Stride = Timestamp.Stride
 //
@@ -56,7 +56,7 @@ import AVFoundation
 //        self.init(timestamp: timestamp, type: event.type, data: Data(encode: event))
 //    }
 //
-//    public var description : String {
+//    public var description: String {
 //        switch self {
 //        case let .extendedNote(ts, e): return "\(type)(timestamp: \(ts), \(e))"
 //        case let .extendedTempo(ts, e): return "\(type)(timestamp: \(ts), \(e))"
@@ -70,7 +70,7 @@ import AVFoundation
 //        }
 //    }
 //
-//    private var _serialize  : (timestamp: Timestamp, data : Data) {
+//    private var _serialize : (timestamp: Timestamp, data: Data) {
 //        switch self {
 //        case let .extendedNote(ts, data): return (ts, Data(encode: data))
 //        case let .extendedTempo(ts, data): return (ts, Data(encode: data))
@@ -84,15 +84,15 @@ import AVFoundation
 //        }
 //    }
 //
-//    public var timestamp : Timestamp {
+//    public var timestamp: Timestamp {
 //        return _serialize.timestamp
 //    }
 //
-//    public var data : Data {
+//    public var data: Data {
 //        return _serialize.data
 //    }
 //
-//    public var type : MIDIEventType {
+//    public var type: MIDIEventType {
 //        switch self {
 //        case .extendedNote: return .extendedNote
 //        case .extendedTempo: return .extendedTempo
@@ -128,7 +128,7 @@ import AVFoundation
 //    }
 //}
 
-//public enum MIDIEvent2 : Comparable, Hashable, CustomStringConvertible {
+//public enum MIDIEvent2: Comparable, Hashable, CustomStringConvertible {
 //    public func distance(to other: MIDIEvent2) -> MIDITimestamp.Stride {
 //        fatalError()
 //    }
@@ -170,7 +170,7 @@ import AVFoundation
 //        self.init(timestamp: timestamp, type: event.type, data: Data(encode: event))
 //    }
 //
-//    public var description : String {
+//    public var description: String {
 //        switch self {
 //        case let .extendedNote(ts, e): return "\(type)(timestamp: \(ts), \(e))"
 //        case let .extendedTempo(ts, e): return "\(type)(timestamp: \(ts), \(e))"
@@ -184,7 +184,7 @@ import AVFoundation
 //        }
 //    }
 //
-//    private var _serialize  : (timestamp: Timestamp, data : Data) {
+//    private var _serialize : (timestamp: Timestamp, data: Data) {
 //        switch self {
 //        case let .extendedNote(ts, data): return (ts, Data(encode: data))
 //        case let .extendedTempo(ts, data): return (ts, Data(encode: data))
@@ -198,15 +198,15 @@ import AVFoundation
 //        }
 //    }
 //
-//    public var timestamp : Timestamp {
+//    public var timestamp: Timestamp {
 //        return _serialize.timestamp
 //    }
 //
-//    public var data : Data {
+//    public var data: Data {
 //        return _serialize.data
 //    }
 //
-//    internal var type : MIDIEventType {
+//    internal var type: MIDIEventType {
 //        switch self {
 //        case .extendedNote: return .extendedNote
 //        case .extendedTempo: return .extendedTempo
@@ -241,7 +241,7 @@ import AVFoundation
 //        return lhs.timestamp < rhs.timestamp
 //    }
 //}
-//extension MIDIEvent  : Codable {
+//extension MIDIEvent : Codable {
 //    public init(from decoder: Decoder) throws {
 //        fatalError()
 //    }

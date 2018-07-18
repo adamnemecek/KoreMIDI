@@ -9,7 +9,7 @@
 import AVFoundation
 
 //struct MIDIBank {
-//    let path : String
+//    let path: String
 //}
 
 //enum Status {
@@ -24,9 +24,9 @@ extension AVMIDIPlayer {
 
 public class MIDISoundbankPlayer {
     private var player: AVMIDIPlayer
-    private let bank : URL?
+    private let bank: URL?
 
-    public var sequence : MIDISequence {
+    public var sequence: MIDISequence {
         didSet {
             guard oldValue != sequence else { return }
             reload()
@@ -79,7 +79,7 @@ public class MIDISoundbankPlayer {
 //        }
     }
 
-    public var currentPosition : TimeInterval {
+    public var currentPosition: TimeInterval {
         get {
             return player.currentPosition
         }
@@ -92,7 +92,7 @@ public class MIDISoundbankPlayer {
 public class Player {
     private let content: MusicPlayer
 
-    public var sequence : MIDISequence {
+    public var sequence: MIDISequence {
         didSet {
             guard oldValue != sequence else { return }
             reload()
@@ -154,7 +154,7 @@ public class Player {
         return Bool(ret)
     }
 
-    public var currentPosition : TimeInterval {
+    public var currentPosition: TimeInterval {
         get {
             var ret: MusicTimeStamp = 0
             OSAssert(MusicPlayerGetTime(content, &ret))
@@ -168,7 +168,7 @@ public class Player {
 
 @inline(__always) fileprivate
 func MIDIPlayerCreate() -> MusicPlayer {
-    var ref : MusicPlayer? = nil
+    var ref: MusicPlayer? = nil
     OSAssert(NewMusicPlayer(&ref))
     return ref!
 }
@@ -183,7 +183,7 @@ func MIDIPlayerCreate() -> MusicPlayer {
 //}
 
 
-//class MIDIPlayer2 : AVMIDIPlayer {
+//class MIDIPlayer2: AVMIDIPlayer {
 //    init(sequence: MIDISequence, bank: URL? = nil) {
 //
 //    }

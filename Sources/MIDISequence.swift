@@ -12,7 +12,7 @@ import AVFoundation
 /// MIDISequence
 ///
 
-public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, Codable {
+public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, Codable {
 
     public typealias Index = Int
     public typealias IndexDistance = Index
@@ -105,7 +105,7 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
     //            _type = .beats
     //        }
     //
-    //        private var _type : MusicSequenceType {
+    //        private var _type: MusicSequenceType {
     //            get {
     //                return MusicSequenceGetSequenceType(ref: ref)
     //            }
@@ -158,7 +158,7 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
         return content[index]
     }
 
-    private enum CodingKeys : String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case content = "content"
     }
 
@@ -193,7 +193,7 @@ public final class MIDISequence : RandomAccessCollection, Hashable, Comparable, 
 
 @inline(__always) fileprivate
 func MIDISequenceCreate() -> MusicSequence {
-    var ref : MusicSequence? = nil
+    var ref: MusicSequence? = nil
     OSAssert(NewMusicSequence(&ref))
     return ref!
 }
@@ -215,8 +215,8 @@ func MIDISequenceImport(_ data: Data) -> MusicSequence {
 
 @inline(__always) fileprivate
 func MIDISequenceExport(ref: MusicSequence,
-                        resolution : Int16 = 960) -> Data {
-    var data : Unmanaged<CFData>? = nil
+                        resolution: Int16 = 960) -> Data {
+    var data: Unmanaged<CFData>? = nil
     OSAssert(MusicSequenceFileCreateData(ref, .midiType, .eraseFile, resolution, &data))
     return data!.takeUnretainedValue() as Data
 }

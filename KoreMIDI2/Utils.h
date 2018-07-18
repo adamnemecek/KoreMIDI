@@ -1,6 +1,6 @@
 //
 //  Utils.h
-//  KoreMIDI2
+//  KoreMIDI
 //
 //  Created by Adam Nemecek on 7/15/18.
 //

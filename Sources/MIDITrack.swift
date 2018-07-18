@@ -20,7 +20,7 @@ import AVFoundation
 //
 //}
 
-//enum Error : UInt32 {
+//enum Error: UInt32 {
 //    case invalidSequence
 //    kAudioToolboxErr_InvalidSequenceType: OSStatus { get }
 //    kAudioToolboxErr_TrackIndexError: OSStatus { get }
@@ -37,7 +37,7 @@ import AVFoundation
 //}
 
 
-public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomStringConvertible {
+public class MIDITrack: Sequence, Equatable, Comparable, Hashable, CustomStringConvertible {
 
     public typealias Timestamp = MIDITimestamp
     public typealias Element = MIDINote
@@ -162,7 +162,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         return ref.hashValue
     }
 
-    public final var loopInfo : MusicTrackLoopInfo {
+    public final var loopInfo: MusicTrackLoopInfo {
         get {
             return self[.loopInfo]
         }
@@ -171,9 +171,9 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
-    public final var muted : Bool {
+    public final var muted: Bool {
         get {
-            let ret : DarwinBoolean = self[.muted]
+            let ret: DarwinBoolean = self[.muted]
             return ret.boolValue
         }
         set {
@@ -181,9 +181,9 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
-    public final var soloed : Bool {
+    public final var soloed: Bool {
         get {
-            let ret : DarwinBoolean = self[.soloed]
+            let ret: DarwinBoolean = self[.soloed]
             return ret.boolValue
         }
         set {
@@ -195,7 +195,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         fatalError()
     }
 
-    public final var automatedParameters : UInt32 {
+    public final var automatedParameters: UInt32 {
         get {
             return self[.automatedParams]
         }
@@ -204,7 +204,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
-    public final var timeResolution : Int16 {
+    public final var timeResolution: Int16 {
         get {
             return self[.resolution]
         }
@@ -222,7 +222,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
-    private var _offsetTime : MusicTimeStamp {
+    private var _offsetTime: MusicTimeStamp {
         get {
             return self[.offsetTime]
         }
@@ -231,7 +231,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
         }
     }
 
-    public final var duration : Timestamp.Stride {
+    public final var duration: Timestamp.Stride {
         get {
             return self[.length]
         }
@@ -278,7 +278,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
                                       timestamp.beats))
     }
 
-    func remove<S : SetAlgebra & TimeSeries>(elements: S)  {
+    func remove<S: SetAlgebra & TimeSeries>(elements: S)  {
 //        var i = MIDIRangeIterator(self, timerange: elements.timerange)
 //        while let n = i.next() {
 
@@ -342,7 +342,7 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
                                  (timestamp ?? 0).beats))
     }
 
-    func remove<S : Sequence>(_ elements: S) where S.Element == Element {
+    func remove<S: Sequence>(_ elements: S) where S.Element == Element {
         guard let range = (elements.lazy.map { $0.timestamp }.range()) else { return }
 
         let s = Set(elements)
@@ -375,12 +375,12 @@ public class MIDITrack : Sequence, Equatable, Comparable, Hashable, CustomString
 
 @inline(__always) fileprivate
 func MusicSequenceGetTrack(ref: MusicSequence, at index: Int) -> MusicTrack {
-    var r : MusicTrack? = nil
+    var r: MusicTrack? = nil
     OSAssert(MusicSequenceGetIndTrack(ref, UInt32(index), &r))
     return r!
 }
 
-internal enum MIDITrackProp : RawRepresentable {
+internal enum MIDITrackProp: RawRepresentable {
 
     case loopInfo, offsetTime, muted, soloed, automatedParams, length, resolution
 
@@ -397,7 +397,7 @@ internal enum MIDITrackProp : RawRepresentable {
         }
     }
 
-    public var rawValue : UInt32 {
+    public var rawValue: UInt32 {
         switch self {
         case .loopInfo: return kSequenceTrackProperty_LoopInfo
         case .offsetTime: return kSequenceTrackProperty_OffsetTime

@@ -5,7 +5,7 @@
 //  Created by Adam Nemecek on 2/7/18.
 //
 
-public protocol EventType : Comparable, Hashable {
+public protocol EventType: Comparable, Hashable {
     associatedtype Timestamp: Comparable & Hashable
     var timestamp: Timestamp { get }
 }

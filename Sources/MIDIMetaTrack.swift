@@ -7,7 +7,7 @@
 
 import AVFoundation
 
-public final class MIDIMetaTrack<Element : MIDIMetaEventType>: Sequence, Equatable, Hashable {
+public final class MIDIMetaTrack<Element: MIDIMetaEventType>: Sequence, Equatable, Hashable {
     private let sequence: MIDISequence
 
     internal init(sequence: MIDISequence) {

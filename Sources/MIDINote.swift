@@ -88,7 +88,7 @@ extension String {
 }
 
 //extension UnsafeMutablePointer where Pointee == MIDIMetaEvent {
-//    init<T : MIDIMetaEventType>(type: T, string: String) {
+//    init<T: MIDIMetaEventType>(type: T, string: String) {
 //        let capacity = MemoryLayout<MIDIMetaEvent>.size + string.count
 //        self = .allocate(capacity: capacity)
 //        pointee.metaEventType = T.byte.rawValue
