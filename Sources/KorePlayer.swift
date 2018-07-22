@@ -7,11 +7,6 @@
 
 import AVFoundation
 
-private class MIDIPlayer: AVMIDIPlayer {
-
-}
-
-@available(OSX 10.11, *)
 internal class KorePlayer {
     private enum Player {
         case bank(AVMIDIPlayer)
@@ -19,14 +14,19 @@ internal class KorePlayer {
     }
 
     private var player: Player
+    internal let sequence: MIDISequence
 
     public init?(sequence: MIDISequence, bank: URL) {
-//        self.player = try! bank(MIDIPlayer(sequence: sequence))
+        self.sequence = sequence
+//        self.player = .bank
+//        self.player = try! bank(MIDIPlayer    (sequence: sequence))
         fatalError()
     }
 
     public init?(sequence: MIDISequence, engine: AVAudioEngine) {
+        self.sequence = sequence
         fatalError()
+//        player = .engine(engine)
     }
 
     func prepareToPlay() {

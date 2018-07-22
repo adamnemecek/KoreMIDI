@@ -25,10 +25,10 @@ public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, C
     private var _global: MIDIGlobalTrack? = nil
 
 
-/*
-     internal var player: KorePlayer?
 
- */
+    internal var player: KorePlayer?
+
+
 
     ///
     ///

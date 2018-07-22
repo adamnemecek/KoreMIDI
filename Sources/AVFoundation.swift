@@ -94,7 +94,7 @@ extension UnsafeRawBufferPointer: Equatable {
     }
 }
 
-extension UnsafePointer  {
+extension UnsafePointer {
     @inline(__always)
     fileprivate init(data: MIDIEventRawBuffer) {
         self = data.data.bindMemory(to: Pointee.self).baseAddress!

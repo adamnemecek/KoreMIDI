@@ -55,11 +55,11 @@ public struct MIDIEventRawBuffer: CustomStringConvertible {
     public func insert(to track: MIDITrack, at timestamp: AVMusicTimeStamp) {
 //        switch type {
 //        case .note:
-//            OSAssert(MusicTrackNewMIDINoteEvent(track.ref, timestamp, .init(data: self)))
+//            OSAssert(MusicTrackNewMIDINoteEvent(track.ref, timestamp, data.baseAddress!.assumingMemoryBound(to: MIDINoteMessage.self)))
 //        case .channel:
-//            OSAssert(MusicTrackNewMIDIChannelEvent(track.ref, timestamp, .init(data: self)))
+//            OSAssert(MusicTrackNewMIDIChannelEvent(track.ref, timestamp, data.baseAddress!.assumingMemoryBound(to: MIDIChannelMessage.self)))
 //        case .rawData:
-//            OSAssert(MusicTrackNewMIDIRawDataEvent(track.ref, timestamp, .init(data: self)))
+//            OSAssert(MusicTrackNewMIDIRawDataEvent(track.ref, timestamp, data.baseAddress!.assumingMemoryBound(to: MIDIRawData.self)))
 //        case .extendedNote:
 //            OSAssert(MusicTrackNewExtendedNoteEvent(track.ref, timestamp, .init(data: self)))
 //        case .parameter:
