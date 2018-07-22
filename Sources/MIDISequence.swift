@@ -24,7 +24,7 @@ public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, C
 
     private lazy var global = MIDIGlobalTrack(sequence: self)
 
-    internal var player: KorePlayer!
+
 
     ///
     ///
@@ -144,6 +144,10 @@ public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, C
         return i - 1
     }
 
+    public func index(of element: Element) -> Index? {
+        fatalError()
+    }
+
     public func append(_ newElement: Element) {
         content.append(newElement)
     }
@@ -235,7 +239,6 @@ func MusicSequenceGetTrackCount(ref: MusicSequence) -> Int {
     OSAssert(MusicSequenceGetTrackCount(ref, &c))
     return Int(c)
 }
-
 
 extension RangeReplaceableCollection where Element == MIDITrack {
     fileprivate init(parent: MIDISequence) {

@@ -41,6 +41,12 @@ public class MIDITrack: Sequence, Equatable, Comparable, Hashable, CustomStringC
         return lhs === rhs || lhs.elementsEqual(rhs)
     }
 
+    public var number: Int? {
+        return sequence.index(of: self)
+    }
+
+//    public var channel
+
     public static func <(lhs: MIDITrack, rhs: MIDITrack) -> Bool {
         return lhs.ref.hashValue < rhs.ref.hashValue
     }
@@ -71,10 +77,10 @@ public class MIDITrack: Sequence, Equatable, Comparable, Hashable, CustomStringC
         //        self.instrument = InstrumentName(ref: self.ref)
     }
 
-    internal init(sequence: MIDISequence, no: Int) {
+    internal init(sequence: MIDISequence, no: Int, uuid: UUID? = nil) {
         self.sequence = sequence
         self.ref = MusicSequenceGetTrack(ref: sequence.ref, at: no)
-        self.uuid = UUID()
+        self.uuid = uuid ?? UUID()
         self.isDrum = _isDrum()
         sequence.append(self)
 //        self.instrument = InstrumentName(ref: self.ref)
@@ -83,7 +89,6 @@ public class MIDITrack: Sequence, Equatable, Comparable, Hashable, CustomStringC
     public final var timerange: Range<Timestamp> {
         return start..<end
     }
-
 
     private func _isDrum() -> Bool {
         return all { $0.isDrum }

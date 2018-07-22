@@ -17,16 +17,17 @@ internal class KorePlayer {
     internal let sequence: MIDISequence
 
     public init?(sequence: MIDISequence, bank: URL) {
+        guard let player = try? AVMIDIPlayer(data: sequence.export(), soundBankURL: bank) else {
+            return nil
+        }
         self.sequence = sequence
-//        self.player = .bank
-//        self.player = try! bank(MIDIPlayer    (sequence: sequence))
-        fatalError()
+        self.player = .bank(player)
     }
 
     public init?(sequence: MIDISequence, engine: AVAudioEngine) {
+        let sequencer = AVAudioSequencer(audioEngine: engine)
         self.sequence = sequence
-        fatalError()
-//        player = .engine(engine)
+        self.player = .engine(sequencer)
     }
 
     func prepareToPlay() {
