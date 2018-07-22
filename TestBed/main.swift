@@ -44,7 +44,6 @@ struct NoteEvent: CustomStringConvertible {
     }
 }
 func test() {
-    Swift.print("func notes() -> [NoteEvent] {\n var ret: [NoteEvent] = []\n")
     let path = "/Users/adamnemecek/Code/hypersphere/ngrid.io/_final/sandstorm.5track.mid"
     //"/Users/adamnemecek/midi/darude-sandstorm.mid"
     let url = URL(fileURLWithPath: path)
@@ -116,11 +115,8 @@ func custom() {
     let url = URL(fileURLWithPath: "/Users/adamnemecek/midi/darude-sandstorm.mid")
 //    let seq = MIDISequenceImport(url)
 //    let p = MIDIPlayer(sequence: seq)
-    let q = try! AVMIDIPlayer(contentsOf: url, soundBankURL: nil)
+    
     q.prepareToPlay()
-    q.play {
-        print("dne")
-    }
 
     usleep(500 * 1000000)
     print(track)

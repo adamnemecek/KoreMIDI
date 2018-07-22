@@ -81,7 +81,7 @@ extension MIDINoteMessage {
 
 extension String {
     @inline(__always)
-    fileprivate func getString(ptr: UnsafeRawBufferPointer) {
+    fileprivate init(ptr: UnsafeRawBufferPointer) {
         fatalError()
         //getCString(&ptr.bindMemory(to: [CChar].self), maxLength: ptr.count, encoding: <#T##String.Encoding#>)
     }

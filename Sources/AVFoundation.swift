@@ -255,11 +255,11 @@ extension MusicEventUserData: Hashable, CustomStringConvertible, MIDIEventConver
 //    }
 //}
 
-extension UnsafeMutablePointer where Pointee: MIDITrackEvent {
-    mutating func insert(to ref: MIDITrack, at timestamp: Double) {
-        pointee.insert(to: ref, at: timestamp)
-    }
-}
+//extension UnsafeMutablePointer where Pointee: MIDITrackEvent {
+//    mutating func insert(to ref: MIDITrack, at timestamp: Double) {
+//        pointee.insert(to: ref, at: timestamp)
+//    }
+//}
 
 extension UnsafeMutablePointer {
     @inline(__always)

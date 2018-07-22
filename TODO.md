@@ -10,3 +10,4 @@
 * AVAudioSequencer.load
 * musicplayer
 * AVMIDIPlayer
+* AVMusicTrack
