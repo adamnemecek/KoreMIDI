@@ -2,229 +2,187 @@
 //  MIDIPlayer.swift
 //  KoreMIDI
 //
-//  Created by Adam Nemecek on 4/7/17.
-//  Copyright © 2017 Adam Nemecek. All rights reserved.
+//  Created by Adam Nemecek on 6/5/18.
 //
 
 import AVFoundation
 
-//struct MIDIBank {
-//    let path: String
-//}
-
-//enum Status {
-//    case
-//}
-
-extension AVMIDIPlayer {
-    convenience init(sequence: MIDISequence, soundBankURL: URL? = nil) throws {
-        try self.init(data: sequence.export(), soundBankURL: soundBankURL)
+internal class MIDIPlayer {
+    private enum Player {
+        case bank(AVMIDIPlayer)
+        case engine(AVAudioSequencer)
     }
-}
 
-public class MIDISoundbankPlayer {
-    private var player: AVMIDIPlayer
-    private let bank: URL?
+    private var player: Player
+    internal let sequence: MIDISequence
 
-    public var sequence: MIDISequence {
-        didSet {
-            guard oldValue != sequence else { return }
-            reload()
+    public init?(sequence: MIDISequence, bank: URL) {
+        guard let player = try? AVMIDIPlayer(data: sequence.export(), soundBankURL: bank) else {
+            return nil
         }
-    }
-
-    public init?(sequence: MIDISequence, bank: URL? = nil) {
-        guard let player = try? AVMIDIPlayer(sequence: sequence,
-                                             soundBankURL: bank) else { return nil }
-        self.player = player
         self.sequence = sequence
-        self.bank = bank
+        self.player = .bank(player)
     }
 
-    private func reload() {
-        player = try! AVMIDIPlayer(sequence: sequence, soundBankURL: bank)
+    public init?(sequence: MIDISequence, engine: AVAudioEngine) {
+        let sequencer = AVAudioSequencer(audioEngine: engine)
+        self.sequence = sequence
+        self.player = .engine(sequencer)
     }
 
-    public func play(_ callback: @escaping () -> () = {}) {
-        player.play(callback)
-    }
-
-    public func preroll() {
-        player.prepareToPlay()
-    }
-
-    public func stop() {
-        player.stop()
-    }
-
-    public var rate: Float {
-        get {
-            return player.rate
-        }
-        set {
-            player.rate = newValue
+    func prepareToPlay() {
+        switch player {
+        case let .bank(b):
+            b.prepareToPlay()
+        case let .engine(e):
+            e.prepareToPlay()
         }
     }
 
-    public var duration: TimeInterval {
+//    func reload() {
+//        switch player {
+//        case let .bank(b):
+//            self.player
+//        case let .engine(e):
+//            break
+//
+//        }
+//    }
+
+    func stop() {
+        switch player {
+        case let .bank(b):
+            b.stop()
+        case let .engine(e):
+            e.stop()
+        }
+    }
+
+    func play() {
+        switch player {
+        case let .bank(b):
+            b.play()
+        case let .engine(e):
+            try! e.start()
+        }
+    }
+
+    var duration: TimeInterval {
         fatalError()
-    }
-
-    public var isPlaying: Bool {
-        get {
-            return player.isPlaying
-        }
-//        set {
-//            player.isPlaying = newValue
+//        switch player {
+//        case let .bank(b):
+//            return b.duration
+//        case let .engine(e):
+//            return e.du
 //        }
     }
 
-    public var currentPosition: TimeInterval {
-        get {
-            return player.currentPosition
+    var isPlaying: Bool {
+        switch player {
+        case let .bank(b):
+            return b.isPlaying
+        case let .engine(e):
+            return e.isPlaying
         }
-        set {
-            player.currentPosition = newValue
+    }
+
+    var rate: Float {
+        switch player {
+        case let .bank(b):
+            return b.rate
+        case let .engine(e):
+            return e.rate
+        }
+    }
+
+    ///
+    /// Current position inseconds
+    ///
+    var currentPositionInSeconds: TimeInterval {
+        switch player {
+        case let .bank(b):
+            return b.currentPosition
+        case let .engine(e):
+            return e.currentPositionInSeconds
         }
     }
 }
 
-public class Player {
-    private let content: MusicPlayer
+/*
 
-    public var sequence: MIDISequence {
-        didSet {
-            guard oldValue != sequence else { return }
-            reload()
-        }
-    }
-
-    init(sequence: MIDISequence) {
-        content = MIDIPlayerCreate()
-        self.sequence = sequence
-        reload() // todo do i need this?
-    }
-
-    private func reload() {
-        OSAssert(MusicPlayerSetSequence(content, sequence.ref))
-    }
-
-    deinit {
-        OSAssert(DisposeMusicPlayer(content))
-    }
-
-    public func play() {
-        OSAssert(MusicPlayerStart(content))
-    }
-
-    public func stop() {
-        OSAssert(MusicPlayerStop(content))
-    }
-
-    func preroll() {
-        OSAssert(MusicPlayerPreroll(content))
-    }
-
-    func beats(for hosttime: UInt64) -> AVMusicTimeStamp {
-        var ret: MusicTimeStamp = 0
-        OSAssert(MusicPlayerGetBeatsForHostTime(content, hosttime, &ret))
-        return ret
-    }
-
-    func hosttime(for beats: AVMusicTimeStamp) -> UInt64 {
-        var ret: UInt64 = 0
-        OSAssert(MusicPlayerGetHostTimeForBeats(content, beats, &ret))
-        return ret
-    }
-
-    public var rate: Float {
-        get {
-            var rate: Float64 = 0
-            OSAssert(MusicPlayerGetPlayRateScalar(content, &rate))
-            return Float(rate)
-        }
-        set {
-            OSAssert(MusicPlayerSetPlayRateScalar(content, Float64(newValue)))
-        }
-    }
-
-    public var isPlaying: Bool {
-        var ret: DarwinBoolean = false
-        OSAssert(MusicPlayerIsPlaying(content, &ret))
-        return Bool(ret)
-    }
-
-    public var currentPosition: TimeInterval {
-        get {
-            var ret: MusicTimeStamp = 0
-            OSAssert(MusicPlayerGetTime(content, &ret))
-            return ret
-        }
-        set {
-            OSAssert(MusicPlayerSetTime(content, newValue))
-        }
-    }
-}
-
-@inline(__always) fileprivate
-func MIDIPlayerCreate() -> MusicPlayer {
-    var ref: MusicPlayer? = nil
-    OSAssert(NewMusicPlayer(&ref))
-    return ref!
-}
+ @available(OSX 10.10, *)
+ open class AVMIDIPlayer: NSObject {
 
 
-//@inline(__always) fileprivate
-//func MIDIPlayerIsPlaying(ref: MusicPlayer) -> Bool {
-//    var ret: DarwinBoolean = false
-//    OSAssert(MusicPlayerIsPlaying(ref, &ret))
-//    return Bool(ret)
-//
-//}
+ /*!    @method initWithContentsOfURL:soundBankURL:error:
+ @abstract Create a player with the contents of the file specified by the URL.
+ @discussion
+ 'bankURL' should contain the path to a SoundFont2 or DLS bank to be used
+ by the MIDI synthesizer.  For OSX it can be set to nil for the default,
+ but for iOS it must always refer to a valid bank file.
+ */
+ public init(contentsOf inURL: URL, soundBankURL bankURL: URL?) throws
 
 
-//class MIDIPlayer2: AVMIDIPlayer {
-//    init(sequence: MIDISequence, bank: URL? = nil) {
-//
-//    }
-//}
+ /*!    @method initWithData:soundBankURL:error:
+ @abstract Create a player with the contents of the data object
+ @discussion
+ 'bankURL' should contain the path to a SoundFont2 or DLS bank to be used
+ by the MIDI synthesizer.  For OSX it can be set to nil for the default,
+ but for iOS it must always refer to a valid bank file.
+ */
+ public init(data: Data, soundBankURL bankURL: URL?) throws
 
 
-//class MIDIPlayer2 {
-//    private let player: MusicPlayer
-//    var sequence: MIDISequence {
-//        didSet {
-//
-//        }
-//    }
-//
-//    var time: MusicTimeStamp {
-//        get {
-//            fatalError()
-//        }
-//        set {
-//            fatalError()
-//        }
-//    }
-//
-//    private init() {
-//        player = MIDIPlayerCreate()
-//        fatalError()
-//    }
-//
-//    static let shared = MIDIPlayer2()
-//
-//    deinit {
-//        DisposeMusicPlayer(player)
-//    }
-////    init(sequence: MIDISequence) {
-////
-////    }
-//
-//    public var isPlaying: Bool {
-//        fatalError()
-//    }
-//
-//
-//}
+ /* transport control */
 
+ /*! @method prepareToPlay
+ @abstract Get ready to play the sequence by prerolling all events
+ @discussion
+ Happens automatically on play if it has not already been called, but may produce a delay in startup.
+ */
+ open func prepareToPlay()
+
+
+ /*! @method play:
+ @abstract Play the sequence.
+ */
+ open func play(_ completionHandler: AVFoundation.AVMIDIPlayerCompletionHandler? = nil)
+
+
+ /*! @method stop
+ @abstract Stop playing the sequence.
+ */
+ open func stop()
+
+
+ /* properties */
+
+ /*! @property duration
+ @abstract The length of the currently loaded file in seconds.
+ */
+ open var duration: TimeInterval { get }
+
+
+ /*! @property playing
+ @abstract Indicates whether or not the player is playing
+ */
+ open var isPlaying: Bool { get }
+
+
+ /*! @property rate
+ @abstract The playback rate of the player
+ @discussion
+ 1.0 is normal playback rate.  Rate must be > 0.0.
+ */
+ open var rate: Float
+
+
+ /*! @property currentPosition
+ @abstract The current playback position in seconds
+ @discussion
+ Setting this positions the player to the specified time.  No range checking on the time value is done.
+ This can be set while the player is playing, in which case playback will resume at the new time.
+ */
+ open var currentPosition: TimeInterval
+ }*/
