@@ -20,31 +20,20 @@ public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, C
     public typealias Timestamp = MIDITimestamp
 
     internal let ref: MusicSequence
-    private var content: [MIDITrack] = []
+    private var content: ContiguousArray<MIDITrack> = []
 
-    private var _global: MIDIGlobalTrack? = nil
+    private lazy var global = MIDIGlobalTrack(sequence: self)
 
-
-
-    internal var player: KorePlayer?
-
-
+    internal var player: KorePlayer!
 
     ///
     ///
     ///
-    public var global: MIDIGlobalTrack {
-        if let t = _global {
-            return t
-        }
-
-        _global = MIDIGlobalTrack(sequence: self)
-        return _global!
-    }
 
     public init() {
         self.ref = MIDISequenceCreate()
-        self.content = Array(parent: self)
+
+        self.content = .init(parent: self)
     }
 
     public init<S: Sequence>(seq: S) where S.Element == Element {
@@ -55,12 +44,12 @@ public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, C
 
     public init(import url: URL) {
         self.ref = MIDISequenceImport(url)
-        self.content = Array(parent: self)
+        self.content = .init(parent: self)
     }
 
     public init(import data: Data) {
         self.ref = MIDISequenceImport(data)
-        self.content = Array(parent: self)
+        self.content = .init(parent: self)
     }
 
     public func copy() -> MIDISequence {
@@ -248,12 +237,12 @@ func MusicSequenceGetTrackCount(ref: MusicSequence) -> Int {
 }
 
 
-extension Array where Element == MIDITrack {
+extension RangeReplaceableCollection where Element == MIDITrack {
     fileprivate init(parent: MIDISequence) {
         let count = MusicSequenceGetTrackCount(ref: parent.ref)
-        self = (0..<count).map {
+        self.init( (0..<count).map {
             MIDITrack(sequence: parent, no: $0)
-        }
+        })
     }
 }
 

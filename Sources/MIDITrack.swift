@@ -47,6 +47,7 @@ public class MIDITrack: Sequence, Equatable, Comparable, Hashable, CustomStringC
 
     private struct Info {
         let isDrum: Bool
+        let instrument: String
 
         init(ref: MusicTrack) {
             fatalError()

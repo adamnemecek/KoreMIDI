@@ -101,10 +101,6 @@ public struct MIDILyricEvent: Equatable, Hashable, MIDITextEventType, MIDIMetaEv
 }
 
 public struct MIDIMarkerEvent: Equatable, Hashable, MIDITextEventType, MIDIMetaEventType {
-    public static func ==(lhs: MIDIMarkerEvent, rhs: MIDIMarkerEvent) -> Bool {
-        fatalError()
-    }
-
     public static var byte: MIDIMetaEvent.Subtype {
         return .markerText
     }
