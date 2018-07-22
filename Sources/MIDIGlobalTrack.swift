@@ -47,7 +47,6 @@ public struct TempoEvent: CustomStringConvertible, Equatable, Comparable, Hashab
     }
 }
 
-
 public class MIDIGlobalTrack: Hashable, Sequence, MIDITrackType {
     public typealias Timestamp = MIDITimestamp
     public typealias Element = TempoEvent
@@ -79,10 +78,6 @@ public class MIDIGlobalTrack: Hashable, Sequence, MIDITrackType {
         //        self.instrument = InstrumentName(ref: self.ref)
     }
 
-    internal init(sequence: MIDISequence, no: Int) {
-        self.sequence = sequence
-        fatalError()
-    }
 
     public final var timerange: Range<Timestamp> {
         return start..<end
@@ -117,7 +112,7 @@ public class MIDIGlobalTrack: Hashable, Sequence, MIDITrackType {
 
     public final func makeIterator() -> AnyIterator<Element> { // MIDIIterator {
         fatalError()
-//        let i = MIDIEventRawBufferIterator(self)
+//        let i = MIDIRawEventIterator(self)
 //
 //        return AnyIterator {
 //            while let n = i.next() {

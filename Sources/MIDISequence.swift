@@ -1,5 +1,5 @@
 //
-//  MIDISequenceImpl.swift
+//  MIDISequence.swift
 //  KoreMIDI
 //
 //  Created by Adam Nemecek on 4/7/17.
@@ -22,23 +22,24 @@ public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, C
     internal let ref: MusicSequence
     private var content: [MIDITrack] = []
 
-    private var _tempo: MIDIGlobalTrack? = nil
+    private var _global: MIDIGlobalTrack? = nil
 
 
-/*  internal var player: KorePlayer?
-
-     
-
+/*
+     internal var player: KorePlayer?
 
  */
 
-    public var tempo: MIDIGlobalTrack {
-        if let t = _tempo {
+    ///
+    ///
+    ///
+    public var global: MIDIGlobalTrack {
+        if let t = _global {
             return t
         }
 
-        _tempo = MIDIGlobalTrack(sequence: self)
-        return _tempo!
+        _global = MIDIGlobalTrack(sequence: self)
+        return _global!
     }
 
     public init() {

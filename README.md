@@ -2,6 +2,8 @@
 
 This project as a wrapper around the AudioToolbox framework and tries to make it look like a 21st century framework.  
 
+https://warrenmoore.net/understanding-cmtime
+
 ## Documentation
 ### MIDI File Docs
 * http://www.onicos.com/staff/iz/formats/midi-event.html
@@ -21,7 +23,7 @@ let tempo = sequence.tempo
 
 
 class VS: NSViewController {
-    
+    OO
     func mouseDown() {
         
     }
