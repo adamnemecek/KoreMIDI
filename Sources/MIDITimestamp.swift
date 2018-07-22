@@ -7,19 +7,16 @@
 //
 
 import Foundation
-import AudioToolbox.MusicPlayer
+import AVFoundation
 
-protocol DefaultConstructible {
-    init()
-}
 
-public struct MIDITimestamp : Comparable, Hashable, Strideable, CustomStringConvertible, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+public struct MIDITimestamp: Comparable, Hashable, Strideable, CustomStringConvertible, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
 
-    public typealias Stride = MusicTimeStamp
-    public typealias LiteralType = MusicTimeStamp
+    public typealias Stride = AVMusicTimeStamp
+    public typealias LiteralType = AVMusicTimeStamp
 
     /// note that beats are independent of tempo changes
-    public let beats : MusicTimeStamp
+    public let beats: AVMusicTimeStamp
 
     public init() {
         self = 0
@@ -29,12 +26,16 @@ public struct MIDITimestamp : Comparable, Hashable, Strideable, CustomStringConv
         self.beats = value
     }
 
+    public init(float: Float32) {
+        self.beats = AVMusicTimeStamp(float)
+    }
+
     public init(beats: LiteralType) {
         self.beats = beats
     }
 
     public init(integerLiteral value: Int) {
-        self.beats = MusicTimeStamp(value)
+        self.beats = AVMusicTimeStamp(value)
     }
 
     public var description: String {

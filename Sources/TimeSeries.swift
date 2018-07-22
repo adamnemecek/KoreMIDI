@@ -9,29 +9,36 @@
 import Foundation
 
 public protocol Temporal {
-    associatedtype Timestamp : Comparable, Strideable
+    associatedtype Timestamp: Comparable, Strideable
 }
 
-public protocol TimeSeries : Sequence, Temporal {
+public protocol TimeSeries: Sequence, Temporal {
+    var start: Timestamp { get }
+    var end: Timestamp { get }
 
-    
-    var startTime : Timestamp { get }
-    var endTime : Timestamp { get }
-
-    var duration : Timestamp.Stride { get }
-    
-    func timestamp(after t: Timestamp) -> Timestamp
-    
+    var duration: Timestamp.Stride { get }
+//    func timestamp(after t: Timestamp) -> Timestamp
     //    subscript(timerange: Range<Timestamp>) -> SubSequence { get }
 }
 
-protocol MutableTimeSeries : TimeSeries {
-    
+extension TimeSeries {
+    var timerange: Range<Timestamp> {
+        return start..<end
+    }
+}
+
+protocol MutableTimeSeries: TimeSeries {
     subscript(timerange: Range<Timestamp>) -> SubSequence { get set }
 }
 
 extension TimeSeries {
     var duration: Timestamp.Stride {
-        return startTime.distance(to: endTime)
+        return start.distance(to: end)
     }
 }
+//
+//
+//
+//struct Cursor {
+//
+//}

@@ -6,134 +6,134 @@
 //  Copyright © 2017 Adam Nemecek. All rights reserved.
 //
 
-import AudioToolbox
+import AVFoundation
 
 public final class Clock: Equatable {
-    
+
     public enum Status { case stopped, running }
-    
-//    public struct Timestamp : Comparable, Strideable, CustomStringConvertible, Hashable {
-//        public typealias Stride = CAClockSeconds.Stride
-//        
-//        fileprivate let parent: Clock
-//        private let time : CAClockTime
-//        
-//        public var seconds: CAClockSeconds {
-//            fatalError()
-//        }
-//        
-//        internal init(parent: Clock, time: CAClockTime) {
-//            self.parent = parent
-//            self.time = time
-//        }
-//        
-//        public var hashValue : Int {
-//            return seconds.hashValue
-//        }
-//        
-//        public func distance(to other: Timestamp) -> Stride {
-////            return time.distance(to: other.time)
-//            fatalError()
-//        }
-//        
-//        public var description: String {
-//            return "\(seconds) seconds"
-//        }
-//        
-//        public func advanced(by n: Stride) -> Timestamp {
-////            return Timestamp(parent: parent, seconds: seconds.advanced(by: n))
-//            fatalError()
-//        }
-//        
-//        public static func ==(lhs: Timestamp, rhs: Timestamp) -> Bool {
-////            return lhs.seconds == rhs.seconds
-//            fatalError()
-//        }
-//        
-//        public static func <(lhs: Timestamp, rhs: Timestamp) -> Bool {
-////            return lhs.seconds < rhs.seconds
-//            fatalError()
-//        }
-//        
-//        var hostTime : Float64 {
-//            var `in` = time
-////            CAClockTranslateTime(ref, &time, <#T##inOutputTimeFormat: CAClockTimeFormat##CAClockTimeFormat#>, <#T##outTime: UnsafeMutablePointer<CAClockTime>##UnsafeMutablePointer<CAClockTime>#>)
-////            time.time
-//            fatalError()
-//            //            return parent.translate(self, fmt: .hostTime)
-//            
-//        }
-//        
-//        var samples : Float64 {
-//            fatalError()
-//            //            return parent.translate(self, fmt: .samples)
-//        }
-//        
-//        var beats : Float64 {
-//            fatalError()
-//            //            return parent.translate(self, fmt: .beats)
-//        }
-//        
-////        var seconds // relative position on media timeline
-//        
-//        var smpteSeconds : Float64 {
-//            fatalError()
-////            return parent.translate(self, fmt: .smpteSeconds)
-//        }
-//        
-//        var smpteTime : SMPTETime {
-////            return parent.translate(self, fmt: .smpteTime)
-//            fatalError()
-//        }
-//        
-//        var absoluteSeconds : Float64 {
-//            fatalError()
-//        }
-//    }
-    
+
+    //    public struct Timestamp: Comparable, Strideable, CustomStringConvertible, Hashable {
+    //        public typealias Stride = CAClockSeconds.Stride
+    //
+    //        fileprivate let parent: Clock
+    //        private let time: CAClockTime
+    //
+    //        public var seconds: CAClockSeconds {
+    //            fatalError()
+    //        }
+    //
+    //        internal init(parent: Clock, time: CAClockTime) {
+    //            self.parent = parent
+    //            self.time = time
+    //        }
+    //
+    //        public var hashValue: Int {
+    //            return seconds.hashValue
+    //        }
+    //
+    //        public func distance(to other: Timestamp) -> Stride {
+    ////            return time.distance(to: other.time)
+    //            fatalError()
+    //        }
+    //
+    //        public var description: String {
+    //            return "\(seconds) seconds"
+    //        }
+    //
+    //        public func advanced(by n: Stride) -> Timestamp {
+    ////            return Timestamp(parent: parent, seconds: seconds.advanced(by: n))
+    //            fatalError()
+    //        }
+    //
+    //        public static func ==(lhs: Timestamp, rhs: Timestamp) -> Bool {
+    ////            return lhs.seconds == rhs.seconds
+    //            fatalError()
+    //        }
+    //
+    //        public static func <(lhs: Timestamp, rhs: Timestamp) -> Bool {
+    ////            return lhs.seconds < rhs.seconds
+    //            fatalError()
+    //        }
+    //
+    //        var hostTime: Float64 {
+    //            var `in` = time
+    ////            CAClockTranslateTime(ref, &time, <#T##inOutputTimeFormat: CAClockTimeFormat##CAClockTimeFormat#>, <#T##outTime: UnsafeMutablePointer<CAClockTime>##UnsafeMutablePointer<CAClockTime>#>)
+    ////            time.time
+    //            fatalError()
+    //            //            return parent.translate(self, fmt: .hostTime)
+    //
+    //        }
+    //
+    //        var samples: Float64 {
+    //            fatalError()
+    //            //            return parent.translate(self, fmt: .samples)
+    //        }
+    //
+    //        var beats: Float64 {
+    //            fatalError()
+    //            //            return parent.translate(self, fmt: .beats)
+    //        }
+    //
+    ////        var seconds // relative position on media timeline
+    //
+    //        var smpteSeconds: Float64 {
+    //            fatalError()
+    ////             return parent.translate(self, fmt: .smpteSeconds)
+    //        }
+    //
+    //        var smpteTime: SMPTETime {
+    ////            return parent.translate(self, fmt: .smpteTime)
+    //            fatalError()
+    //        }
+    //
+    //        var absoluteSeconds: Float64 {
+    //            fatalError()
+    //        }
+    //    }
+
     fileprivate let ref: CAClockRef
-    
-    internal init(sequence : MusicSequence) {
+
+    internal init(sequence: MusicSequence) {
         var r: CAClockRef? = nil
         CAClockNew(0, &r)
         ref = r!
         armed = false
         status = .stopped
     }
-    
+
     deinit {
         CAClockDispose(ref)
     }
-    
+
     private func get<T>(prop: CAClockPropertyID) -> T {
         var ptr = UnsafeMutablePointer<T>.allocate(capacity: 1)
-        var size : UInt32 = 0
+        var size: UInt32 = 0
         CAClockGetProperty(ref, prop, &size, ptr)
-        
+
         defer {
-            ptr.deallocate(capacity: 1)
+            ptr.deallocate()
         }
-        
+
         return ptr.pointee
     }
-    
+
     private func set<T>(prop: CAClockPropertyID, value: T) {
         var v = value
         CAClockSetProperty(ref, prop, UInt32(MemoryLayout<T>.size), &v)
     }
-    
-    public var playRate : Float64 {
+
+    public var playRate: Float64 {
         get {
             var f: Float64 = 0
-            CAClockGetPlayRate(ref, &f)
+            OSAssert(CAClockGetPlayRate(ref, &f))
             return f
         }
         set {
-            CAClockSetPlayRate(ref, newValue)
+            OSAssert(CAClockSetPlayRate(ref, newValue))
         }
     }
-    
-    public var internalTimebase : CAClockTimebase {
+
+    public var internalTimebase: CAClockTimebase {
         get {
             return get(prop: .internalTimebase)
         }
@@ -141,8 +141,8 @@ public final class Clock: Equatable {
             set(prop: .internalTimebase, value: newValue)
         }
     }
-    
-    public var timebaseSource : AudioDeviceID /* or AudioUit */ {
+
+    public var timebaseSource: AudioDeviceID /* or AudioUit */ {
         get {
             return get(prop: .timebaseSource)
         }
@@ -150,8 +150,8 @@ public final class Clock: Equatable {
             set(prop: .timebaseSource, value: newValue)
         }
     }
-    
-    public var syncMode : CAClockSyncMode {
+
+    public var syncMode: CAClockSyncMode {
         get {
             return get(prop: .syncMode)
         }
@@ -159,8 +159,8 @@ public final class Clock: Equatable {
             set(prop: .syncMode, value: newValue)
         }
     }
-    
-    public var syncSource : MIDIEndpointRef {
+
+    public var syncSource: MIDIEndpointRef {
         get {
             return get(prop: .syncSource)
         }
@@ -168,8 +168,8 @@ public final class Clock: Equatable {
             set(prop: .syncSource, value: newValue)
         }
     }
-    
-    public var smpteFormat :  CAClockSMPTEFormat {
+
+    public var smpteFormat:  CAClockSMPTEFormat {
         get {
             return get(prop: .smpteFormat)
         }
@@ -177,8 +177,8 @@ public final class Clock: Equatable {
             set(prop: .smpteFormat, value: newValue)
         }
     }
-    
-    public var smpteOffset : CAClockSeconds {
+
+    public var smpteOffset: CAClockSeconds {
         get {
             return get(prop: .smpteOffset)
         }
@@ -186,7 +186,7 @@ public final class Clock: Equatable {
             set(prop: .smpteOffset, value: newValue)
         }
     }
-    
+
     public var clockDestionations: [MIDIEndpointRef] {
         get {
             return get(prop: .midiClockDestinations)
@@ -195,8 +195,8 @@ public final class Clock: Equatable {
             set(prop: .midiClockDestinations, value: newValue)
         }
     }
-    
-    public var mtcDestinations : [MIDIEndpointRef] {
+
+    public var mtcDestinations: [MIDIEndpointRef] {
         get {
             return get(prop: .mtcDestinations)
         }
@@ -204,8 +204,8 @@ public final class Clock: Equatable {
             set(prop: .mtcDestinations, value: newValue)
         }
     }
-    
-    public var mtcFreewheelTime : CAClockSeconds {
+
+    public var mtcFreewheelTime: CAClockSeconds {
         get {
             return get(prop: .mtcFreewheelTime)
         }
@@ -213,8 +213,8 @@ public final class Clock: Equatable {
             set(prop: .mtcFreewheelTime, value: newValue)
         }
     }
-    
-    public var tempoMap : [CATempoMapEntry] {
+
+    public var tempoMap: [CATempoMapEntry] {
         get {
             return get(prop: .tempoMap)
         }
@@ -222,8 +222,8 @@ public final class Clock: Equatable {
             set(prop: .tempoMap, value: newValue)
         }
     }
-    
-    public var meterTrack : [CAMeterTrackEntry] {
+
+    public var meterTrack: [CAMeterTrackEntry] {
         get {
             return get(prop: .meterTrack)
         }
@@ -231,92 +231,92 @@ public final class Clock: Equatable {
             set(prop: .meterTrack, value: newValue)
         }
     }
-    
-    public var status : Status {
+
+    public var status: Status {
         didSet {
             guard oldValue != status else { return }
             switch status {
             case .running:
-                CAClockStart(ref)
+                OSAssert(CAClockStart(ref))
             case .stopped:
-                CAClockStop(ref)
+                OSAssert(CAClockStop(ref))
             }
         }
     }
-    
-    public var currentTempo : CAClockTempo {
+
+    public var currentTempo: CAClockTempo {
         get {
             var t = CAClockTempo()
-            CAClockGetCurrentTempo(ref, &t, nil)
+            OSAssert(CAClockGetCurrentTempo(ref, &t, nil))
             return t
         }
         set {
-            CAClockSetCurrentTempo(ref, newValue, nil)
+            OSAssert(CAClockSetCurrentTempo(ref, newValue, nil))
         }
     }
-    
-    public var currentTime : CAClockTime {
+
+    public var currentTime: CAClockTime {
         get {
             var time = CAClockTime()
-            CAClockGetCurrentTime(ref, .seconds, &time)
+            OSAssert(CAClockGetCurrentTime(ref, .seconds, &time))
             return time
         }
         set {
             var time = newValue
-            CAClockSetCurrentTime(ref, &time)
+            OSAssert(CAClockSetCurrentTime(ref, &time))
         }
     }
 
-//    private func translate(_ time: Timestamp, fmt: CAClockTimeFormat) -> Float64 {
-//        assert(self == time.parent)
-//        
-////        var `in` = CAClockTime(format: .seconds, reserved: 0, time: 0)
-//
-//        switch fmt {
-//        case .hostTime, .samples, .beats, .seconds, .smpteSeconds:
-//            var out = Float64()
-////            CAClockTranslateTime(ref, `in`, fmt, &out)
-////            return Timestamp(parent: time.parent, seconds: out)
-//
-//
-//        case .smpteTime:
-//            var out = SMPTETime()
-////            CAClockTranslateTime(ref, `in`, fmt, &out)
-//        default:
-//            break
-//        }
-//        
-//        return Timestamp(parent: time.parent, seconds: 0)
-//    }
-//    
-    public var startTime : CAClockTime {
+    //    private func translate(_ time: Timestamp, fmt: CAClockTimeFormat) -> Float64 {
+    //        assert(self == time.parent)
+    //
+    ////        var `in` = CAClockTime(format: .seconds, reserved: 0, time: 0)
+    //
+    //        switch fmt {
+    //        case .hostTime, .samples, .beats, .seconds, .smpteSeconds:
+    //            var out = Float64()
+    ////            CAClockTranslateTime(ref, `in`, fmt, &out)
+    ////            return Timestamp(parent: time.parent, seconds: out)
+    //
+    //
+    //        case .smpteTime:
+    //            var out = SMPTETime()
+    ////            CAClockTranslateTime(ref, `in`, fmt, &out)
+    //        default:
+    //            break
+    //        }
+    //
+    //        return Timestamp(parent: time.parent, seconds: 0)
+    //    }
+    //
+    public var start: CAClockTime {
         get {
             var time = CAClockTime()
-            CAClockGetStartTime(ref, .seconds, &time)
+            OSAssert(CAClockGetStartTime(ref, .seconds, &time))
             return time
         }
     }
-//    
-//    private var listeners : [NSObjectProtocol : (() -> ())] = [:]
-//    
-//    func observe(_ listener: () -> ()) -> NSObjectProtocol {
-//        let o = NSObject()
-//        listeners[o] = listener
-//        return o
-//    }
-    
-    public var armed : Bool {
+    //
+    //    private var listeners: [NSObjectProtocol: (() -> ())] = [:]
+    //
+    //    func observe(_ listener: () -> ()) -> NSObjectProtocol {
+    //        let o = NSObject()
+    //        listeners[o] = listener
+    //        return o
+    //    }
+
+    public var armed: Bool {
         didSet {
             guard oldValue != armed else { return }
             if armed {
-                CAClockArm(ref)
+                OSAssert(CAClockArm(ref))
             }
             else {
-                CAClockDisarm(ref)
+                OSAssert(CAClockDisarm(ref))
             }
         }
     }
-    
+
     public static func ==(lhs: Clock, rhs: Clock) -> Bool {
         return lhs.ref == rhs.ref
     }
@@ -326,7 +326,7 @@ extension CAClockBeats {
     init(clock: Clock, beatTime: CABarBeatTime) {
         var t = CABarBeatTime()
         var out = CAClockBeats()
-        CAClockBarBeatTimeToBeats(clock.ref, &t, &out)
+        OSAssert(CAClockBarBeatTimeToBeats(clock.ref, &t, &out))
         self = out
     }
 }

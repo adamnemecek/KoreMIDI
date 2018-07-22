@@ -6,20 +6,33 @@
 //
 //
 
-import Foundation
+//
+// PitchClass
+//
 
-public struct MIDIPitch : Comparable, Hashable, RawRepresentable, Strideable {
+public enum PitchClass: Int {
+    case c, cs, d, ds, e, f, fs, g, gs, a, `as`, b
+}
+
+public struct MIDIPitch: Comparable, Hashable, RawRepresentable, Strideable, CustomStringConvertible {
+
     public typealias Interval = Int
-    private static let range = 0..<UInt8.max
 
-    public let rawValue: UInt8
+    public static let min = MIDIPitch(0)
+    public static let max = MIDIPitch(127)
 
-    public init?(rawValue: UInt8) {
+    public let rawValue: Int8
+
+    public init?(rawValue: Int8) {
         self.rawValue = rawValue
     }
 
-    public static func +(lhs: MIDIPitch, rhs: Interval) -> MIDIPitch {
-        fatalError()
+    public init(_ value: Int8) {
+        self.rawValue = value
+    }
+
+    public static func +(lhs: MIDIPitch, rhs: Interval) -> MIDIPitch? {
+        return MIDIPitch(rawValue: lhs.rawValue + Int8(rhs))
     }
 
     public func advanced(by n: Interval) -> MIDIPitch {
@@ -38,7 +51,19 @@ public struct MIDIPitch : Comparable, Hashable, RawRepresentable, Strideable {
         return lhs.rawValue < rhs.rawValue
     }
 
+    public var octave: Int {
+        return Int(rawValue) / 12
+    }
+
+    public var pc: PitchClass {
+        return PitchClass(rawValue: Int(rawValue) % 12)!
+    }
+
     public var hashValue: Int {
         return rawValue.hashValue
+    }
+
+    public var description: String {
+        return "\(octave)\(pc)(\(rawValue))"
     }
 }

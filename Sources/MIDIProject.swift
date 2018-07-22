@@ -12,10 +12,10 @@ import AVFoundation
 
 
 
-class MIDIProject : NSDocument {
+class MIDIProject: NSDocument {
 
     let sequence: MIDISequence
-    let url : URL
+    let url: URL
 
     init(url: URL) {
         self.url = url
@@ -25,18 +25,18 @@ class MIDIProject : NSDocument {
 }
 
 //class MIDIProject {
-//    let sequence : MIDISequence
+//    let sequence: MIDISequence
 //}
 //
-//class MIDIProjectController : MIDIProject {
-//    
+//class MIDIProjectController: MIDIProject {
+//
 //}
 
 extension MIDIPacketList {
 
-    init<S: Sequence>(_ data: S) where S.Iterator.Element == UInt8 {
-        self.init(packet: MIDIPacket(Array(data)))
-    }
+//    init<S: Sequence>(_ data: S) where S.Element == UInt8 {
+//        self.init(packet: MIDIPacket(Array(data)))
+//    }
 
     init(packet: MIDIPacket) {
         self.init(numPackets: 1, packet: packet)
@@ -52,14 +52,14 @@ extension Data {
 
 
 extension MIDIPacket {
-    init(event: MIDIEvent<MIDITimestamp>) {
-        switch event {
-        case let .note(ts, e):
-            self.init(Data(encode: e), timestamp: MIDITimeStamp(ts.beats))
-        default:
-            fatalError()
-        }
-    }
+//    init(event: MIDIEvent) {
+//        switch event {
+//        case let .note(ts, e):
+//            self.init(Data(encode: e), timestamp: MIDITimeStamp(ts.beats))
+//        default:
+//            fatalError()
+//        }
+//    }
 
     init(_ data: [UInt8], timestamp: MIDITimeStamp = 0) {
         self.init()
@@ -75,7 +75,6 @@ extension MIDIPacket {
         self.timeStamp = timestamp
         self.length = UInt16(data.count)
 
-//        fatalError()
         _ = withUnsafeMutableBytes(of: &self.data) {
             memcpy($0.baseAddress, data.bytes, data.count)
         }

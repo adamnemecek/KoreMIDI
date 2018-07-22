@@ -6,28 +6,9 @@
 //  Copyright © 2017 Adam Nemecek. All rights reserved.
 //
 
-import AudioToolbox.MusicPlayer
-import Foundation
+import AVFoundation
 
-
-/// this struct is basically a better MIDIPacket
-extension MIDIPacket  {
-
-    typealias Timestamp = MIDITimeStamp
-    var count : Int {
-        return Int(length)
-    }
-
-    var status : MIDIStatus {
-        fatalError()
-    }
-}
-
-
-//typealias Temp = MIDIEvent2<ExtendedNoteOnEvent>
-
-
-public enum MIDIEventType : RawRepresentable, CustomStringConvertible {
+public enum MIDIEventType: MusicEventType, RawRepresentable, Hashable, CustomStringConvertible {
 
     // ExtendedControlEvent
     case extendedNote, extendedTempo, user, meta, note, channel, rawData, parameter, auPreset
@@ -47,35 +28,7 @@ public enum MIDIEventType : RawRepresentable, CustomStringConvertible {
         }
     }
 
-    public var description : String {
-        switch self {
-        case .extendedNote: return ".extendedNote"
-        case .extendedTempo: return ".extendedTempo"
-        case .user: return ".user"
-        case .meta: return ".meta"
-        case .note: return ".note"
-        case .channel: return ".channel"
-        case .rawData: return ".rawData"
-        case .parameter: return ".parameter"
-        case .auPreset: return ".auPreset"
-        }
-    }
-
-    init<T: TimestampType>(event: MIDIEvent<T>) {
-        switch event {
-        case .extendedNote: self = .extendedNote
-        case .extendedTempo: self = .extendedTempo
-        case .user: self = .user
-        case .meta: self = .meta
-        case .note: self = .note
-        case .channel: self = .channel
-        case .rawData: self = .rawData
-        case .parameter: self = .parameter
-        case .auPreset: self = .auPreset
-        }
-    }
-
-    public var rawValue : MusicEventType {
+    public var rawValue: MusicEventType {
         switch self {
         case .extendedNote: return kMusicEventType_ExtendedNote
         case .extendedTempo: return kMusicEventType_ExtendedTempo
@@ -86,6 +39,24 @@ public enum MIDIEventType : RawRepresentable, CustomStringConvertible {
         case .rawData: return kMusicEventType_MIDIRawData
         case .parameter: return kMusicEventType_Parameter
         case .auPreset: return kMusicEventType_AUPreset
+        }
+    }
+
+    public var hashValue: Int {
+        return rawValue.hashValue
+    }
+
+    public var description: String {
+        switch self {
+        case .extendedNote: return ".extendedNote"
+        case .extendedTempo: return ".extendedTempo"
+        case .user: return ".user"
+        case .meta: return ".meta"
+        case .note: return ".note"
+        case .channel: return ".channel"
+        case .rawData: return ".rawData"
+        case .parameter: return ".parameter"
+        case .auPreset: return ".auPreset"
         }
     }
 }

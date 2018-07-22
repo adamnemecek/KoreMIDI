@@ -2,51 +2,138 @@
 //  MIDISequence.swift
 //  KoreMIDI
 //
-//  Created by Adam Nemecek on 4/5/17.
-//  Copyright © 2017 Adam Nemecek. All rights reserved.
+//  Created by Adam Nemecek on 4/7/17.
 //
+//
+import Foundation
+import AVFoundation
 
-import AudioToolbox.MusicPlayer
+///
+/// MIDISequence
+///
 
-public struct MIDISequence : MutableCollection, Comparable, Hashable, RangeReplaceableCollection, RandomAccessCollection {
+public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, Codable {
 
     public typealias Index = Int
-
+    public typealias IndexDistance = Index
     public typealias Element = MIDITrack
-    public typealias Timestamp = Element.Timestamp
+    public typealias Timestamp = MIDITimestamp
+
+    internal let ref: MusicSequence
+    private var content: ContiguousArray<MIDITrack> = []
+
+    private lazy var global = MIDIGlobalTrack(sequence: self)
+
+
+
+    ///
+    ///
+    ///
 
     public init() {
-        _impl = Impl()
+        self.ref = MIDISequenceCreate()
+
+        self.content = .init(parent: self)
+    }
+
+    public init<S: Sequence>(seq: S) where S.Element == Element {
+        self.ref = MIDISequenceCreate()
+        fatalError()
+        //self.content = seq.map { Element(sequence: self) }
     }
 
     public init(import url: URL) {
-        _impl = Impl(import: url)
+        self.ref = MIDISequenceImport(url)
+        self.content = .init(parent: self)
     }
 
     public init(import data: Data) {
-        _impl = Impl(import: data)
+        self.ref = MIDISequenceImport(data)
+        self.content = .init(parent: self)
+    }
+
+    public func copy() -> MIDISequence {
+        return .init(import: export())
+    }
+
+    deinit {
+        content = []
+        OSAssert(DisposeMusicSequence(ref))
+    }
+
+    public static func ==(lhs: MIDISequence, rhs: MIDISequence) -> Bool {
+        return lhs === rhs || lhs.elementsEqual(rhs)
+    }
+
+    public static func ===(lhs: MIDISequence, rhs: MIDISequence) -> Bool {
+        return lhs.ref == rhs.ref
+    }
+
+    public static func <(lhs: MIDISequence, rhs: MIDISequence) -> Bool {
+        return lhs.hashValue < rhs.hashValue
+    }
+
+    public var hashValue: Int {
+        return ref.hashValue
+    }
+
+    public func export() -> Data {
+        return MIDISequenceExport(ref: ref)
+    }
+
+    public func export(to url: URL) {
+        MIDISequenceSave(ref: ref, to: url)
+    }
+
+    public var copyright: String? {
+        get {
+            fatalError()
+        }
+        set {
+            fatalError()
+        }
+    }
+
+    func tempo(at timestamp: MIDITimestamp) -> Float {
+        fatalError()
+    }
+
+    //        func _validate() {
+    //            guard _type != .beats else { return }
+    //            _type = .beats
+    //        }
+    //
+    //        private var _type: MusicSequenceType {
+    //            get {
+    //                return MusicSequenceGetSequenceType(ref: ref)
+    //            }
+    //            set {
+    //                assert(newValue == .beats)
+    //                guard _type != newValue else { return }
+    //                MusicSequenceSetSequenceType(ref, newValue)
+    //            }
+    //        }
+
+    //    func remove
+
+    public var start: Timestamp {
+        return self.min { $0.start }?.start ?? 0
+    }
+
+    public var end: Timestamp {
+        return self.max { $0.end }?.end ?? 0
     }
 
     public var startIndex: Index {
-        return _impl.startIndex
+        return 0
     }
 
-    public var endIndex : Index {
-        return _impl.endIndex
+    public var endIndex: Index {
+        return count
     }
 
-    public subscript(index: Index) -> Element {
-        get {
-            return MIDITrack(seq: _impl, no: index)
-        }
-        set {
-            _ensureUnique()
-            let value = self[index]
-        }
-    }
-
-    public func dict() -> NSDictionary {
-        return MusicSequenceGetInfoDictionary(_impl.ref) as NSDictionary
+    public var count: IndexDistance {
+        return content.count
     }
 
     public func index(after i: Index) -> Index {
@@ -57,76 +144,108 @@ public struct MIDISequence : MutableCollection, Comparable, Hashable, RangeRepla
         return i - 1
     }
 
-    public var startTime : Timestamp {
-        return _impl.startTime
-    }
-
-    public var endTime : Timestamp {
-        return _impl.endTime
-    }
-
-    mutating
-    public func replaceSubrange<C : Collection>(_ subrange: Range<Index>, with newElements: C) where C.Iterator.Element == Element {
-        _ensureUnique()
+    public func index(of element: Element) -> Index? {
         fatalError()
     }
 
-    //    public static func ===(lhs: MIDISequence, rhs: MIDISequence) -> Bool {
-    //        return lhs.elementsEqual(rhs) { $0 === $1 }
-    //    }
-
-    public static func ==(lhs: MIDISequence, rhs: MIDISequence) -> Bool {
-        return lhs._impl == rhs._impl
+    public func append(_ newElement: Element) {
+        content.append(newElement)
     }
 
-    public static func <(lhs: MIDISequence, rhs: MIDISequence) -> Bool {
-        return lhs._impl < rhs._impl
+    public func remove(_ element: Element) -> Element? {
+        return content.remove(element)
     }
 
-    public var hashValue: Int {
-        return _impl.hashValue
+    public subscript(index: Index) -> Element {
+        return content[index]
     }
 
-    public func export() -> Data {
-        return _impl.export()
+    private enum CodingKeys: String, CodingKey {
+        case content = "content"
     }
 
-    public func save(to url: URL) {
-        _impl.save(to: url)
+    public convenience init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let data = try container.decode(Data.self, forKey: .content)
+        self.init(import: data)
     }
 
-    //    public var tempoTrack : MIDITrackImpl {
-    //        return MIDITrackImpl(tempoTrack: self)
-    //
-    //    }
-
-    private mutating func _ensureUnique() {
-        guard isKnownUniquelyReferenced(&_impl) else { return }
-        _impl = _impl.copy()
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(export(), forKey: .content)
     }
-
-    internal init(impl: Impl) {
-        _impl = impl
-    }
-
-    internal private(set) var _impl: Impl
-
-    //    private func _registerCallback() {
-    //        _impl.register {
-    //            self._ensureUnique()
-    //
-    //        }
-    //    }
-
-    //    private static let _callback: MusicSequenceUserCallback = {
-    //        // adapted from r9midisequencer
-    //        ref, seq, mt, timestamp, userData, startTime, endTime in
-    //        let impl = unsafeBitCast(ref, to: MIDISequenceImpl.self)
-    //        assert(impl.ref == ref)
-    //    }
 }
 
-
-//struct MIDISequenceView<Event: MIDIEvent> : Sequence {
-//    
+//extension MIDISequence {
+//    func callack() {
+//        //MusicSequenceSetUserCallback
+//        /*
+//         typealias MusicSequenceUserCallback = (UnsafeMutableRawPointer?, MusicSequence, MusicTrack, MusicTimeStamp, UnsafePointer<MusicEventUserData>, MusicTimeStamp, MusicTimeStamp) -> Void
+//         */
+//        MusicSequenceSetUserCallback(ref, { (raw, seq, track, ts, data, ts0, ts1) in
+//
+//        }, nil)
+//    }
 //}
+
+
+///
+/// Sequences
+///
+
+@inline(__always) fileprivate
+func MIDISequenceCreate() -> MusicSequence {
+    var ref: MusicSequence? = nil
+    OSAssert(NewMusicSequence(&ref))
+    return ref!
+}
+
+@inline(__always) fileprivate
+func MIDISequenceImport(_ url: URL) -> MusicSequence {
+    let seq = MIDISequenceCreate()
+    OSAssert(MusicSequenceFileLoad(seq, url as CFURL, .midiType, .smf_ChannelsToTracks))
+    return seq
+}
+
+@inline(__always) fileprivate
+func MIDISequenceImport(_ data: Data) -> MusicSequence {
+    let seq = MIDISequenceCreate()
+    OSAssert(MusicSequenceFileLoadData(seq, data as CFData,
+                                       .midiType, .smf_ChannelsToTracks))
+    return seq
+}
+
+@inline(__always) fileprivate
+func MIDISequenceExport(ref: MusicSequence,
+                        resolution: Int16 = 960) -> Data {
+    var data: Unmanaged<CFData>? = nil
+    OSAssert(MusicSequenceFileCreateData(ref, .midiType, .eraseFile, resolution, &data))
+    return data!.takeUnretainedValue() as Data
+}
+
+@inline(__always) fileprivate
+func MIDISequenceSave(ref: MusicSequence,
+                      to url: URL,
+                      resolution: Int16 = 960) {
+    OSAssert(MusicSequenceFileCreate(ref, url as CFURL,
+                                     .midiType,
+                                     .eraseFile,
+                                     resolution))
+}
+
+@inline(__always) fileprivate
+func MusicSequenceGetTrackCount(ref: MusicSequence) -> Int {
+    var c: UInt32 = 0
+    OSAssert(MusicSequenceGetTrackCount(ref, &c))
+    return Int(c)
+}
+
+extension RangeReplaceableCollection where Element == MIDITrack {
+    fileprivate init(parent: MIDISequence) {
+        let count = MusicSequenceGetTrackCount(ref: parent.ref)
+        self.init( (0..<count).map {
+            MIDITrack(sequence: parent, no: $0)
+        })
+    }
+}
+

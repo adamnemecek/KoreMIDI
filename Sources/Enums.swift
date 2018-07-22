@@ -6,11 +6,8 @@
 //  Copyright © 2017 Adam Nemecek. All rights reserved.
 //
 
-import AudioToolbox
+import AVFoundation
 
-enum MetaEvent {
-    
-}
 
 /*
 namespace AudioSynthesis.Midi
@@ -123,7 +120,7 @@ namespace AudioSynthesis.Midi
             MonoMode = 0x7E,
             PolyMode = 0x7F
         }
-        
+
         //static helper methods and constants
         public static class MidiHelper
         {
