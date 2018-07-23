@@ -8,10 +8,9 @@
 import AVFoundation
 
 
-
 internal class MIDIPlayer {
     private enum Player {
-        case bank(AVMIDIPlayer)
+        case bank(AVMIDIPlayer, URL)
         case engine(AVAudioSequencer)
     }
 
@@ -23,7 +22,7 @@ internal class MIDIPlayer {
             return nil
         }
         self.sequence = sequence
-        self.player = .bank(player)
+        self.player = .bank(player, bank)
     }
 
     public init?(sequence: MIDISequence, engine: AVAudioEngine) {
@@ -34,7 +33,7 @@ internal class MIDIPlayer {
 
     func prepareToPlay() {
         switch player {
-        case let .bank(b):
+        case let .bank(b, _):
             b.prepareToPlay()
         case let .engine(e):
             e.prepareToPlay()
@@ -53,7 +52,7 @@ internal class MIDIPlayer {
 
     func stop() {
         switch player {
-        case let .bank(b):
+        case let .bank(b, _):
             b.stop()
         case let .engine(e):
             e.stop()
@@ -62,7 +61,7 @@ internal class MIDIPlayer {
 
     func play() {
         switch player {
-        case let .bank(b):
+        case let .bank(b, _):
             b.play()
         case let .engine(e):
             try! e.start()
@@ -74,7 +73,7 @@ internal class MIDIPlayer {
     ///
     var duration: TimeInterval {
         switch player {
-        case let .bank(b):
+        case let .bank(b, _):
             return b.duration
         case let .engine(e):
             return e.duration
@@ -83,7 +82,7 @@ internal class MIDIPlayer {
 
     var isPlaying: Bool {
         switch player {
-        case let .bank(b):
+        case let .bank(b, _):
             return b.isPlaying
         case let .engine(e):
             return e.isPlaying
@@ -93,7 +92,7 @@ internal class MIDIPlayer {
     var rate: Float {
         get {
             switch player {
-            case let .bank(b):
+            case let .bank(b, _):
                 return b.rate
             case let .engine(e):
                 return e.rate
@@ -101,7 +100,7 @@ internal class MIDIPlayer {
         }
         set {
             switch player {
-            case let .bank(b):
+            case let .bank(b, _):
                 b.rate = newValue
             case let .engine(e):
                 e.rate = newValue
@@ -115,7 +114,7 @@ internal class MIDIPlayer {
     var currentPositionInSeconds: TimeInterval {
         get {
             switch player {
-            case let .bank(b):
+            case let .bank(b, _):
                 return b.currentPosition
             case let .engine(e):
                 return e.currentPositionInSeconds
@@ -123,7 +122,7 @@ internal class MIDIPlayer {
         }
         set {
             switch player {
-            case let .bank(b):
+            case let .bank(b, _):
                 b.currentPosition = newValue
             case let .engine(e):
                 e.currentPositionInSeconds = newValue

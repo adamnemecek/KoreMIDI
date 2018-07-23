@@ -24,15 +24,11 @@ public final class MIDISequence: RandomAccessCollection, Hashable, Comparable, C
 
     private lazy var global = MIDIGlobalTrack(sequence: self)
 
-
-
     ///
     ///
     ///
-
     public init() {
         self.ref = MIDISequenceCreate()
-
         self.content = .init(parent: self)
     }
 
