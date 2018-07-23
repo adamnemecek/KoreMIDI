@@ -19,20 +19,6 @@ let sequence = MIDISequence(url: "darude-sandstorm.mid")
 let tempo = sequence.tempo
 
 
-
-
-
-class VS: NSViewController {
-    OO
-    func mouseDown() {
-        
-    }
-}
-
-class Document: NSDocument {
-    
-}
-
 ```
 
 ```

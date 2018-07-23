@@ -39,15 +39,15 @@ internal class MIDIPlayer {
         }
     }
 
-//    func reload() {
-//        switch player {
-//        case let .bank(b):
-//            self.player
-//        case let .engine(e):
-//            break
-//
-//        }
-//    }
+    //    func reload() {
+    //        switch player {
+    //        case let .bank(b):
+    //            self.player
+    //        case let .engine(e):
+    //            break
+    //
+    //        }
+    //    }
 
     func stop() {
         switch player {
@@ -69,12 +69,12 @@ internal class MIDIPlayer {
 
     var duration: TimeInterval {
         fatalError()
-//        switch player {
-//        case let .bank(b):
-//            return b.duration
-//        case let .engine(e):
-//            return e.du
-//        }
+        //        switch player {
+        //        case let .bank(b):
+        //            return b.duration
+        //        case let .engine(e):
+        //            return e.du
+        //        }
     }
 
     var isPlaying: Bool {
@@ -87,11 +87,21 @@ internal class MIDIPlayer {
     }
 
     var rate: Float {
-        switch player {
-        case let .bank(b):
-            return b.rate
-        case let .engine(e):
-            return e.rate
+        get {
+            switch player {
+            case let .bank(b):
+                return b.rate
+            case let .engine(e):
+                return e.rate
+            }
+        }
+        set {
+            switch player {
+            case let .bank(b):
+                b.rate = newValue
+            case let .engine(e):
+                e.rate = newValue
+            }
         }
     }
 
@@ -99,11 +109,21 @@ internal class MIDIPlayer {
     /// Current position inseconds
     ///
     var currentPositionInSeconds: TimeInterval {
-        switch player {
-        case let .bank(b):
-            return b.currentPosition
-        case let .engine(e):
-            return e.currentPositionInSeconds
+        get {
+            switch player {
+            case let .bank(b):
+                return b.currentPosition
+            case let .engine(e):
+                return e.currentPositionInSeconds
+            }
+        }
+        set {
+            switch player {
+            case let .bank(b):
+                b.currentPosition = newValue
+            case let .engine(e):
+                e.currentPositionInSeconds = newValue
+            }
         }
     }
 }
