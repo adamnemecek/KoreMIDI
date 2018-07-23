@@ -7,6 +7,8 @@
 
 import AVFoundation
 
+
+
 internal class MIDIPlayer {
     private enum Player {
         case bank(AVMIDIPlayer)
@@ -67,14 +69,16 @@ internal class MIDIPlayer {
         }
     }
 
+    ///
+    /// Duration in seconds
+    ///
     var duration: TimeInterval {
-        fatalError()
-        //        switch player {
-        //        case let .bank(b):
-        //            return b.duration
-        //        case let .engine(e):
-        //            return e.du
-        //        }
+        switch player {
+        case let .bank(b):
+            return b.duration
+        case let .engine(e):
+            return e.duration
+        }
     }
 
     var isPlaying: Bool {
@@ -125,6 +129,12 @@ internal class MIDIPlayer {
                 e.currentPositionInSeconds = newValue
             }
         }
+    }
+}
+
+extension AVAudioSequencer {
+    var duration: TimeInterval {
+        return tracks.max { $0.lengthInSeconds }?.lengthInSeconds ?? 0
     }
 }
 
