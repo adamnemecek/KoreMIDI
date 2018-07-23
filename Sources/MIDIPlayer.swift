@@ -8,7 +8,7 @@
 import AVFoundation
 
 
-internal class MIDIPlayer {
+internal class MIDIPlayer : CustomStringConvertible {
     private enum Player {
         case bank(AVMIDIPlayer, URL)
         case engine(AVAudioSequencer)
@@ -17,7 +17,7 @@ internal class MIDIPlayer {
     private var player: Player
     internal let sequence: MIDISequence
 
-    public init?(sequence: MIDISequence, bank: URL) {
+    init?(sequence: MIDISequence, bank: URL) {
         guard let player = try? AVMIDIPlayer(data: sequence.export(), soundBankURL: bank) else {
             return nil
         }
@@ -25,10 +25,19 @@ internal class MIDIPlayer {
         self.player = .bank(player, bank)
     }
 
-    public init?(sequence: MIDISequence, engine: AVAudioEngine) {
+    init?(sequence: MIDISequence, engine: AVAudioEngine) {
         let sequencer = AVAudioSequencer(audioEngine: engine)
         self.sequence = sequence
         self.player = .engine(sequencer)
+    }
+
+    var description: String {
+        switch player {
+        case let .bank(b, url):
+            return "Player: soundbank \(url)"
+        case let .engine(e):
+            return ""
+        }
     }
 
     func prepareToPlay() {
