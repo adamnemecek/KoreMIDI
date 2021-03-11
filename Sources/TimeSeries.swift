@@ -28,7 +28,7 @@ extension TimeSeries {
 }
 
 protocol MutableTimeSeries: TimeSeries {
-    subscript(timerange: Range<Timestamp>) -> SubSequence { get set }
+//    subscript(timerange: Range<Timestamp>) -> SubSequence { get set }
 }
 
 extension TimeSeries {
