@@ -11,6 +11,7 @@ import AVFoundation
 internal class MIDIPlayer : CustomStringConvertible {
     private enum Player {
         case bank(AVMIDIPlayer, URL)
+        @available(OSX 10.11, *)
         case engine(AVAudioSequencer)
     }
 
@@ -25,6 +26,7 @@ internal class MIDIPlayer : CustomStringConvertible {
         self.player = .bank(player, bank)
     }
 
+    @available(OSX 10.11, *)
     init?(sequence: MIDISequence, engine: AVAudioEngine) {
         let sequencer = AVAudioSequencer(audioEngine: engine)
         self.sequence = sequence
@@ -85,7 +87,12 @@ internal class MIDIPlayer : CustomStringConvertible {
         case let .bank(b, _):
             return b.duration
         case let .engine(e):
-            return e.duration
+            if #available(OSX 10.11, *) {
+                return e.duration
+            } else {
+                // Fallback on earlier versions
+                fatalError()
+            }
         }
     }
 
@@ -140,6 +147,7 @@ internal class MIDIPlayer : CustomStringConvertible {
     }
 }
 
+@available(OSX 10.11, *)
 extension AVAudioSequencer {
     var duration: TimeInterval {
         return tracks.max { $0.lengthInSeconds }?.lengthInSeconds ?? 0

@@ -1,1038 +1,968 @@
 // !$*UTF8*$!
 {
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		371120021E985E420037DFFA /* MIDIProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371120011E985E420037DFFA /* MIDIProject.swift */; };
-		371120041E9863870037DFFA /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371120031E9863870037DFFA /* Edit.swift */; };
-		371120051E9863870037DFFA /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371120031E9863870037DFFA /* Edit.swift */; };
-		372588BC20210EAC00F8AF32 /* MIDIMetaTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588BB20210EAC00F8AF32 /* MIDIMetaTrack.swift */; };
-		372588BD20210EAC00F8AF32 /* MIDIMetaTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588BB20210EAC00F8AF32 /* MIDIMetaTrack.swift */; };
-		372588BF2021108C00F8AF32 /* MIDIChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588BE2021108C00F8AF32 /* MIDIChannelEvent.swift */; };
-		372588C02021108C00F8AF32 /* MIDIChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588BE2021108C00F8AF32 /* MIDIChannelEvent.swift */; };
-		372588DE20222A5A00F8AF32 /* SoundFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588DD20222A5A00F8AF32 /* SoundFont.swift */; };
-		372588DF20222A5A00F8AF32 /* SoundFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588DD20222A5A00F8AF32 /* SoundFont.swift */; };
-		372588E8202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588E7202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift */; };
-		372588E9202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588E7202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift */; };
-		372588F42022BB6200F8AF32 /* MetaEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588F32022BB6200F8AF32 /* MetaEvents.swift */; };
-		372588F52022BB6200F8AF32 /* MetaEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588F32022BB6200F8AF32 /* MetaEvents.swift */; };
-		372588F820236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588F720236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift */; };
-		372588F920236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372588F720236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift */; };
-		3725890720237F7300F8AF32 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3725890620237F7300F8AF32 /* ChannelEvent.swift */; };
-		3725890820237F7300F8AF32 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3725890620237F7300F8AF32 /* ChannelEvent.swift */; };
-		37371FA11E9B251F00829B24 /* TimeSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37371FA01E9B251F00829B24 /* TimeSeries.swift */; };
-		37371FA21E9B264C00829B24 /* TimeSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37371FA01E9B251F00829B24 /* TimeSeries.swift */; };
-		37371FA41E9B2B5200829B24 /* MIDIPitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37371FA31E9B2B5200829B24 /* MIDIPitch.swift */; };
-		37371FA51E9B2BE500829B24 /* MIDIPitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37371FA31E9B2B5200829B24 /* MIDIPitch.swift */; };
-		373BE4181E98154600DC1E15 /* MIDINote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE4171E98154600DC1E15 /* MIDINote.swift */; };
-		373BE4201E9816D300DC1E15 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE41F1E9816D300DC1E15 /* main.swift */; };
-		373BE4241E9816F800DC1E15 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Extensions.swift */; };
-		373BE4251E9816F800DC1E15 /* AVFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AVFoundation.swift */; };
-		373BE4261E9816F800DC1E15 /* MIDIPlayer1.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* MIDIPlayer1.swift */; };
-		373BE4271E9816F800DC1E15 /* MIDIEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* MIDIEventType.swift */; };
-		373BE42C1E9816F800DC1E15 /* MIDIRawEventIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* MIDIRawEventIterator.swift */; };
-		373BE42F1E9816F800DC1E15 /* MIDINote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE4171E98154600DC1E15 /* MIDINote.swift */; };
-		373BE4321E9816F800DC1E15 /* MIDITimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* MIDITimestamp.swift */; };
-		373BE4341E98238500DC1E15 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE4331E98238500DC1E15 /* Timer.swift */; };
-		373BE4351E9823A900DC1E15 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE4331E98238500DC1E15 /* Timer.swift */; };
-		373BE44A1E98344000DC1E15 /* MIDISequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE4491E98344000DC1E15 /* MIDISequence.swift */; };
-		373BE44B1E98346800DC1E15 /* MIDISequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE4491E98344000DC1E15 /* MIDISequence.swift */; };
-		373BE44D1E9835D600DC1E15 /* MIDITrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE44C1E9835D600DC1E15 /* MIDITrack.swift */; };
-		376906F020C6EEE500EF8A19 /* MIDIPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376906EF20C6EEE500EF8A19 /* MIDIPlayer.swift */; };
-		376906F120C6EF3800EF8A19 /* MIDIPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376906EF20C6EEE500EF8A19 /* MIDIPlayer.swift */; };
-		376C0B8E1E9B398F00249775 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C0B8D1E9B398F00249775 /* Stuff.swift */; };
-		37B14FFE1E97F5A200CBDB07 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 37B14FFD1E97F5A200CBDB07 /* README.md */; };
-		37CDEFC61E9972390005B509 /* MIDIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDEFC51E9972390005B509 /* MIDIEvent.swift */; };
-		37CDEFC71E9972390005B509 /* MIDIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDEFC51E9972390005B509 /* MIDIEvent.swift */; };
-		37CDEFC91E99732B0005B509 /* MIDITrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BE44C1E9835D600DC1E15 /* MIDITrack.swift */; };
-		37CDEFCB1E99732B0005B509 /* MIDIProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371120011E985E420037DFFA /* MIDIProject.swift */; };
-		37CF796320FBB26400498B53 /* MIDIGlobalTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF796220FBB26400498B53 /* MIDIGlobalTrack.swift */; };
-		37CF798620FFC1F600498B53 /* MIDIEventRawBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF798520FFC1F600498B53 /* MIDIEventRawBuffer.swift */; };
-		37CF798720FFC23200498B53 /* MIDIEventRawBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF798520FFC1F600498B53 /* MIDIEventRawBuffer.swift */; };
-		37CF798B2102906B00498B53 /* TempoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF798A2102906B00498B53 /* TempoEvent.swift */; };
-		37CF798C2102906B00498B53 /* TempoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF798A2102906B00498B53 /* TempoEvent.swift */; };
-		37CF798E2104F13000498B53 /* MIDIRawEventBuffer1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF798D2104F13000498B53 /* MIDIRawEventBuffer1.swift */; };
-		37CF798F2104F13000498B53 /* MIDIRawEventBuffer1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF798D2104F13000498B53 /* MIDIRawEventBuffer1.swift */; };
-		37CF7991210506BD00498B53 /* MIDISignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF7990210506BD00498B53 /* MIDISignature.swift */; };
-		37CF7992210506BD00498B53 /* MIDISignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF7990210506BD00498B53 /* MIDISignature.swift */; };
-		37CF79942105497F00498B53 /* MIDIEventConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF79932105497F00498B53 /* MIDIEventConvertible.swift */; };
-		37CF799621054E0D00498B53 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CF799521054E0D00498B53 /* main.swift */; };
-		37D0B4501EC0F099005A8A61 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0B44F1EC0F099005A8A61 /* Enums.swift */; };
-		37D0B4511EC15B13005A8A61 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0B44F1EC0F099005A8A61 /* Enums.swift */; };
-		37E24EB31EA14BF8006C957B /* KoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E24EB21EA14BF8006C957B /* KoreError.swift */; };
-		37F70AA81EBBE9E20008536E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AA71EBBE9E20008536E /* Clock.swift */; };
-		37F70AA91EBBE9E20008536E /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AA71EBBE9E20008536E /* Clock.swift */; };
-		OBJ_32 /* AVFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AVFoundation.swift */; };
-		OBJ_33 /* MIDIPlayer1.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* MIDIPlayer1.swift */; };
-		OBJ_35 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Extensions.swift */; };
-		OBJ_36 /* MIDIRawEventIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* MIDIRawEventIterator.swift */; };
-		OBJ_39 /* MIDIEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* MIDIEventType.swift */; };
-		OBJ_44 /* MIDITimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* MIDITimestamp.swift */; };
-		OBJ_51 /* KoreMIDITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* KoreMIDITests.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		37B14FFC1E97F50200CBDB07 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = OBJ_27;
-			remoteInfo = KoreMIDI;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		373BE41B1E9816D300DC1E15 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		3769070120CB369600EF8A19 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		37CF797320FBB63100498B53 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
-/* Begin PBXFileReference section */
-		371120011E985E420037DFFA /* MIDIProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIProject.swift; sourceTree = "<group>"; };
-		371120031E9863870037DFFA /* Edit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edit.swift; sourceTree = "<group>"; };
-		372588BB20210EAC00F8AF32 /* MIDIMetaTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIMetaTrack.swift; sourceTree = "<group>"; };
-		372588BE2021108C00F8AF32 /* MIDIChannelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIChannelEvent.swift; sourceTree = "<group>"; };
-		372588DD20222A5A00F8AF32 /* SoundFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundFont.swift; sourceTree = "<group>"; };
-		372588E7202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIMetaTimeSignatureEvent.swift; sourceTree = "<group>"; };
-		372588F32022BB6200F8AF32 /* MetaEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaEvents.swift; sourceTree = "<group>"; };
-		372588F720236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIPolyphonicKeyPressureEvent.swift; sourceTree = "<group>"; };
-		3725890620237F7300F8AF32 /* ChannelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEvent.swift; sourceTree = "<group>"; };
-		37371FA01E9B251F00829B24 /* TimeSeries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeries.swift; sourceTree = "<group>"; };
-		37371FA31E9B2B5200829B24 /* MIDIPitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIPitch.swift; sourceTree = "<group>"; };
-		373BE4171E98154600DC1E15 /* MIDINote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDINote.swift; sourceTree = "<group>"; };
-		373BE41D1E9816D300DC1E15 /* TestBed */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestBed; sourceTree = BUILT_PRODUCTS_DIR; };
-		373BE41F1E9816D300DC1E15 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		373BE4331E98238500DC1E15 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		373BE4491E98344000DC1E15 /* MIDISequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDISequence.swift; sourceTree = "<group>"; };
-		373BE44C1E9835D600DC1E15 /* MIDITrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDITrack.swift; sourceTree = "<group>"; };
-		375292F92077CD25008D7DD0 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
-		376906EF20C6EEE500EF8A19 /* MIDIPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIPlayer.swift; sourceTree = "<group>"; };
-		3769070320CB369600EF8A19 /* Sequencer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sequencer; sourceTree = BUILT_PRODUCTS_DIR; };
-		376C0B8D1E9B398F00249775 /* Stuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stuff.swift; sourceTree = "<group>"; };
-		37B14FFD1E97F5A200CBDB07 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		37CDEFC51E9972390005B509 /* MIDIEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIEvent.swift; sourceTree = "<group>"; };
-		37CF796220FBB26400498B53 /* MIDIGlobalTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIGlobalTrack.swift; sourceTree = "<group>"; };
-		37CF797520FBB63100498B53 /* KoreMIDI2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KoreMIDI2; sourceTree = BUILT_PRODUCTS_DIR; };
-		37CF798520FFC1F600498B53 /* MIDIEventRawBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIEventRawBuffer.swift; sourceTree = "<group>"; };
-		37CF798A2102906B00498B53 /* TempoEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoEvent.swift; sourceTree = "<group>"; };
-		37CF798D2104F13000498B53 /* MIDIRawEventBuffer1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIRawEventBuffer1.swift; sourceTree = "<group>"; };
-		37CF7990210506BD00498B53 /* MIDISignature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDISignature.swift; sourceTree = "<group>"; };
-		37CF79932105497F00498B53 /* MIDIEventConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIEventConvertible.swift; sourceTree = "<group>"; };
-		37CF799521054E0D00498B53 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		37D0B44F1EC0F099005A8A61 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		37E24EB21EA14BF8006C957B /* KoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoreError.swift; sourceTree = "<group>"; };
-		37F70AA71EBBE9E20008536E /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
-		OBJ_11 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		OBJ_12 /* MIDIRawEventIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIRawEventIterator.swift; sourceTree = "<group>"; };
-		OBJ_15 /* MIDIEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIEventType.swift; sourceTree = "<group>"; };
-		OBJ_20 /* MIDITimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDITimestamp.swift; sourceTree = "<group>"; };
-		OBJ_23 /* KoreMIDITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreMIDITests.swift; sourceTree = "<group>"; };
-		OBJ_25 /* KoreMIDI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = KoreMIDI; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_26 /* KoreMIDITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = KoreMIDITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_8 /* AVFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVFoundation.swift; sourceTree = "<group>"; };
-		OBJ_9 /* MIDIPlayer1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIPlayer1.swift; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		373BE41A1E9816D300DC1E15 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3769070020CB369600EF8A19 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		37CF797220FBB63100498B53 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_45 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_52 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		372588E02022365300F8AF32 /* v2 */ = {
-			isa = PBXGroup;
-			children = (
-				372588F32022BB6200F8AF32 /* MetaEvents.swift */,
-				372588E7202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift */,
-			);
-			name = v2;
-			sourceTree = "<group>";
-		};
-		372588F620236ECD00F8AF32 /* Channel Events */ = {
-			isa = PBXGroup;
-			children = (
-				372588F720236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift */,
-				3725890620237F7300F8AF32 /* ChannelEvent.swift */,
-			);
-			name = "Channel Events";
-			sourceTree = "<group>";
-		};
-		373BE41E1E9816D300DC1E15 /* TestBed */ = {
-			isa = PBXGroup;
-			children = (
-				373BE41F1E9816D300DC1E15 /* main.swift */,
-			);
-			path = TestBed;
-			sourceTree = "<group>";
-		};
-		37CF798220FFB27400498B53 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
-		37ED23FC1EC61B4E0024E438 /* MIDITrack */ = {
-			isa = PBXGroup;
-			children = (
-				372588BE2021108C00F8AF32 /* MIDIChannelEvent.swift */,
-				372588BB20210EAC00F8AF32 /* MIDIMetaTrack.swift */,
-			);
-			name = MIDITrack;
-			sourceTree = "<group>";
-		};
-		37F70AAA1EBCBFD10008536E /* Drafts */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_9 /* MIDIPlayer1.swift */,
-				371120031E9863870037DFFA /* Edit.swift */,
-				373BE4331E98238500DC1E15 /* Timer.swift */,
-				37371FA01E9B251F00829B24 /* TimeSeries.swift */,
-				37D0B44F1EC0F099005A8A61 /* Enums.swift */,
-			);
-			name = Drafts;
-			sourceTree = "<group>";
-		};
-		OBJ_21 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_22 /* KoreMIDITests */,
-			);
-			name = Tests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_22 /* KoreMIDITests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_23 /* KoreMIDITests.swift */,
-				376C0B8D1E9B398F00249775 /* Stuff.swift */,
-			);
-			name = KoreMIDITests;
-			path = Tests/KoreMIDITests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_24 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_25 /* KoreMIDI */,
-				OBJ_26 /* KoreMIDITests.xctest */,
-				373BE41D1E9816D300DC1E15 /* TestBed */,
-				3769070320CB369600EF8A19 /* Sequencer */,
-				37CF797520FBB63100498B53 /* KoreMIDI2 */,
-			);
-			name = Products;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		OBJ_5 = {
-			isa = PBXGroup;
-			children = (
-				OBJ_6 /* Package.swift */,
-				37B14FFD1E97F5A200CBDB07 /* README.md */,
-				375292F92077CD25008D7DD0 /* TODO.md */,
-				OBJ_7 /* Sources */,
-				OBJ_21 /* Tests */,
-				373BE41E1E9816D300DC1E15 /* TestBed */,
-				OBJ_24 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		OBJ_7 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				37CDEFC51E9972390005B509 /* MIDIEvent.swift */,
-				373BE4171E98154600DC1E15 /* MIDINote.swift */,
-				37371FA31E9B2B5200829B24 /* MIDIPitch.swift */,
-				37CF798520FFC1F600498B53 /* MIDIEventRawBuffer.swift */,
-				37CF798D2104F13000498B53 /* MIDIRawEventBuffer1.swift */,
-				373BE4491E98344000DC1E15 /* MIDISequence.swift */,
-				37CF79932105497F00498B53 /* MIDIEventConvertible.swift */,
-				OBJ_8 /* AVFoundation.swift */,
-				371120011E985E420037DFFA /* MIDIProject.swift */,
-				OBJ_20 /* MIDITimestamp.swift */,
-				37CF796220FBB26400498B53 /* MIDIGlobalTrack.swift */,
-				37CF7990210506BD00498B53 /* MIDISignature.swift */,
-				373BE44C1E9835D600DC1E15 /* MIDITrack.swift */,
-				376906EF20C6EEE500EF8A19 /* MIDIPlayer.swift */,
-				37E24EB21EA14BF8006C957B /* KoreError.swift */,
-				37CF798A2102906B00498B53 /* TempoEvent.swift */,
-				372588DD20222A5A00F8AF32 /* SoundFont.swift */,
-				OBJ_12 /* MIDIRawEventIterator.swift */,
-				37F70AAA1EBCBFD10008536E /* Drafts */,
-				OBJ_15 /* MIDIEventType.swift */,
-				37CF798220FFB27400498B53 /* Extensions */,
-				37F70AA71EBBE9E20008536E /* Clock.swift */,
-				372588F620236ECD00F8AF32 /* Channel Events */,
-				OBJ_11 /* Extensions.swift */,
-				37CF799521054E0D00498B53 /* main.swift */,
-				372588E02022365300F8AF32 /* v2 */,
-				37ED23FC1EC61B4E0024E438 /* MIDITrack */,
-			);
-			path = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		373BE41C1E9816D300DC1E15 /* TestBed */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 373BE4211E9816D300DC1E15 /* Build configuration list for PBXNativeTarget "TestBed" */;
-			buildPhases = (
-				373BE4191E9816D300DC1E15 /* Sources */,
-				373BE41A1E9816D300DC1E15 /* Frameworks */,
-				373BE41B1E9816D300DC1E15 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TestBed;
-			productName = TestBed;
-			productReference = 373BE41D1E9816D300DC1E15 /* TestBed */;
-			productType = "com.apple.product-type.tool";
-		};
-		3769070220CB369600EF8A19 /* Sequencer */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3769070720CB369700EF8A19 /* Build configuration list for PBXNativeTarget "Sequencer" */;
-			buildPhases = (
-				376906FF20CB369600EF8A19 /* Sources */,
-				3769070020CB369600EF8A19 /* Frameworks */,
-				3769070120CB369600EF8A19 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Sequencer;
-			productName = Sequencer;
-			productReference = 3769070320CB369600EF8A19 /* Sequencer */;
-			productType = "com.apple.product-type.tool";
-		};
-		37CF797420FBB63100498B53 /* KoreMIDI2 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 37CF797920FBB63100498B53 /* Build configuration list for PBXNativeTarget "KoreMIDI2" */;
-			buildPhases = (
-				37CF797120FBB63100498B53 /* Sources */,
-				37CF797220FBB63100498B53 /* Frameworks */,
-				37CF797320FBB63100498B53 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = KoreMIDI2;
-			productName = KoreMIDI2;
-			productReference = 37CF797520FBB63100498B53 /* KoreMIDI2 */;
-			productType = "com.apple.product-type.tool";
-		};
-		OBJ_27 /* KoreMIDI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_28 /* Build configuration list for PBXNativeTarget "KoreMIDI" */;
-			buildPhases = (
-				OBJ_31 /* Sources */,
-				OBJ_45 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = KoreMIDI;
-			productName = KoreMIDI;
-			productReference = OBJ_25 /* KoreMIDI */;
-			productType = "com.apple.product-type.tool";
-		};
-		OBJ_46 /* KoreMIDITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_47 /* Build configuration list for PBXNativeTarget "KoreMIDITests" */;
-			buildPhases = (
-				OBJ_50 /* Sources */,
-				OBJ_52 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_53 /* PBXTargetDependency */,
-			);
-			name = KoreMIDITests;
-			productName = KoreMIDITests;
-			productReference = OBJ_26 /* KoreMIDITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		OBJ_1 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0900;
-				TargetAttributes = {
-					373BE41C1E9816D300DC1E15 = {
-						CreatedOnToolsVersion = 8.3;
-						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
-					};
-					3769070220CB369600EF8A19 = {
-						CreatedOnToolsVersion = 9.4;
-						ProvisioningStyle = Automatic;
-					};
-					37CF797420FBB63100498B53 = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
-					};
-					OBJ_27 = {
-						LastSwiftMigration = 0920;
-					};
-				};
-			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "KoreMIDI" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = OBJ_5;
-			productRefGroup = OBJ_24 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				OBJ_27 /* KoreMIDI */,
-				OBJ_46 /* KoreMIDITests */,
-				373BE41C1E9816D300DC1E15 /* TestBed */,
-				3769070220CB369600EF8A19 /* Sequencer */,
-				37CF797420FBB63100498B53 /* KoreMIDI2 */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		373BE4191E9816D300DC1E15 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				376906F120C6EF3800EF8A19 /* MIDIPlayer.swift in Sources */,
-				37D0B4511EC15B13005A8A61 /* Enums.swift in Sources */,
-				372588F920236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift in Sources */,
-				37371FA51E9B2BE500829B24 /* MIDIPitch.swift in Sources */,
-				37371FA21E9B264C00829B24 /* TimeSeries.swift in Sources */,
-				372588BD20210EAC00F8AF32 /* MIDIMetaTrack.swift in Sources */,
-				37CDEFC91E99732B0005B509 /* MIDITrack.swift in Sources */,
-				372588F52022BB6200F8AF32 /* MetaEvents.swift in Sources */,
-				372588C02021108C00F8AF32 /* MIDIChannelEvent.swift in Sources */,
-				37CDEFCB1E99732B0005B509 /* MIDIProject.swift in Sources */,
-				376C0B8E1E9B398F00249775 /* Stuff.swift in Sources */,
-				372588DF20222A5A00F8AF32 /* SoundFont.swift in Sources */,
-				373BE44B1E98346800DC1E15 /* MIDISequence.swift in Sources */,
-				373BE4351E9823A900DC1E15 /* Timer.swift in Sources */,
-				373BE4241E9816F800DC1E15 /* Extensions.swift in Sources */,
-				37CDEFC71E9972390005B509 /* MIDIEvent.swift in Sources */,
-				373BE4251E9816F800DC1E15 /* AVFoundation.swift in Sources */,
-				3725890820237F7300F8AF32 /* ChannelEvent.swift in Sources */,
-				371120051E9863870037DFFA /* Edit.swift in Sources */,
-				373BE4261E9816F800DC1E15 /* MIDIPlayer1.swift in Sources */,
-				373BE4271E9816F800DC1E15 /* MIDIEventType.swift in Sources */,
-				373BE42C1E9816F800DC1E15 /* MIDIRawEventIterator.swift in Sources */,
-				373BE42F1E9816F800DC1E15 /* MIDINote.swift in Sources */,
-				373BE4321E9816F800DC1E15 /* MIDITimestamp.swift in Sources */,
-				373BE4201E9816D300DC1E15 /* main.swift in Sources */,
-				37F70AA91EBBE9E20008536E /* Clock.swift in Sources */,
-				372588E9202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		376906FF20CB369600EF8A19 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		37CF797120FBB63100498B53 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				37CF798C2102906B00498B53 /* TempoEvent.swift in Sources */,
-				37CF798620FFC1F600498B53 /* MIDIEventRawBuffer.swift in Sources */,
-				37CF798F2104F13000498B53 /* MIDIRawEventBuffer1.swift in Sources */,
-				37CF7992210506BD00498B53 /* MIDISignature.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_31 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				37CF79942105497F00498B53 /* MIDIEventConvertible.swift in Sources */,
-				37CF798720FFC23200498B53 /* MIDIEventRawBuffer.swift in Sources */,
-				37CF799621054E0D00498B53 /* main.swift in Sources */,
-				373BE44D1E9835D600DC1E15 /* MIDITrack.swift in Sources */,
-				373BE4181E98154600DC1E15 /* MIDINote.swift in Sources */,
-				371120021E985E420037DFFA /* MIDIProject.swift in Sources */,
-				372588F820236EE600F8AF32 /* MIDIPolyphonicKeyPressureEvent.swift in Sources */,
-				OBJ_32 /* AVFoundation.swift in Sources */,
-				37CF796320FBB26400498B53 /* MIDIGlobalTrack.swift in Sources */,
-				372588BC20210EAC00F8AF32 /* MIDIMetaTrack.swift in Sources */,
-				37CDEFC61E9972390005B509 /* MIDIEvent.swift in Sources */,
-				372588F42022BB6200F8AF32 /* MetaEvents.swift in Sources */,
-				372588BF2021108C00F8AF32 /* MIDIChannelEvent.swift in Sources */,
-				OBJ_33 /* MIDIPlayer1.swift in Sources */,
-				376906F020C6EEE500EF8A19 /* MIDIPlayer.swift in Sources */,
-				OBJ_35 /* Extensions.swift in Sources */,
-				37CF798E2104F13000498B53 /* MIDIRawEventBuffer1.swift in Sources */,
-				372588DE20222A5A00F8AF32 /* SoundFont.swift in Sources */,
-				OBJ_36 /* MIDIRawEventIterator.swift in Sources */,
-				373BE44A1E98344000DC1E15 /* MIDISequence.swift in Sources */,
-				OBJ_39 /* MIDIEventType.swift in Sources */,
-				37371FA11E9B251F00829B24 /* TimeSeries.swift in Sources */,
-				37D0B4501EC0F099005A8A61 /* Enums.swift in Sources */,
-				3725890720237F7300F8AF32 /* ChannelEvent.swift in Sources */,
-				37B14FFE1E97F5A200CBDB07 /* README.md in Sources */,
-				371120041E9863870037DFFA /* Edit.swift in Sources */,
-				37CF798B2102906B00498B53 /* TempoEvent.swift in Sources */,
-				373BE4341E98238500DC1E15 /* Timer.swift in Sources */,
-				37371FA41E9B2B5200829B24 /* MIDIPitch.swift in Sources */,
-				37CF7991210506BD00498B53 /* MIDISignature.swift in Sources */,
-				OBJ_44 /* MIDITimestamp.swift in Sources */,
-				37E24EB31EA14BF8006C957B /* KoreError.swift in Sources */,
-				37F70AA81EBBE9E20008536E /* Clock.swift in Sources */,
-				372588E8202236DA00F8AF32 /* MIDIMetaTimeSignatureEvent.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_50 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_51 /* KoreMIDITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		OBJ_53 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = OBJ_27 /* KoreMIDI */;
-			targetProxy = 37B14FFC1E97F50200CBDB07 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		373BE4221E9816D300DC1E15 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		373BE4231E9816D300DC1E15 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		3769070820CB369700EF8A19 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		3769070920CB369700EF8A19 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		37CF797A20FBB63100498B53 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "KoreMIDI2/KoreMIDI2-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		37CF797B20FBB63100498B53 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "KoreMIDI2/KoreMIDI2-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_29 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = KoreMIDI.xcodeproj/KoreMIDI_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
-				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = KoreMIDI;
-			};
-			name = Debug;
-		};
-		OBJ_3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_NS_ASSERTIONS = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				USE_HEADERMAP = NO;
-			};
-			name = Debug;
-		};
-		OBJ_30 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = KoreMIDI.xcodeproj/KoreMIDI_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
-				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = KoreMIDI;
-			};
-			name = Release;
-		};
-		OBJ_4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				USE_HEADERMAP = NO;
-			};
-			name = Release;
-		};
-		OBJ_48 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = KoreMIDI.xcodeproj/KoreMIDITests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				TARGET_NAME = KoreMIDITests;
-			};
-			name = Debug;
-		};
-		OBJ_49 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = KoreMIDI.xcodeproj/KoreMIDITests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				TARGET_NAME = KoreMIDITests;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		373BE4211E9816D300DC1E15 /* Build configuration list for PBXNativeTarget "TestBed" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				373BE4221E9816D300DC1E15 /* Debug */,
-				373BE4231E9816D300DC1E15 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		3769070720CB369700EF8A19 /* Build configuration list for PBXNativeTarget "Sequencer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3769070820CB369700EF8A19 /* Debug */,
-				3769070920CB369700EF8A19 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		37CF797920FBB63100498B53 /* Build configuration list for PBXNativeTarget "KoreMIDI2" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				37CF797A20FBB63100498B53 /* Debug */,
-				37CF797B20FBB63100498B53 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		OBJ_2 /* Build configuration list for PBXProject "KoreMIDI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_3 /* Debug */,
-				OBJ_4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		OBJ_28 /* Build configuration list for PBXNativeTarget "KoreMIDI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_29 /* Debug */,
-				OBJ_30 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		OBJ_47 /* Build configuration list for PBXNativeTarget "KoreMIDITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_48 /* Debug */,
-				OBJ_49 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = OBJ_1 /* Project object */;
+   archiveVersion = "1";
+   objectVersion = "46";
+   objects = {
+      "KoreMIDI::KoreMIDI" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_57";
+         buildPhases = (
+            "OBJ_60",
+            "OBJ_98"
+         );
+         dependencies = (
+         );
+         name = "KoreMIDI";
+         productName = "KoreMIDI";
+         productReference = "KoreMIDI::KoreMIDI::Product";
+         productType = "com.apple.product-type.tool";
+      };
+      "KoreMIDI::KoreMIDI::Product" = {
+         isa = "PBXFileReference";
+         path = "KoreMIDI";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "KoreMIDI::KoreMIDIPackageTests::ProductTarget" = {
+         isa = "PBXAggregateTarget";
+         buildConfigurationList = "OBJ_106";
+         buildPhases = (
+         );
+         dependencies = (
+            "OBJ_109"
+         );
+         name = "KoreMIDIPackageTests";
+         productName = "KoreMIDIPackageTests";
+      };
+      "KoreMIDI::KoreMIDITests" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_111";
+         buildPhases = (
+            "OBJ_114",
+            "OBJ_117"
+         );
+         dependencies = (
+            "OBJ_118"
+         );
+         name = "KoreMIDITests";
+         productName = "KoreMIDITests";
+         productReference = "KoreMIDI::KoreMIDITests::Product";
+         productType = "com.apple.product-type.bundle.unit-test";
+      };
+      "KoreMIDI::KoreMIDITests::Product" = {
+         isa = "PBXFileReference";
+         path = "KoreMIDITests.xctest";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "KoreMIDI::SwiftPMPackageDescription" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_100";
+         buildPhases = (
+            "OBJ_103"
+         );
+         dependencies = (
+         );
+         name = "KoreMIDIPackageDescription";
+         productName = "KoreMIDIPackageDescription";
+         productType = "com.apple.product-type.framework";
+      };
+      "OBJ_1" = {
+         isa = "PBXProject";
+         attributes = {
+            LastSwiftMigration = "9999";
+            LastUpgradeCheck = "9999";
+         };
+         buildConfigurationList = "OBJ_2";
+         compatibilityVersion = "Xcode 3.2";
+         developmentRegion = "en";
+         hasScannedForEncodings = "0";
+         knownRegions = (
+            "en"
+         );
+         mainGroup = "OBJ_5";
+         productRefGroup = "OBJ_50";
+         projectDirPath = ".";
+         targets = (
+            "KoreMIDI::KoreMIDI",
+            "KoreMIDI::SwiftPMPackageDescription",
+            "KoreMIDI::KoreMIDIPackageTests::ProductTarget",
+            "KoreMIDI::KoreMIDITests"
+         );
+      };
+      "OBJ_10" = {
+         isa = "PBXFileReference";
+         path = "ChannelEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_100" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_101",
+            "OBJ_102"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_101" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "5",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk",
+               "-package-description-version",
+               "5.3.0"
+            );
+            SWIFT_VERSION = "5.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_102" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "5",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk",
+               "-package-description-version",
+               "5.3.0"
+            );
+            SWIFT_VERSION = "5.0";
+         };
+         name = "Release";
+      };
+      "OBJ_103" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_104"
+         );
+      };
+      "OBJ_104" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_6";
+      };
+      "OBJ_106" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_107",
+            "OBJ_108"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_107" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Debug";
+      };
+      "OBJ_108" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Release";
+      };
+      "OBJ_109" = {
+         isa = "PBXTargetDependency";
+         target = "KoreMIDI::KoreMIDITests";
+      };
+      "OBJ_11" = {
+         isa = "PBXFileReference";
+         path = "Clock.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_111" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_112",
+            "OBJ_113"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_112" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_MODULES = "YES";
+            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "KoreMIDI.xcodeproj/KoreMIDITests_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "14.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "@loader_path/../Frameworks",
+               "@loader_path/Frameworks"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.15";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "KoreMIDITests";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_113" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_MODULES = "YES";
+            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "KoreMIDI.xcodeproj/KoreMIDITests_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "14.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "@loader_path/../Frameworks",
+               "@loader_path/Frameworks"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.15";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "KoreMIDITests";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Release";
+      };
+      "OBJ_114" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_115",
+            "OBJ_116"
+         );
+      };
+      "OBJ_115" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_48";
+      };
+      "OBJ_116" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_49";
+      };
+      "OBJ_117" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+         );
+      };
+      "OBJ_118" = {
+         isa = "PBXTargetDependency";
+         target = "KoreMIDI::KoreMIDI";
+      };
+      "OBJ_12" = {
+         isa = "PBXFileReference";
+         path = "CoreMIDIEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_13" = {
+         isa = "PBXFileReference";
+         path = "DataEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_14" = {
+         isa = "PBXFileReference";
+         path = "Edit.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_15" = {
+         isa = "PBXFileReference";
+         path = "Enums.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_16" = {
+         isa = "PBXFileReference";
+         path = "Extensions.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_17" = {
+         isa = "PBXFileReference";
+         path = "KoreError.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_18" = {
+         isa = "PBXFileReference";
+         path = "MIDIChannelEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_19" = {
+         isa = "PBXFileReference";
+         path = "MIDIEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_2" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_3",
+            "OBJ_4"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_20" = {
+         isa = "PBXFileReference";
+         path = "MIDIEventConvertible.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_21" = {
+         isa = "PBXFileReference";
+         path = "MIDIEventRawBuffer.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_22" = {
+         isa = "PBXFileReference";
+         path = "MIDIEventType.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_23" = {
+         isa = "PBXFileReference";
+         path = "MIDIGlobalTrack.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_24" = {
+         isa = "PBXFileReference";
+         path = "MIDIMetaTimeSignatureEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_25" = {
+         isa = "PBXFileReference";
+         path = "MIDIMetaTrack.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_26" = {
+         isa = "PBXFileReference";
+         path = "MIDINote.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_27" = {
+         isa = "PBXFileReference";
+         path = "MIDIPacket.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_28" = {
+         isa = "PBXFileReference";
+         path = "MIDIPitch.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_29" = {
+         isa = "PBXFileReference";
+         path = "MIDIPlayer.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_3" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_OBJC_ARC = "YES";
+            COMBINE_HIDPI_IMAGES = "YES";
+            COPY_PHASE_STRIP = "NO";
+            DEBUG_INFORMATION_FORMAT = "dwarf";
+            DYLIB_INSTALL_NAME_BASE = "@rpath";
+            ENABLE_NS_ASSERTIONS = "YES";
+            GCC_OPTIMIZATION_LEVEL = "0";
+            GCC_PREPROCESSOR_DEFINITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE=1",
+               "DEBUG=1"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            ONLY_ACTIVE_ARCH = "YES";
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-DXcode"
+            );
+            PRODUCT_NAME = "$(TARGET_NAME)";
+            SDKROOT = "macosx";
+            SUPPORTED_PLATFORMS = (
+               "macosx",
+               "iphoneos",
+               "iphonesimulator",
+               "appletvos",
+               "appletvsimulator",
+               "watchos",
+               "watchsimulator"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE",
+               "DEBUG"
+            );
+            SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            USE_HEADERMAP = "NO";
+         };
+         name = "Debug";
+      };
+      "OBJ_30" = {
+         isa = "PBXFileReference";
+         path = "MIDIPlayer1.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_31" = {
+         isa = "PBXFileReference";
+         path = "MIDIPolyphonicKeyPressureEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_32" = {
+         isa = "PBXFileReference";
+         path = "MIDIProject.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_33" = {
+         isa = "PBXFileReference";
+         path = "MIDIRawEventBuffer1.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_34" = {
+         isa = "PBXFileReference";
+         path = "MIDIRawEventIterator.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_35" = {
+         isa = "PBXFileReference";
+         path = "MIDISequence.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_36" = {
+         isa = "PBXFileReference";
+         path = "MIDISignature.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_37" = {
+         isa = "PBXFileReference";
+         path = "MIDIStatus.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_38" = {
+         isa = "PBXFileReference";
+         path = "MIDITimestamp.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_39" = {
+         isa = "PBXFileReference";
+         path = "MIDITrack.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_4" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_OBJC_ARC = "YES";
+            COMBINE_HIDPI_IMAGES = "YES";
+            COPY_PHASE_STRIP = "YES";
+            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+            DYLIB_INSTALL_NAME_BASE = "@rpath";
+            GCC_OPTIMIZATION_LEVEL = "s";
+            GCC_PREPROCESSOR_DEFINITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE=1"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-DXcode"
+            );
+            PRODUCT_NAME = "$(TARGET_NAME)";
+            SDKROOT = "macosx";
+            SUPPORTED_PLATFORMS = (
+               "macosx",
+               "iphoneos",
+               "iphonesimulator",
+               "appletvos",
+               "appletvsimulator",
+               "watchos",
+               "watchsimulator"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE"
+            );
+            SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+            USE_HEADERMAP = "NO";
+         };
+         name = "Release";
+      };
+      "OBJ_40" = {
+         isa = "PBXFileReference";
+         path = "MetaEvents.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_41" = {
+         isa = "PBXFileReference";
+         path = "SoundFont.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_42" = {
+         isa = "PBXFileReference";
+         path = "TempoEvent.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_43" = {
+         isa = "PBXFileReference";
+         path = "TimeSeries.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_44" = {
+         isa = "PBXFileReference";
+         path = "Timer.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_45" = {
+         isa = "PBXFileReference";
+         path = "main.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_46" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_47"
+         );
+         name = "Tests";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_47" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_48",
+            "OBJ_49"
+         );
+         name = "KoreMIDITests";
+         path = "Tests/KoreMIDITests";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_48" = {
+         isa = "PBXFileReference";
+         path = "KoreMIDITests.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_49" = {
+         isa = "PBXFileReference";
+         path = "Stuff.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_5" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_6",
+            "OBJ_7",
+            "OBJ_46",
+            "OBJ_50",
+            "OBJ_53",
+            "OBJ_54",
+            "OBJ_55"
+         );
+         path = "";
+         sourceTree = "<group>";
+      };
+      "OBJ_50" = {
+         isa = "PBXGroup";
+         children = (
+            "KoreMIDI::KoreMIDI::Product",
+            "KoreMIDI::KoreMIDITests::Product"
+         );
+         name = "Products";
+         path = "";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "OBJ_53" = {
+         isa = "PBXFileReference";
+         path = "TestBed";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_54" = {
+         isa = "PBXFileReference";
+         path = "TODO.md";
+         sourceTree = "<group>";
+      };
+      "OBJ_55" = {
+         isa = "PBXFileReference";
+         path = "README.md";
+         sourceTree = "<group>";
+      };
+      "OBJ_57" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_58",
+            "OBJ_59"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_58" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "KoreMIDI.xcodeproj/KoreMIDI_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "9.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+               "@executable_path"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_FORCE_DYNAMIC_LINK_STDLIB = "YES";
+            SWIFT_FORCE_STATIC_LINK_STDLIB = "NO";
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "KoreMIDI";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_59" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)"
+            );
+            INFOPLIST_FILE = "KoreMIDI.xcodeproj/KoreMIDI_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "9.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+               "@executable_path"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_FORCE_DYNAMIC_LINK_STDLIB = "YES";
+            SWIFT_FORCE_STATIC_LINK_STDLIB = "NO";
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "KoreMIDI";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Release";
+      };
+      "OBJ_6" = {
+         isa = "PBXFileReference";
+         explicitFileType = "sourcecode.swift";
+         path = "Package.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_60" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_61",
+            "OBJ_62",
+            "OBJ_63",
+            "OBJ_64",
+            "OBJ_65",
+            "OBJ_66",
+            "OBJ_67",
+            "OBJ_68",
+            "OBJ_69",
+            "OBJ_70",
+            "OBJ_71",
+            "OBJ_72",
+            "OBJ_73",
+            "OBJ_74",
+            "OBJ_75",
+            "OBJ_76",
+            "OBJ_77",
+            "OBJ_78",
+            "OBJ_79",
+            "OBJ_80",
+            "OBJ_81",
+            "OBJ_82",
+            "OBJ_83",
+            "OBJ_84",
+            "OBJ_85",
+            "OBJ_86",
+            "OBJ_87",
+            "OBJ_88",
+            "OBJ_89",
+            "OBJ_90",
+            "OBJ_91",
+            "OBJ_92",
+            "OBJ_93",
+            "OBJ_94",
+            "OBJ_95",
+            "OBJ_96",
+            "OBJ_97"
+         );
+      };
+      "OBJ_61" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_9";
+      };
+      "OBJ_62" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_10";
+      };
+      "OBJ_63" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_11";
+      };
+      "OBJ_64" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_12";
+      };
+      "OBJ_65" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_13";
+      };
+      "OBJ_66" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_14";
+      };
+      "OBJ_67" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_15";
+      };
+      "OBJ_68" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_16";
+      };
+      "OBJ_69" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_17";
+      };
+      "OBJ_7" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_8"
+         );
+         name = "Sources";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_70" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_18";
+      };
+      "OBJ_71" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_19";
+      };
+      "OBJ_72" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_20";
+      };
+      "OBJ_73" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_21";
+      };
+      "OBJ_74" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_22";
+      };
+      "OBJ_75" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_23";
+      };
+      "OBJ_76" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_24";
+      };
+      "OBJ_77" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_25";
+      };
+      "OBJ_78" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_26";
+      };
+      "OBJ_79" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_27";
+      };
+      "OBJ_8" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_9",
+            "OBJ_10",
+            "OBJ_11",
+            "OBJ_12",
+            "OBJ_13",
+            "OBJ_14",
+            "OBJ_15",
+            "OBJ_16",
+            "OBJ_17",
+            "OBJ_18",
+            "OBJ_19",
+            "OBJ_20",
+            "OBJ_21",
+            "OBJ_22",
+            "OBJ_23",
+            "OBJ_24",
+            "OBJ_25",
+            "OBJ_26",
+            "OBJ_27",
+            "OBJ_28",
+            "OBJ_29",
+            "OBJ_30",
+            "OBJ_31",
+            "OBJ_32",
+            "OBJ_33",
+            "OBJ_34",
+            "OBJ_35",
+            "OBJ_36",
+            "OBJ_37",
+            "OBJ_38",
+            "OBJ_39",
+            "OBJ_40",
+            "OBJ_41",
+            "OBJ_42",
+            "OBJ_43",
+            "OBJ_44",
+            "OBJ_45"
+         );
+         name = "KoreMIDI";
+         path = "Sources/KoreMIDI";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_80" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_28";
+      };
+      "OBJ_81" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_29";
+      };
+      "OBJ_82" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_30";
+      };
+      "OBJ_83" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_31";
+      };
+      "OBJ_84" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_32";
+      };
+      "OBJ_85" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_33";
+      };
+      "OBJ_86" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_34";
+      };
+      "OBJ_87" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_35";
+      };
+      "OBJ_88" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_36";
+      };
+      "OBJ_89" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_37";
+      };
+      "OBJ_9" = {
+         isa = "PBXFileReference";
+         path = "AVFoundation.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_90" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_38";
+      };
+      "OBJ_91" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_39";
+      };
+      "OBJ_92" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_40";
+      };
+      "OBJ_93" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_41";
+      };
+      "OBJ_94" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_42";
+      };
+      "OBJ_95" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_43";
+      };
+      "OBJ_96" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_44";
+      };
+      "OBJ_97" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_45";
+      };
+      "OBJ_98" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+         );
+      };
+   };
+   rootObject = "OBJ_1";
 }

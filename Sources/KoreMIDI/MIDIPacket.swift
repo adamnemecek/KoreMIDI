@@ -21,7 +21,8 @@ internal protocol VLQ {
 extension MemoryLayout where T : VLQ {
     @inline(__always)
     static func size(ofVLQ value: T) -> Int {
-        return MemoryLayout.size + Int(value.length.toIntMax())
+//        return MemoryLayout.size + Int(value.length.toIntMax())
+        fatalError()
     }
 }
 
@@ -40,8 +41,9 @@ extension MIDIPacket : VLQ {
 
 extension MIDIEventConvertible {
     @inline(__always)
-    init(event: DataEvent<MIDIPacket.Timestamp, Foundation.Data>) {
-        self = event.data.decode()
+    init(event: DataEvent<Float, Foundation.Data>) {
+//        self = event.data.decode()
+        fatalError()
     }
 }
 

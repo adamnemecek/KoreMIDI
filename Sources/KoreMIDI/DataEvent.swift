@@ -9,9 +9,9 @@
 import AudioToolbox.MusicPlayer
 import Foundation
 
-protocol EventType {
-
-}
+//protocol EventType {
+//
+//}
 
 /// this struct is basically a better MIDIPacket
 /// passed around

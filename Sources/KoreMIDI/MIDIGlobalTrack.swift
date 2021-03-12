@@ -9,17 +9,6 @@
 import Foundation
 import AVFoundation
 
-public protocol MIDITrackType: Sequence, Hashable where Element: MIDITrackEventType {
-
-}
-
-public protocol MIDITrackEventType {
-    associatedtype Track: MIDITrackType
-    associatedtype Timestamp: Strideable
-
-    var timestamp: Timestamp { get }
-    func insert(to track: Track)
-}
 
 /// timing event
 public struct TempoEvent: CustomStringConvertible, Equatable, Comparable, Hashable, MIDITrackEventType {
